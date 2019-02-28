@@ -2,6 +2,9 @@ package model.qualities.color;
 
 import model.qualities.Quality;
 
+/**
+ * This class represents a color that some shape could display.
+ */
 public class TextureImpl implements Texture {
 
   private double red;
@@ -10,9 +13,7 @@ public class TextureImpl implements Texture {
   private double alpha;
 
   /**
-   * Initializes TextureImpl, given a Texture.
-   *
-   * @returns a TextureImpl version of a java.awt.Texture
+   * Initializes TextureImpl, given a Color.
    */
   public TextureImpl(java.awt.Color color) throws IllegalArgumentException {
     this.red = color.getRed();
