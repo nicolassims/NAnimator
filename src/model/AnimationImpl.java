@@ -27,14 +27,14 @@ public class AnimationImpl implements Animation {
 
 
   @Override
-  public void addShape(String name, String type, int startingTick, int endingTick) {
+  public void addShape(String name, String type) {
     Shapes shapeType = null;
     for (Shapes s : Shapes.values()) {
       if (s.name().equals(type)) {
         shapeType = s;
       }
     }
-    if (shapeType == null || startingTick < 0 || endingTick >= startingTick) {
+    if (shapeType == null) {
       throw new IllegalArgumentException("Shape not valid--it's bounds are impossible, or its "
           + "type is nonexistent.");
     }
@@ -43,8 +43,7 @@ public class AnimationImpl implements Animation {
     Size siz = new Size2D(0, 0);
     Texture text = new TextureImpl(0,0,0,0);
     Keyframe key = new KeyframeImpl(pos, siz, text);
-    Motion mot = new MotionImpl(startingTick, endingTick, shapes.get(shapes.size()), key, key);
-    shapes.add(new ShapeImpl(shapeType, name, mot));
+    shapes.add(new ShapeImpl(shapeType, name));
   }
 
   @Override

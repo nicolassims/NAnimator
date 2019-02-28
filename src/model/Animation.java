@@ -12,7 +12,7 @@ public interface Animation {
    * IllegalArgument Exception if a shape with said name already exist of the shape\ is not
    * supported by the current implementation
    */
-  void addShape(String name, String type, int startingTick, int endingTick);
+  void addShape(String name, String type);
 
   /**
    * Given a shape name, and two keyframes a motion is added.
