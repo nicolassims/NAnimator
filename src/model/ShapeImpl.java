@@ -1,8 +1,7 @@
 package model;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 /**
@@ -14,20 +13,19 @@ public class ShapeImpl implements Shape {
   private Shapes shapeType;
 
   /**
-   * Initializes ShapeImpl, given at least one Motion.
+   * Initializes ShapeImpl, given a name and a shapeType. Not in that order.
    *
-   * @param m the motion, or motions, this shape will go through.
    * @param name The name of the shape.
    * @param shapeType The name of the shape.
    * @throws IllegalArgumentException if the shape contains no motions, or name is unspecified.
    */
-  public ShapeImpl(Shapes shapeType, String name, Motion... m) {
-    if (m.length == 0 || name.equals("")) {
-      throw new IllegalArgumentException("Shape contains no motions, or the name is unspecified");
+  public ShapeImpl(Shapes shapeType, String name) {
+    if (name.equals("")) {
+      throw new IllegalArgumentException("Name is unspecified");
     }
     this.name = name;
     this.shapeType = shapeType;
-    motions = Arrays.asList(m);
+    this.motions = new ArrayList<>();
   }
 
   @Override
