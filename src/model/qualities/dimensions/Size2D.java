@@ -1,11 +1,12 @@
 package model.qualities.dimensions;
 
-import cs3500.animation.model.hw06.animatableobject.qualities.Quality;
+
+import model.qualities.Quality;
 
 /**
  * Represents the size of an object described by width and height dimensions.
  */
-public class Size2D implements Dimensions {
+public class Size2D implements Size {
 
   private final double width;
   private final double height;
@@ -30,7 +31,7 @@ public class Size2D implements Dimensions {
 
   @Override
   public String getQualities() {
-    return "[Dimensions:Size2D (width: " + this.width + ", height: " + this.height
+    return "[Size:Size2D (width: " + this.width + ", height: " + this.height
         + ")]";
   }
 

@@ -18,4 +18,9 @@ public interface Animation {
    *  either the shape does not exist, there is overlap on the timing with other motions or*/
   //void addMontion(String shape, )
 
+  /**
+   * Returns a string representation of the animation as a file.
+   */
+  String toFile();
+
 }

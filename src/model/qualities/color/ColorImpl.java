@@ -1,6 +1,6 @@
 package model.qualities.color;
 
-import cs3500.animation.model.hw06.animatableobject.qualities.Quality;
+import model.qualities.Quality;
 
 public class ColorImpl implements Color {
 
