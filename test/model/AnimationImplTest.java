@@ -37,6 +37,6 @@ public class AnimationImplTest {
 
   @Test
   public void toFile() {
-    assertEquals("", exampleModel.toFile());
+    assertEquals("shape R rectangle\n", exampleModel.toFile());
   }
 }

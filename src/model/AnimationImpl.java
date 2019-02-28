@@ -11,13 +11,14 @@ import model.qualities.positions.Position;
 import model.qualities.positions.Position2D;
 
 public class AnimationImpl implements Animation {
+
   private List<Shape> shapes;
 
   /**
    * Initializes ShapeImpl, given at least one Motion.
    *
-//   * @param s the shape, or shapes, this animation contains.
-//   * @throws IllegalArgumentException if the animation contains no shapes.
+   * //   * @param s the shape, or shapes, this animation contains. //   * @throws
+   * IllegalArgumentException if the animation contains no shapes.
    */
   public AnimationImpl(/*Shapes... s*/) {
     shapes = new ArrayList<>();
@@ -64,7 +65,8 @@ public class AnimationImpl implements Animation {
   public String toFile() {
     StringBuilder built = new StringBuilder("");
     for (Shape s : shapes) {
-      built.append("shape ").append(s.getShape()).append("\n").append(s.toFile());
+      built.append("shape ").append(s.getName()).append(" ").append(s.getShape()).append("\n")
+          .append(s.toFile());
     }
     return built.toString();
   }
