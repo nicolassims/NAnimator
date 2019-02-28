@@ -19,8 +19,14 @@ public class AnimationImpl implements Animation {
     shapes = Arrays.asList(s);
   }
 
+
   @Override
-  public void addShape(String name, String type) {
+  public void addShape(String name, String type, int startingTick, int endingTick) {
+
+  }
+
+  @Override
+  public void addMotion(String shapeName, Keyframe start, Keyframe end) {
 
   }
 

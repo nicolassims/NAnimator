@@ -12,12 +12,11 @@ public interface Animation {
    * IllegalArgument Exception if a shape with said name already exist of the shape\ is not
    * supported by the current implementation
    */
-  void addShape(String name, String type);
+  void addShape(String name, String type, int startingTick, int endingTick);
 
   /**Given a shape name, from tick, a to tick and both starting and ending position, size,
    *  either the shape does not exist, there is overlap on the timing with other motions or*/
-  //void addMontion(String shape, )
-
+  void addMotion(String shapeName, Keyframe start, Keyframe end);
   /**
    * Returns a string representation of the animation as a file.
    */

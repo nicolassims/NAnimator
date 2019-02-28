@@ -1,4 +1,4 @@
-package qualities.dimensions;
+package model.qualities.dimensions;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class Size2DTest {
 
-  Dimensions dimensions;
+  private Size dimensions;
 
   @Before
   public void setUp() throws Exception {
@@ -25,39 +25,45 @@ public class Size2DTest {
 
   @Test
   public void getQualities() {
-    assertEquals("[Dimensions:Size2D (width: 3.0, height: 4.0)]",
+    assertEquals("[Size:Size2D (width: 3.0, height: 4.0)]",
         this.dimensions.getQualities());
   }
 
   @Test
+  public void toFile() {
+    assertEquals("3 4",
+        this.dimensions.toFile());
+  }
+
+  @Test
   public void addTogether() {
-    Dimensions dimensions1 = (Dimensions) new Size2D(1, 12)
+    Size dimensions1 = (Size) new Size2D(1, 12)
         .addTogether(new Size2D(4, 4));
-    assertEquals("[Dimensions:Size2D (width: 5.0, height: 16.0)]",
+    assertEquals("[Size:Size2D (width: 5.0, height: 16.0)]",
         dimensions1.getQualities());
   }
 
   @Test
   public void getDifference() {
-    Dimensions dimensions1 = (Dimensions) new Size2D(1, 12)
+    Size dimensions1 = (Size) new Size2D(1, 12)
         .getDifference(new Size2D(4, 4));
-    assertEquals("[Dimensions:Size2D (width: 3.0, height: -8.0)]",
+    assertEquals("[Size:Size2D (width: 3.0, height: -8.0)]",
         dimensions1.getQualities());
   }
 
   @Test
   public void divideBy() {
-    Dimensions dimensions1 = (Dimensions) new Size2D(1, 12)
+    Size dimensions1 = (Size) new Size2D(1, 12)
         .divideBy(5);
-    assertEquals("[Dimensions:Size2D (width: 0.2, height: 2.4)]",
+    assertEquals("[Size:Size2D (width: 0.2, height: 2.4)]",
         dimensions1.getQualities());
   }
 
   @Test
   public void multiplyBy() {
-    Dimensions dimensions1 = (Dimensions) new Size2D(1, 12)
+    Size dimensions1 = (Size) new Size2D(1, 12)
         .multiplyBy(5);
-    assertEquals("[Dimensions:Size2D (width: 5.0, height: 60.0)]",
+    assertEquals("[Size:Size2D (width: 5.0, height: 60.0)]",
         dimensions1.getQualities());
   }
 }
