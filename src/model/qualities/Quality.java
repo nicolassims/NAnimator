@@ -38,5 +38,5 @@ public interface Quality {
 
   boolean equals(Object other);
 
-  String getTextualOutPut();
+  String toFile();
 }

@@ -1,6 +1,6 @@
 package model.qualities.positions;
 
-import cs3500.animation.model.hw06.animatableobject.qualities.Quality;
+import model.qualities.Quality;
 
 /**
  * Represents the position of an object in a 2D plane.
@@ -71,7 +71,7 @@ public class Position2D implements Position {
   }
 
   @Override
-  public String getTextualOutPut() {
+  public String toFile() {
     return (int) this.x + " " + (int) this.y;
   }
 

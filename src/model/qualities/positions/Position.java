@@ -1,6 +1,7 @@
 package model.qualities.positions;
 
-import cs3500.animation.model.hw06.animatableobject.qualities.Quality;
+
+import model.qualities.Quality;
 
 /**
  * Describes the position of an object in different dimensions.

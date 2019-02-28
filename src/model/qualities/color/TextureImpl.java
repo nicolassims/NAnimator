@@ -2,7 +2,7 @@ package model.qualities.color;
 
 import model.qualities.Quality;
 
-public class ColorImpl implements Color {
+public class TextureImpl implements Texture {
 
   private double red;
   private double green;
@@ -10,11 +10,11 @@ public class ColorImpl implements Color {
   private double alpha;
 
   /**
-   * Initializes ColorImpl, given a Color.
+   * Initializes TextureImpl, given a Texture.
    *
-   * @returns a ColorImpl version of a java.awt.Color
+   * @returns a TextureImpl version of a java.awt.Texture
    */
-  public ColorImpl(java.awt.Color color) throws IllegalArgumentException {
+  public TextureImpl(java.awt.Color color) throws IllegalArgumentException {
     this.red = color.getRed();
     this.green = color.getGreen();
     this.blue = color.getBlue();
@@ -22,9 +22,9 @@ public class ColorImpl implements Color {
   }
 
   /**
-   * Initializes ColorImpl, given rgba values.
+   * Initializes TextureImpl, given rgba values.
    */
-  public ColorImpl(double red, double green, double blue, double alpha) {
+  public TextureImpl(double red, double green, double blue, double alpha) {
     this.red = red;
     this.green = green;
     this.blue = blue;
@@ -58,8 +58,8 @@ public class ColorImpl implements Color {
 
   @Override
   public Quality addTogether(Quality quality) {
-    if (quality instanceof ColorImpl) {
-      ColorImpl otherColor = (ColorImpl) quality;
+    if (quality instanceof TextureImpl) {
+      TextureImpl otherColor = (TextureImpl) quality;
       double red = this.getRed() + otherColor.getRed();
 
       double green = this.getGreen() + otherColor.getGreen();
@@ -68,7 +68,7 @@ public class ColorImpl implements Color {
 
       double alpha = this.getAlpha() + otherColor.getAlpha();
 
-      return new ColorImpl(red, green, blue, alpha);
+      return new TextureImpl(red, green, blue, alpha);
     } else {
       throw new IllegalArgumentException("qualities must be of the same type to be added together");
     }
@@ -76,15 +76,15 @@ public class ColorImpl implements Color {
 
   @Override
   public String getQualities() {
-    return "[Color:Color (red: " + this.getRed() + ", green: " + this
+    return "[Texture:Texture (red: " + this.getRed() + ", green: " + this
         .getGreen() + ", blue: " + this.getBlue() + ", alpha: " + this.getAlpha()
         + ")]";
   }
 
   @Override
   public Quality getDifference(Quality other) {
-    if (other instanceof ColorImpl) {
-      ColorImpl otherColor = (ColorImpl) other;
+    if (other instanceof TextureImpl) {
+      TextureImpl otherColor = (TextureImpl) other;
       double red = otherColor.getRed() - this.getRed();
 
       double green = otherColor.getGreen() - this.getGreen();
@@ -93,7 +93,7 @@ public class ColorImpl implements Color {
 
       double alpha = otherColor.getAlpha() - this.getAlpha();
 
-      return new ColorImpl(red, green, blue, alpha);
+      return new TextureImpl(red, green, blue, alpha);
     } else {
       throw new IllegalArgumentException("qualities must be of the same type to be added together");
     }
@@ -101,21 +101,21 @@ public class ColorImpl implements Color {
 
   @Override
   public Quality divideBy(int duration) {
-    return new ColorImpl(this.getRed() / duration,
+    return new TextureImpl(this.getRed() / duration,
         this.getGreen() / duration, this.getBlue() / duration,
         this.getAlpha() / duration);
   }
 
   @Override
   public Quality multiplyBy(int currentTick) {
-    return new ColorImpl(this.getRed() * currentTick,
+    return new TextureImpl(this.getRed() * currentTick,
         this.getGreen() * currentTick, this.getBlue() * currentTick,
         this.getAlpha() * currentTick);
   }
 
   public Boolean equals(Quality other) {
-    if (other instanceof ColorImpl) {
-      ColorImpl otherColor = (ColorImpl) other;
+    if (other instanceof TextureImpl) {
+      TextureImpl otherColor = (TextureImpl) other;
       return this.getRed() == otherColor.getRed() && this.getGreen() == otherColor.getGreen()
           && this.getBlue() == otherColor.getBlue() && this.getAlpha() == otherColor.getAlpha();
     } else {
@@ -124,7 +124,7 @@ public class ColorImpl implements Color {
   }
 
   @Override
-  public String getTextualOutPut() {
+  public String toFile() {
     return (int) this.red + " " + (int) this.green + " " + (int) this.blue;
   }
 }

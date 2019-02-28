@@ -3,9 +3,9 @@ package model.qualities.color;
 import model.qualities.Quality;
 
 /**
- * Represents java.awt.Color as modifiable quality by the model animations.
+ * Represents java.awt.Texture as modifiable quality by the model animations.
  */
-public interface Color extends Quality {
+public interface Texture extends Quality {
 
   /**
    * Returns a java awt version of this color.

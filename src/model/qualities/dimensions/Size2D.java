@@ -67,7 +67,7 @@ public class Size2D implements Size {
   }
 
   @Override
-  public String getTextualOutPut() {
+  public String toFile() {
     return (int) this.width + " " + (int) this.height;
   }
 
