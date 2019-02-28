@@ -1,5 +1,5 @@
 package model;
 
 public enum Shapes {
-  OVAL, RECTANGLE, CIRCLE, SQUARE, TRIANGLE;
+  rectangle, ellipse, oval, circle, square, triangle, pentagon;
 }
