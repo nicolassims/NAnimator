@@ -7,10 +7,14 @@ import org.junit.Test;
 
 public class TextureImplTest {
 
-  private Texture myColor = new TextureImpl(25, 83, 98, 234);
+  private Texture myColor;
 
+  /**
+   * Instantiates the test subjects.
+   */
   @Before
   public void setUp() throws Exception {
+    myColor = new TextureImpl(25, 83, 98, 234);
   }
 
   /**
