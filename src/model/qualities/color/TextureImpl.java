@@ -14,6 +14,8 @@ public class TextureImpl implements Texture {
 
   /**
    * Initializes TextureImpl, given a Color.
+   *
+   * @param color The color of the texture. Just a different way of representing it, really.
    */
   public TextureImpl(java.awt.Color color) throws IllegalArgumentException {
     this.red = color.getRed();
@@ -24,6 +26,11 @@ public class TextureImpl implements Texture {
 
   /**
    * Initializes TextureImpl, given rgba values.
+   *
+   * @param red How red the texture is.
+   * @param green How green the texture is.
+   * @param blue How blue the texture is.
+   * @param alpha How alpha the texture is. (Okay, how transparent it is.)
    */
   public TextureImpl(double red, double green, double blue, double alpha) {
     this.red = red;
