@@ -10,6 +10,7 @@ import model.qualities.positions.Position;
 import model.qualities.positions.Position2D;
 
 public class AnimationImpl implements Animation {
+
   private List<Shape> shapes;
 
   /**
@@ -41,7 +42,7 @@ public class AnimationImpl implements Animation {
 
     Position pos = new Position2D(0, 0);
     Size siz = new Size2D(0, 0);
-    Texture text = new TextureImpl(0,0,0,0);
+    Texture text = new TextureImpl(0, 0, 0, 0);
     Keyframe key = new KeyframeImpl(pos, siz, text);
     Motion mot = new MotionImpl(startingTick, endingTick, shapes.get(shapes.size()), key, key);
     shapes.add(new ShapeImpl(shapeType, name, mot));
