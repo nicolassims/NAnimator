@@ -40,12 +40,13 @@ public class AnimationImpl implements Animation {
           + "type is nonexistent.");
     }
 
-    Position pos = new Position2D(0, 0);
+    /*Position pos = new Position2D(0, 0);
     Size siz = new Size2D(0, 0);
     Texture text = new TextureImpl(0, 0, 0, 0);
     Keyframe key = new KeyframeImpl(pos, siz, text);
     Motion mot = new MotionImpl(startingTick, endingTick, shapes.get(shapes.size()), key, key);
-    shapes.add(new ShapeImpl(shapeType, name, mot));
+    shapes.add(new ShapeImpl(shapeType, name, mot));*/
+    shapes.add(new ShapeImpl(shapeType, name));
   }
 
   @Override
