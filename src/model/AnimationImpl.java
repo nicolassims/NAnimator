@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import model.qualities.color.Texture;
@@ -15,14 +16,15 @@ public class AnimationImpl implements Animation {
   /**
    * Initializes ShapeImpl, given at least one Motion.
    *
-   * @param s the shape, or shapes, this animation contains.
-   * @throws IllegalArgumentException if the animation contains no shapes.
+//   * @param s the shape, or shapes, this animation contains.
+//   * @throws IllegalArgumentException if the animation contains no shapes.
    */
-  public AnimationImpl(Shape... s) {
-    if (s.length == 0) {
+  public AnimationImpl(/*Shapes... s*/) {
+    shapes = new ArrayList<>();
+    /*if (s.length == 0) {
       throw new IllegalArgumentException("Animation contains no shapes");
     }
-    shapes = Arrays.asList(s);
+    shapes = Arrays.asList(s);*/
   }
 
 
@@ -39,10 +41,10 @@ public class AnimationImpl implements Animation {
           + "type is nonexistent.");
     }
 
-    Position pos = new Position2D(0, 0);
+    /*Position pos = new Position2D(0, 0);
     Size siz = new Size2D(0, 0);
     Texture text = new TextureImpl(0,0,0,0);
-    Keyframe key = new KeyframeImpl(pos, siz, text);
+    Keyframe key = new KeyframeImpl(pos, siz, text);*/
     shapes.add(new ShapeImpl(shapeType, name));
   }
 
@@ -53,9 +55,8 @@ public class AnimationImpl implements Animation {
 
   @Override
   public void addRotationless2DMotion(String shapeName, int startingTick, double x0, double y0,
-      double h0,
-      double w0, double r0, double g0, double b0, int endingTick, double x1, double y1, double h1,
-      double w1, double r1, double g1, double b1) {
+      double h0, double w0, double r0, double g0, double b0, int endingTick, double x1, double y1,
+      double h1, double w1, double r1, double g1, double b1) {
 
   }
 

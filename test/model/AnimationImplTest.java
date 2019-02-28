@@ -1,5 +1,7 @@
 package model;
 
+import static org.junit.Assert.assertEquals;
+
 import model.qualities.color.TextureImpl;
 import model.qualities.dimensions.Size2D;
 import model.qualities.positions.Position2D;
@@ -35,5 +37,6 @@ public class AnimationImplTest {
 
   @Test
   public void toFile() {
+    assertEquals("", exampleModel.toFile());
   }
 }
