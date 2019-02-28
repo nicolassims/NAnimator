@@ -14,9 +14,19 @@ public interface Animation {
    */
   void addShape(String name, String type, int startingTick, int endingTick);
 
-  /**Given a shape name, from tick, a to tick and both starting and ending position, size,
-   *  either the shape does not exist, there is overlap on the timing with other motions or*/
+  /**
+   * Given a shape name, and two keyframes a motion is added.
+   */
   void addMotion(String shapeName, Keyframe start, Keyframe end);
+
+  /**
+   * Less flexible version of add motions that trades-off flexibility for future program updates for
+   * convenience.
+   */
+  void addRotationless2DMotion(String shapeName, int startingTick, double x0, double y0, double h0,
+      double w0, double r0, double g0, double b0, int endingTick, double x1, double y1, double h1,
+      double w1, double r1, double g1, double b1);
+
   /**
    * Returns a string representation of the animation as a file.
    */

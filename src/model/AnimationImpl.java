@@ -31,6 +31,14 @@ public class AnimationImpl implements Animation {
   }
 
   @Override
+  public void addRotationless2DMotion(String shapeName, int startingTick, double x0, double y0,
+      double h0,
+      double w0, double r0, double g0, double b0, int endingTick, double x1, double y1, double h1,
+      double w1, double r1, double g1, double b1) {
+
+  }
+
+  @Override
   public String toFile() {
     StringBuilder built = new StringBuilder("");
     for (Shape s : shapes) {
