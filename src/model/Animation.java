@@ -13,7 +13,7 @@ public interface Animation {
    * @throws IllegalArgumentException if a shape with said name already exist of the shape is not
    *         supported by the current implementation
    */
-  void addShape(String name, Shapes type);
+  void addShape(String name, String type);
 
   /*Given a shape name, from tick, a to tick and both starting and ending position, size,
      either the shape does not exist, there is overlap on the timing with other motions or

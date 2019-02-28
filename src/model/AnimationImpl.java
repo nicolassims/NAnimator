@@ -20,7 +20,7 @@ public class AnimationImpl implements Animation {
   }
 
   @Override
-  public void addShape(String name, Shapes type) {
+  public void addShape(String name, String type) {
     //shapes.add(new ShapeImpl(type, name, ));
   }
 
