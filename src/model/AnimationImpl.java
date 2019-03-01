@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.qualities.color.TextureImpl;
+import model.qualities.dimensions.Size2D;
+import model.qualities.positions.Position2D;
 
 public class AnimationImpl implements Animation {
 
@@ -48,6 +51,15 @@ public class AnimationImpl implements Animation {
       double h0, double w0, double r0, double g0, double b0, int endingTick, double x1, double y1,
       double h1, double w1, double r1, double g1, double b1) {
 
+      this.addMotion(shapeName,
+          new KeyframeImpl(startingTick,
+              new Position2D(x0, y0),
+              new Size2D(w0, h0),
+              new TextureImpl(r0, g0, b0, 1)),
+          new KeyframeImpl(endingTick,
+              new Position2D(x1, y1),
+              new Size2D(w1, h1),
+              new TextureImpl(r1, g1, b1, 1)));
   }
 
   @Override
@@ -58,6 +70,6 @@ public class AnimationImpl implements Animation {
       built.append("shape ").append(s.getName()).append(" ").append(s.getShape()).append("\n")
           .append(s.toFile());
     }
-    return built.toString();
+    return built.toString().substring(0, built.toString().length() - 1);
   }
 }

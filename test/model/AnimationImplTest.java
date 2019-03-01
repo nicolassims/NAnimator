@@ -97,7 +97,9 @@ public class AnimationImplTest {
 
   @Test
   public void toFile() {
-    assertEquals("shape R rectangle", exampleModel.toFile());
+    assertEquals("shape R rectangle\n"
+        + "motion R 0 200 200 50 100 255 0 0    100 200 200 50 100 255 0 0\n"
+        + "motion R 1 200 200 100 50 255 0 0    10 200 200 100 50 255 0 0", exampleModel.toFile());
   }
 
 
