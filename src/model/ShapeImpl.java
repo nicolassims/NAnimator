@@ -12,7 +12,7 @@ public class ShapeImpl implements Shape {
   private List<Motion> motions;
   private String name;
   private Shapes shapeType;
-  private Stack<Integer> KeyframeTickOfLastMotionAdded;
+  private Stack<Integer> keyframeTickOfLastMotionAdded;
 
   /**
    * Initializes ShapeImpl, given a name and a shapeType. Not in that order.
@@ -28,8 +28,8 @@ public class ShapeImpl implements Shape {
     this.name = name;
     this.shapeType = shapeType;
     this.motions = new ArrayList<>();
-    this.KeyframeTickOfLastMotionAdded = new Stack<>();
-    this.KeyframeTickOfLastMotionAdded.push(0);
+    this.keyframeTickOfLastMotionAdded = new Stack<>();
+    this.keyframeTickOfLastMotionAdded.push(0);
   }
 
   @Override
@@ -54,13 +54,13 @@ public class ShapeImpl implements Shape {
   @Override
   public void addMotion(Motion m) {
     motions.add(m);
-    if (m.getEndFrame().getTick() > this.KeyframeTickOfLastMotionAdded.peek()) {
-      this.KeyframeTickOfLastMotionAdded.push(m.getEndFrame().getTick());
+    if (m.getEndFrame().getTick() > this.keyframeTickOfLastMotionAdded.peek()) {
+      this.keyframeTickOfLastMotionAdded.push(m.getEndFrame().getTick());
     }
   }
 
   @Override
   public int totalDuration() {
-    return this.KeyframeTickOfLastMotionAdded.peek();
+    return this.keyframeTickOfLastMotionAdded.peek();
   }
 }

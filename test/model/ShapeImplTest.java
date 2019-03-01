@@ -1,11 +1,15 @@
 package model;
 
+import static org.junit.Assert.assertEquals;
+
 import model.qualities.color.TextureImpl;
 import model.qualities.dimensions.Size2D;
 import model.qualities.positions.Position2D;
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
+/**
+ * This class contains the tests for the ShapeImpl.
+ */
 public class ShapeImplTest {
 
   @Test

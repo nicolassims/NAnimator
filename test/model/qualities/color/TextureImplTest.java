@@ -1,13 +1,16 @@
 package model.qualities.color;
 
-import java.awt.Color;
 import static org.junit.Assert.assertEquals;
 
+import java.awt.Color;
 import model.qualities.dimensions.Size2D;
 import model.qualities.positions.Position2D;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This class contains the tests for the TextureImpl.
+ */
 public class TextureImplTest {
 
   private Texture myColor;

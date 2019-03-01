@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * This class represents a shape, and every motion it will go through is stored within.
+ */
 public interface Shape {
 
   /**

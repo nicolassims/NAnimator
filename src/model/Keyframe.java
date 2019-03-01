@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * This interface represents a collection of qualities that some shape could display at one tick.
+ */
 public interface Keyframe {
 
   /**

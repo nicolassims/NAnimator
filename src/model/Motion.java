@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * This class represents a motion affecting one shape across some range of ticks.
+ */
 public interface Motion {
 
   /**

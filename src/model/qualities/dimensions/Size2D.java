@@ -56,7 +56,13 @@ public class Size2D implements Size {
     return new Size2D(this.width * currentTick, this.height * currentTick);
   }
 
-  public Boolean equals(Quality other) {
+  /**
+   * Sees if another Quality is equal to this Size2D.
+   *
+   * @param other The other Quality to be checked for equality.
+   * @return true if the other Quality has the same values, and if not, false.
+   */
+  public Boolean equalsQuality(Quality other) {
     if (other instanceof Size2D) {
       Size2D otherDimension = (Size2D) other;
       return (this.getWidth() == otherDimension.getWidth() && this.getHeight() == otherDimension

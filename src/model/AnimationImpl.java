@@ -7,6 +7,9 @@ import model.qualities.color.TextureImpl;
 import model.qualities.dimensions.Size2D;
 import model.qualities.positions.Position2D;
 
+/**
+ * This class represents a collection of Shapes that could be displayed during one animation.
+ */
 public class AnimationImpl implements Animation {
 
   private Map<String, Shape> shapes;
@@ -73,16 +76,15 @@ public class AnimationImpl implements Animation {
   public void addRotationless2DMotion(String shapeName, int startingTick, double x0, double y0,
       double w0, double h0, double r0, double g0, double b0, int endingTick, double x1, double y1,
       double w1, double h1, double r1, double g1, double b1) {
-
-      this.addMotion(shapeName,
-          new KeyframeImpl(startingTick,
-              new Position2D(x0, y0),
-              new Size2D(w0, h0),
-              new TextureImpl(r0, g0, b0, 1)),
-          new KeyframeImpl(endingTick,
-              new Position2D(x1, y1),
-              new Size2D(w1, h1),
-              new TextureImpl(r1, g1, b1, 1)));
+    this.addMotion(shapeName,
+        new KeyframeImpl(startingTick,
+            new Position2D(x0, y0),
+            new Size2D(w0, h0),
+            new TextureImpl(r0, g0, b0, 1)),
+        new KeyframeImpl(endingTick,
+            new Position2D(x1, y1),
+            new Size2D(w1, h1),
+            new TextureImpl(r1, g1, b1, 1)));
   }
 
   @Override

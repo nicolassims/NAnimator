@@ -5,6 +5,9 @@ import model.qualities.dimensions.Size2D;
 import model.qualities.positions.Position2D;
 import org.junit.Test;
 
+/**
+ * This class contains the tests for the KeyframeImpl.
+ */
 public class KeyframeImplTest {
 
   /**

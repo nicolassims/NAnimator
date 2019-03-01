@@ -6,12 +6,16 @@ import model.qualities.positions.Position2D;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This class contains the tests for the MotionImpl.
+ */
 public class MotionImplTest {
+
   Keyframe key1;
   Keyframe key2;
 
   /**
-   * Sets up the MotionImpltests
+   * Sets up the MotionImpltests.
    */
   @Before
   public void setUp() throws Exception {
@@ -44,7 +48,7 @@ public class MotionImplTest {
    */
   @Test(expected = IllegalArgumentException.class)
   public void motionExceptionNullPosition() {
-      Motion mot = new MotionImpl(0, 1, null, key1, key2);
+    Motion mot = new MotionImpl(0, 1, null, key1, key2);
   }
 
   /**

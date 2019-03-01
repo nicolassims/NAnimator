@@ -1,9 +1,13 @@
 package model;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This class contains the tests for the AnimationImpl.
+ */
 public class AnimationImplTest {
 
   Animation exampleModel;
@@ -47,7 +51,7 @@ public class AnimationImplTest {
   }
 
   /**
-   * Tests that add shape works correctly
+   * Tests that add shape works correctly.
    */
   @Test
   public void addShape() {
@@ -58,7 +62,7 @@ public class AnimationImplTest {
 
   /**
    * Tests that add shape throws an IllegalArgumentException if the given string for the shape's
-   * name is null
+   * name is null.
    */
   @Test(expected = IllegalArgumentException.class)
   public void addShapeExceptionForNullShapeName() {
@@ -68,7 +72,7 @@ public class AnimationImplTest {
 
   /**
    * Tests that add shape throws an IllegalArgumentException if the given string for the shape's
-   * type is null
+   * type is null.
    */
   @Test(expected = IllegalArgumentException.class)
   public void addShapeExceptionForNullShapeType() {
@@ -78,7 +82,7 @@ public class AnimationImplTest {
 
   /**
    * Tests that add shape throws an IllegalArgumentException if the given shape's type does not
-   * match any of the currently supported shapes
+   * match any of the currently supported shapes.
    */
   @Test(expected = IllegalArgumentException.class)
   public void addShapeExceptionForUnsupportedShapeType() {

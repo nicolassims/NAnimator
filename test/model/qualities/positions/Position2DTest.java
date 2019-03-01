@@ -7,11 +7,13 @@ import model.qualities.dimensions.Size2D;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This class contains the tests for the Position2D.
+ */
 public class Position2DTest {
 
   Position position;
   Position otherPosition;
-
 
   /**
    * Instantiates the test subjects.
