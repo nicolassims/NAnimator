@@ -1,8 +1,5 @@
 package model;
 
-import model.qualities.color.TextureImpl;
-import model.qualities.dimensions.Size2D;
-import model.qualities.positions.Position2D;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,16 +12,38 @@ public class AnimationImplTest {
   public void setUp() throws Exception {
     exampleModel = new AnimationImpl();
     exampleModel.addShape("R", "rectangle");
-
-    Keyframe keyframe1 = new KeyframeImpl(0, new Position2D(200, 200), new Size2D(50, 100),
-        new TextureImpl(255, 0, 0, 255));
-    Keyframe keyframe2 = new KeyframeImpl(100, new Position2D(200, 200), new Size2D(50, 100),
-        new TextureImpl(255, 0, 0, 255));
-    exampleModel.addMotion("R", keyframe1, keyframe2);
-
     exampleModel.addRotationless2DMotion("R",
         1, 200, 200, 50, 100, 255, 0, 0,
         10, 200, 200, 50, 100, 255, 0, 0);
+    exampleModel.addRotationless2DMotion("R",
+        10, 200, 200, 50, 100, 255, 0, 50,
+        300, 300, 50, 100, 255, 0, 0, 0);
+    exampleModel.addRotationless2DMotion("R",
+        50, 300, 300, 50, 100, 255, 0, 0,
+        51, 300, 300, 50, 100, 255, 0, 0);
+    exampleModel.addRotationless2DMotion("R",
+        51, 300, 300, 50, 100, 255, 0, 0,
+        70, 300, 300, 25, 100, 255, 0, 0);
+    exampleModel.addRotationless2DMotion("R",
+        70, 300, 300, 25, 100, 255, 0, 0,
+        100, 200, 200, 25, 100, 255, 0, 0);
+
+    exampleModel.addShape("C", "ellipse");
+    exampleModel.addRotationless2DMotion("C",
+        6, 440, 70, 120, 60, 0, 0, 255,
+        20, 440, 70, 120, 60, 0, 0, 255);
+    exampleModel.addRotationless2DMotion("C",
+        20, 440, 70, 120, 60, 0, 0, 255,
+        50, 440, 250, 120, 60, 0, 0, 255);
+    exampleModel.addRotationless2DMotion("C",
+        50, 440, 250, 120, 60, 0, 0, 255,
+        70, 440, 370, 120, 60, 0, 170, 85);
+    exampleModel.addRotationless2DMotion("C",
+        70, 440, 370, 120, 60, 0, 170, 85,
+        80, 440, 370, 120, 60, 0, 255, 0);
+    exampleModel.addRotationless2DMotion("C",
+        80, 440, 370, 120, 60, 0, 255, 0,
+        100, 440, 370, 120, 60, 0, 255, 0);
   }
 
   /**
@@ -103,21 +122,59 @@ public class AnimationImplTest {
   public void addMotionExceptionForTicksLessThanZero() {
     Animation modelWithOneShape = new AnimationImpl();
     modelWithOneShape.addShape("R", "rectangle");
-    modelWithOneShape.addRotationless2DMotion("F",
+    modelWithOneShape.addRotationless2DMotion("R",
         -1, 200, 200, 50, 100, 255, 0, 0,
         10, 200, 200, 50, 100, 255, 0, 0);
   }
 
   /**
-   * Tests that add motion throws an IllegalArgumentException if the start tick of a motion is
-   * equal to its endtick.
+   * Tests that add motion throws an IllegalArgumentException if the second keyframe of a motion
+   * starting tick is not greater than the one of the previous keyframe.
    */
   @Test(expected = IllegalArgumentException.class)
   public void addMotionExceptionForInvalidMotionByKeyframeOrder() {
     Animation modelWithOneShape = new AnimationImpl();
     modelWithOneShape.addShape("R", "rectangle");
-    modelWithOneShape.addRotationless2DMotion("F",
+    modelWithOneShape.addRotationless2DMotion("R",
         1, 200, 200, 50, 100, 255, 0, 0,
         1, 200, 200, 50, 100, 255, 0, 0);
   }
+
+  /**
+   * Tests that add motion throws an IllegalArgumentException if an attempt to add a new motion
+   * overlaps with an existent motion.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void addMotionExceptionForOverlappingMotions() {
+    Animation modelWithOneShape = new AnimationImpl();
+    modelWithOneShape.addShape("R", "rectangle");
+    modelWithOneShape.addRotationless2DMotion("R",
+        1, 200, 200, 50, 100, 255, 0, 0,
+        10, 200, 200, 50, 100, 255, 0, 0);
+    modelWithOneShape.addRotationless2DMotion("R",
+        9, 200, 200, 50, 100, 255, 0, 0,
+        13, 200, 200, 50, 100, 255, 0, 0);
+  }
+
+
+  /**
+   * Tests that the motion can completely replicate the following example animation:
+   * https://course.ccs.neu.edu/cs3500/smalldemo.gif.
+   */
+  @Test
+  public void toFile() {
+    assertEquals("shape R rectangle\n"
+        + "motion R 1 200 200 50 100 255 0 0 10 200 200 50 100 255 0 0\n"
+        + "motion R 10 200 200 50 100 255 0 0 50 300 300 50 100 255 0 0\n"
+        + "motion R 50 300 300 50 100 255 0 0 51 300 300 50 100 255 0 0\n"
+        + "motion R 51 300 300 50 100 255 0 0 70 300 300 25 100 255 0 0\n"
+        + "motion R 70 300 300 25 100 255 0 0 100 200 200 25 100 255 0 0\n"
+        + "shape C ellipse\n"
+        + "motion C 6 440 70 120 60 0 0 255 20 440 70 120 60 0 0 255\n"
+        + "motion C 20 440 70 120 60 0 0 255 50 440 250 120 60 0 0 255\n"
+        + "motion C 50 440 250 120 60 0 0 255 70 440 370 120 60 0 170 85\n"
+        + "motion C 70 440 370 120 60 0 170 85 80 440 370 120 60 0 255 0\n"
+        + "motion C 80 440 370 120 60 0 255 0 100 440 370 120 60 0 255 0", exampleModel.toFile());
+  }
+
 }
