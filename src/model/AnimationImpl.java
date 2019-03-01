@@ -47,7 +47,7 @@ public class AnimationImpl implements Animation {
       this.lastKeyframeTickOnWholeAnimation.push(end.getTick());
     }
     if (end.getTick() <= start.getTick()) {
-      throw new IllegalArgumentException("End keyframe's before/concurrent with start keyframe");
+      throw new IllegalArgumentException("End keyframe is before/concurrent with start keyframe");
     }
     if (!shapes.containsKey(shapeName)) {
       throw new IllegalArgumentException("The given shape does not exist or has not been declared");

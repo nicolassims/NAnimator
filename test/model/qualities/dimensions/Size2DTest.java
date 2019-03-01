@@ -1,6 +1,9 @@
 package model.qualities.dimensions;
 
 import static org.junit.Assert.assertEquals;
+
+import model.qualities.color.TextureImpl;
+import model.qualities.positions.Position2D;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -92,5 +95,21 @@ public class Size2DTest {
         .multiplyBy(5);
     assertEquals("[Size:Size2D (width: 5.0, height: 60.0)]",
         dimensions1.getQualities());
+  }
+
+  /**
+   * Tests if two different qualities throw an exception when trying to add them together.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void addTogetherTwoDifferent() {
+    dimensions.addTogether(new Position2D(0, 0));
+  }
+
+  /**
+   * Tests if two different qualities throw an exception when trying to get their difference.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void getDifferenceTwoDifferent() {
+    dimensions.getDifference(new TextureImpl(0, 0, 0, 0));
   }
 }

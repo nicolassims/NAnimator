@@ -2,6 +2,9 @@ package model.qualities.color;
 
 import java.awt.Color;
 import static org.junit.Assert.assertEquals;
+
+import model.qualities.dimensions.Size2D;
+import model.qualities.positions.Position2D;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -115,5 +118,21 @@ public class TextureImplTest {
   public void multiplyBy() {
     assertEquals("[Texture:Texture (red: 125.0, green: 415.0, blue: 490.0, alpha: 1170.0)]",
         myColor.multiplyBy(5).getQualities());
+  }
+
+  /**
+   * Tests if two different qualities throw an exception when trying to add them together.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void addTogetherTwoDifferent() {
+    myColor.addTogether(new Position2D(0, 0));
+  }
+
+  /**
+   * Tests if two different qualities throw an exception when trying to get their difference.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void getDifferenceTwoDifferent() {
+    myColor.getDifference(new Size2D(0, 0));
   }
 }
