@@ -2,6 +2,7 @@ package model;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 import model.qualities.color.TextureImpl;
 import model.qualities.dimensions.Size2D;
 import model.qualities.positions.Position2D;
@@ -9,12 +10,15 @@ import model.qualities.positions.Position2D;
 public class AnimationImpl implements Animation {
 
   private Map<String, Shape> shapes;
+  private Stack<Integer> lastKeyframeTickOnWholeAnimation;
 
   /**
    * Initializes ShapeImpl.
    */
   public AnimationImpl() {
     shapes = new HashMap<>();
+    this.lastKeyframeTickOnWholeAnimation = new Stack<>();
+    this.lastKeyframeTickOnWholeAnimation.push(0);
   }
 
 
@@ -39,6 +43,9 @@ public class AnimationImpl implements Animation {
 
   @Override
   public void addMotion(String shapeName, Keyframe start, Keyframe end) {
+    if (end.getTick() > this.lastKeyframeTickOnWholeAnimation.peek()) {
+      this.lastKeyframeTickOnWholeAnimation.push(end.getTick());
+    }
     if (end.getTick() <= start.getTick()) {
       throw new IllegalArgumentException("End keyframe's before/concurrent with start keyframe");
     }
@@ -77,5 +84,10 @@ public class AnimationImpl implements Animation {
           .append(s.toFile());
     }
     return built.toString().substring(0, built.toString().length() - 1);
+  }
+
+  @Override
+  public int totalDuration() {
+    return 0;
   }
 }

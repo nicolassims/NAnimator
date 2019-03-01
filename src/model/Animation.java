@@ -32,4 +32,9 @@ public interface Animation {
    */
   String toFile();
 
+  /**
+   * Returns the total duration of the animation in ticks.
+   */
+  int totalDuration();
+
 }
