@@ -1,6 +1,9 @@
 package model.qualities.positions;
 
 import static org.junit.Assert.assertEquals;
+
+import model.qualities.color.TextureImpl;
+import model.qualities.dimensions.Size2D;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -88,5 +91,21 @@ public class Position2DTest {
     Position subtractedPosition = (Position) position.multiplyBy(2);
     assertEquals("[Position:Position2D (x: 4.0, y: 2.0)]",
         subtractedPosition.getQualities());
+  }
+
+  /**
+   * Tests if two different qualities throw an exception when trying to add them together.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void addTogetherTwoDifferent() {
+    position.addTogether(new Size2D(0, 0));
+  }
+
+  /**
+   * Tests if two different qualities throw an exception when trying to get their difference.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void getDifferenceTwoDifferent() {
+    position.getDifference(new TextureImpl(0, 0, 0, 0));
   }
 }

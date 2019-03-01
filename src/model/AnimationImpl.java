@@ -40,7 +40,7 @@ public class AnimationImpl implements Animation {
   @Override
   public void addMotion(String shapeName, Keyframe start, Keyframe end) {
     if (end.getTick() <= start.getTick()) {
-      throw new IllegalArgumentException("End keyframe's before/concurrent with start keyframe");
+      throw new IllegalArgumentException("End keyframe is before/concurrent with start keyframe");
     }
     if (!shapes.containsKey(shapeName)) {
       throw new IllegalArgumentException("The given shape does not exist or has not been declared");
