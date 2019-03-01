@@ -50,8 +50,12 @@ public class AnimationImpl implements Animation {
   }
 
   @Override
-  public void addMotion(String shapeName, Keyframe start, Keyframe end) {
-
+  public void addMotion(String shapeName, int startTick, int endTick, Keyframe start, Keyframe end) {
+    for (Shape s : shapes) {
+      if (s.getName().equals(shapeName)) {
+        s.addMotion(new MotionImpl(startTick, endTick, s, start, end));
+      }
+    }
   }
 
   @Override

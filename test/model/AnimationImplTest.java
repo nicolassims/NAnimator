@@ -21,7 +21,7 @@ public class AnimationImplTest {
         new TextureImpl(255, 0, 0, 255));
     Keyframe keyframe2 = new KeyframeImpl(new Position2D(200, 200), new Size2D(50, 100),
         new TextureImpl(255, 0, 0, 255));
-    exampleModel.addMotion("R", keyframe1, keyframe2);
+    exampleModel.addMotion("R", 0, 100, keyframe1, keyframe2);
 
     exampleModel.addRotationless2DMotion("R", 1, 200, 200, 50, 100,
         255, 0, 0, 10, 200, 200, 50, 100, 255, 0, 0);

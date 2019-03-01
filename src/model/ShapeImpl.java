@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -45,5 +46,10 @@ public class ShapeImpl implements Shape {
       built.append(m.toFile()).append("\n");
     }
     return built.toString();
+  }
+
+  @Override
+  public void addMotion(Motion... m) {
+    motions.addAll(Arrays.asList(m));
   }
 }
