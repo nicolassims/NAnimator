@@ -18,7 +18,7 @@ public class ShapeImpl implements Shape {
    *
    * @param name The name of the shape.
    * @param shapeType The name of the shape.
-   * @throws IllegalArgumentException if the shape contains no motions, or name is unspecified.
+   * @throws IllegalArgumentException if name is unspecified.
    */
   public ShapeImpl(Shapes shapeType, String name) {
     if (name.equals("")) {
