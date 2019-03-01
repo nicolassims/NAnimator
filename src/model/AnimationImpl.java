@@ -2,25 +2,16 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class AnimationImpl implements Animation {
 
   private List<Shape> shapes;
-  private Map<String, Shapes> supportedShapes;
 
   /**
-   * Initializes ShapeImpl, given at least one Motion.
-   *
-   * //   * @param s the shape, or shapes, this animation contains. //   * @throws
-   * IllegalArgumentException if the animation contains no shapes.
+   * Initializes ShapeImpl.
    */
-  public AnimationImpl(/*Shapes... s*/) {
+  public AnimationImpl() {
     shapes = new ArrayList<>();
-    /*if (s.length == 0) {
-      throw new IllegalArgumentException("Animation contains no shapes");
-    }
-    shapes = Arrays.asList(s);*/
   }
 
 
@@ -37,18 +28,17 @@ public class AnimationImpl implements Animation {
           + "type is nonexistent.");
     }
 
-    /*Position pos = new Position2D(0, 0);
-    Size siz = new Size2D(0, 0);
-    Texture text = new TextureImpl(0,0,0,0);
-    Keyframe key = new KeyframeImpl(pos, siz, text);*/
     shapes.add(new ShapeImpl(shapeType, name));
   }
 
   @Override
-  public void addMotion(String shapeName, int startTick, int endTick, Keyframe start, Keyframe end) {
+  public void addMotion(String shapeName, Keyframe start, Keyframe end) {
+    if (end.getTick() <= start.getTick()) {
+      throw new IllegalArgumentException("End keyframe's before/concurrent with start keyframe");
+    }
     for (Shape s : shapes) {
       if (s.getName().equals(shapeName)) {
-        s.addMotion(new MotionImpl(startTick, endTick, s, start, end));
+        s.addMotion(new MotionImpl(start.getTick(), end.getTick(), s, start, end));
       }
     }
   }

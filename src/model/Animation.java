@@ -17,7 +17,7 @@ public interface Animation {
   /**
    * Given a shape name, and two keyframes a motion is added.
    */
-  void addMotion(String shapeName, int startTick, int endTick, Keyframe start, Keyframe end);
+  void addMotion(String shapeName, Keyframe start, Keyframe end);
 
   /**
    * Less flexible version of add motions that trades-off flexibility for future program updates for

@@ -7,4 +7,8 @@ public interface Keyframe {
    */
   String toFile();
 
+  /**
+   * Returns the tick at which this keyframe is present.
+   */
+  int getTick();
 }
