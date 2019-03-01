@@ -156,7 +156,6 @@ public class AnimationImplTest {
         13, 200, 200, 50, 100, 255, 0, 0);
   }
 
-
   /**
    * Tests that the motion can completely replicate the following example animation:
    * https://course.ccs.neu.edu/cs3500/smalldemo.gif.
@@ -176,5 +175,4 @@ public class AnimationImplTest {
         + "motion C 70 440 370 120 60 0 170 85 80 440 370 120 60 0 255 0\n"
         + "motion C 80 440 370 120 60 0 255 0 100 440 370 120 60 0 255 0", exampleModel.toFile());
   }
-
 }
