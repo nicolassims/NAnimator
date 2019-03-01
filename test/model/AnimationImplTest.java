@@ -86,7 +86,7 @@ public class AnimationImplTest {
    * Tests that add motion throws an IllegalArgumentException if a shape with the given name does
    * not exist yet.
    */
-  @Test
+  @Test(expected = IllegalArgumentException.class)
   public void addMotionExceptionForNonexistentShape() {
     Animation modelWithOneShape = new AnimationImpl();
     modelWithOneShape.addShape("R", "rectangle");
@@ -95,12 +95,32 @@ public class AnimationImplTest {
         10, 200, 200, 50, 100, 255, 0, 0);
   }
 
-  @Test
-  public void toFile() {
-    assertEquals("shape R rectangle\n"
-        + "motion R 0 200 200 50 100 255 0 0    100 200 200 50 100 255 0 0\n"
-        + "motion R 1 200 200 100 50 255 0 0    10 200 200 100 50 255 0 0", exampleModel.toFile());
+  /**
+   * Tests that add motion throws an IllegalArgumentException if the start tick of a motion is less
+   * than 0.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void addMotionExceptionForTicksLessThanZero() {
+    Animation modelWithOneShape = new AnimationImpl();
+    modelWithOneShape.addShape("R", "rectangle");
+    modelWithOneShape.addRotationless2DMotion("F",
+        -1, 200, 200, 50, 100, 255, 0, 0,
+        10, 200, 200, 50, 100, 255, 0, 0);
   }
+
+  /**
+   * Tests that add motion throws an IllegalArgumentException if the start tick of a motion is less
+   * than 0.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void addMotionExceptionForInvalidMotionByKeyframeOrder() {
+    Animation modelWithOneShape = new AnimationImpl();
+    modelWithOneShape.addShape("R", "rectangle");
+    modelWithOneShape.addRotationless2DMotion("F",
+        1, 200, 200, 50, 100, 255, 0, 0,
+        1, 200, 200, 50, 100, 255, 0, 0);
+  }
+
 
 
 }

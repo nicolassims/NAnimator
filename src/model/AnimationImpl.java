@@ -27,8 +27,11 @@ public class AnimationImpl implements Animation {
       }
     }
     if (shapeType == null) {
-      throw new IllegalArgumentException("Shape not valid--it's bounds are impossible, or its "
-          + "type is nonexistent.");
+      throw new IllegalArgumentException("Shape type cannot be null.");
+    }
+
+    if (name == null) {
+      throw new IllegalArgumentException("Shape name cannot be null.");
     }
 
     shapes.add(new ShapeImpl(shapeType, name));
