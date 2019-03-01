@@ -63,6 +63,7 @@ public class AnimationImpl implements Animation {
 
   @Override
   public String toFile() {
+
     StringBuilder built = new StringBuilder("");
     for (Shape s : shapes) {
       built.append("shape ").append(s.getName()).append(" ").append(s.getShape()).append("\n")

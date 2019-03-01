@@ -23,8 +23,8 @@ public class AnimationImplTest {
         new TextureImpl(255, 0, 0, 255));
     exampleModel.addMotion("R", keyframe1, keyframe2);
 
-    exampleModel.addRotationless2DMotion("R", 1, 200, 200, 50, 100, 255, 0, 0,
-        10, 200, 200, 50, 100, 255, 0, 0);
+    exampleModel.addRotationless2DMotion("R", 1, 200, 200, 50, 100,
+        255, 0, 0, 10, 200, 200, 50, 100, 255, 0, 0);
   }
 
   @Test
