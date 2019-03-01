@@ -78,7 +78,7 @@ public class AnimationImplTest {
         1, 200, 200, 50, 100, 255, 0, 0,
         10, 200, 200, 50, 100, 255, 0, 0);
     assertEquals("shape R rectangle\n"
-            + "motion R 1  200 200 50 100 255 0  0    10  200 200 50 100 255 0  0",
+            + "motion R 1 200 200 50 100 255 0 0 10 200 200 50 100 255 0 0",
         modelWithOneShape.toFile());
   }
 
