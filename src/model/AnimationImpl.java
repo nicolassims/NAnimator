@@ -46,11 +46,21 @@ public class AnimationImpl implements Animation {
     if (end.getTick() > this.lastKeyframeTickOnWholeAnimation.peek()) {
       this.lastKeyframeTickOnWholeAnimation.push(end.getTick());
     }
+
     if (end.getTick() <= start.getTick()) {
       throw new IllegalArgumentException("End keyframe is before/concurrent with start keyframe");
     }
     if (!shapes.containsKey(shapeName)) {
       throw new IllegalArgumentException("The given shape does not exist or has not been declared");
+    }
+    int currentShapeDuration = shapes.get(shapeName).totalDuration();
+    if (start.getTick() < currentShapeDuration || end.getTick() < currentShapeDuration) {
+      throw new IllegalArgumentException("There cannot be overlap of motions.");
+    }
+    if (currentShapeDuration != 0 && currentShapeDuration != start.getTick()) {
+      throw new IllegalArgumentException(
+          "There cannot be gaps between motions. The next motion to be added should start at "
+              + currentShapeDuration);
     }
     for (Shape s : shapes.values()) {
       if (s.getName().equals(shapeName)) {
@@ -88,6 +98,6 @@ public class AnimationImpl implements Animation {
 
   @Override
   public int totalDuration() {
-    return 0;
+    return this.lastKeyframeTickOnWholeAnimation.peek();
   }
 }
