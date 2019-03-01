@@ -1,18 +1,13 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import model.qualities.color.Texture;
-import model.qualities.color.TextureImpl;
-import model.qualities.dimensions.Size;
-import model.qualities.dimensions.Size2D;
-import model.qualities.positions.Position;
-import model.qualities.positions.Position2D;
+import java.util.Map;
 
 public class AnimationImpl implements Animation {
 
   private List<Shape> shapes;
+  private Map<String, Shapes> supportedShapes;
 
   /**
    * Initializes ShapeImpl, given at least one Motion.
