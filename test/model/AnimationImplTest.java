@@ -109,8 +109,8 @@ public class AnimationImplTest {
   }
 
   /**
-   * Tests that add motion throws an IllegalArgumentException if the start tick of a motion is less
-   * than 0.
+   * Tests that add motion throws an IllegalArgumentException if the start tick of a motion is
+   * equal to its endtick.
    */
   @Test(expected = IllegalArgumentException.class)
   public void addMotionExceptionForInvalidMotionByKeyframeOrder() {
@@ -120,6 +120,4 @@ public class AnimationImplTest {
         1, 200, 200, 50, 100, 255, 0, 0,
         1, 200, 200, 50, 100, 255, 0, 0);
   }
-
-
 }
