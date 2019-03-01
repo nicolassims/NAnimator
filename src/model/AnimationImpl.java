@@ -1,20 +1,20 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import model.qualities.color.TextureImpl;
 import model.qualities.dimensions.Size2D;
 import model.qualities.positions.Position2D;
 
 public class AnimationImpl implements Animation {
 
-  private List<Shape> shapes;
+  private Map<String, Shape> shapes;
 
   /**
    * Initializes ShapeImpl.
    */
   public AnimationImpl() {
-    shapes = new ArrayList<>();
+    shapes = new HashMap<>();
   }
 
 
@@ -34,7 +34,7 @@ public class AnimationImpl implements Animation {
       throw new IllegalArgumentException("Shape name cannot be null.");
     }
 
-    shapes.add(new ShapeImpl(shapeType, name));
+    shapes.put(name, new ShapeImpl(shapeType, name));
   }
 
   @Override
@@ -42,7 +42,10 @@ public class AnimationImpl implements Animation {
     if (end.getTick() <= start.getTick()) {
       throw new IllegalArgumentException("End keyframe's before/concurrent with start keyframe");
     }
-    for (Shape s : shapes) {
+    if (!shapes.containsKey(shapeName)) {
+      throw new IllegalArgumentException("The given shape does not exist or has not been declared");
+    }
+    for (Shape s : shapes.values()) {
       if (s.getName().equals(shapeName)) {
         s.addMotion(new MotionImpl(start.getTick(), end.getTick(), s, start, end));
       }
@@ -69,7 +72,7 @@ public class AnimationImpl implements Animation {
   public String toFile() {
 
     StringBuilder built = new StringBuilder("");
-    for (Shape s : shapes) {
+    for (Shape s : shapes.values()) {
       built.append("shape ").append(s.getName()).append(" ").append(s.getShape()).append("\n")
           .append(s.toFile());
     }
