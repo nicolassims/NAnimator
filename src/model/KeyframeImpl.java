@@ -31,8 +31,6 @@ public class KeyframeImpl implements Keyframe {
 
   @Override
   public String toFile() {
-    return p.getX() + " " + p.getY() + " "
-        + s.getWidth() + " " +  s.getHeight() + " "
-        + t.getRed() + " " + t.getGreen() + " " + t.getBlue();
+    return p.toFile() + " " + s.toFile() + " " + t.toFile();
   }
 }

@@ -37,6 +37,6 @@ public class MotionImpl implements Motion {
   @Override
   public String toFile() {
     return "motion " + parent.getName() + " " + startTick + " " + startFrame.toFile()
-        + " " + endTick + " " + endFrame.toFile();
+        + "    " + endTick + " " + endFrame.toFile();
   }
 }
