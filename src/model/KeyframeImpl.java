@@ -33,7 +33,7 @@ public class KeyframeImpl implements Keyframe {
 
   @Override
   public String toFile() {
-    return p.toFile() + " " + s.toFile() + " " + t.toFile();
+    return this.tick + " " + p.toFile() + " " + s.toFile() + " " + t.toFile();
   }
 
   @Override

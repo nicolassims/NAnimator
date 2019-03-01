@@ -23,9 +23,9 @@ public interface Animation {
    * Less flexible version of add motions that trades-off flexibility for future program updates for
    * convenience.
    */
-  void addRotationless2DMotion(String shapeName, int startingTick, double x0, double y0, double h0,
-      double w0, double r0, double g0, double b0, int endingTick, double x1, double y1, double h1,
-      double w1, double r1, double g1, double b1);
+  void addRotationless2DMotion(String shapeName, int startingTick, double x0, double y0, double w0,
+      double h0, double r0, double g0, double b0, int endingTick, double x1, double y1, double w1,
+      double h1, double r1, double g1, double b1);
 
   /**
    * Returns a string representation of the animation as a file.

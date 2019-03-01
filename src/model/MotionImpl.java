@@ -5,8 +5,6 @@ package model;
  */
 public class MotionImpl implements Motion {
 
-  private int startTick;
-  private int endTick;
   private Shape parent;
   private Keyframe startFrame;
   private Keyframe endFrame;
@@ -27,8 +25,6 @@ public class MotionImpl implements Motion {
         || startFrame == null || endFrame == null) {
       throw new IllegalArgumentException("MotionImpl not able to construct properly.");
     }
-    this.startTick = startTick;
-    this.endTick = endTick;
     this.parent = parent;
     this.startFrame = startFrame;
     this.endFrame = endFrame;
@@ -36,7 +32,7 @@ public class MotionImpl implements Motion {
 
   @Override
   public String toFile() {
-    return "motion " + parent.getName() + " " + startTick + " " + startFrame.toFile()
-        + "    " + endTick + " " + endFrame.toFile();
+    return "motion " + parent.getName() + " " + startFrame.toFile()
+        + " " + endFrame.toFile();
   }
 }
