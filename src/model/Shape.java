@@ -20,5 +20,10 @@ public interface Shape {
   /**
    * Adds a motion to the shape's motion array.
    */
-  void addMotion(Motion... m);
+  void addMotion(Motion m);
+
+  /**
+   * Returns the total duration of the animation in ticks.
+   */
+  int totalDuration();
 }

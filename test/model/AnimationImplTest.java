@@ -157,6 +157,23 @@ public class AnimationImplTest {
   }
 
   /**
+   * Tests that add motion throws an IllegalArgumentException if an attempt to add a new motion that
+   * creates a gap on the shape's animation.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void addMotionExceptionForGaps() {
+    Animation modelWithOneShape = new AnimationImpl();
+    modelWithOneShape.addShape("R", "rectangle");
+    modelWithOneShape.addRotationless2DMotion("R",
+        1, 200, 200, 50, 100, 255, 0, 0,
+        10, 200, 200, 50, 100, 255, 0, 0);
+    modelWithOneShape.addRotationless2DMotion("R",
+        11, 200, 200, 50, 100, 255, 0, 0,
+        15, 200, 200, 50, 100, 255, 0, 0);
+  }
+
+
+  /**
    * Tests that the motion can completely replicate the following example animation:
    * https://course.ccs.neu.edu/cs3500/smalldemo.gif.
    */
@@ -175,4 +192,29 @@ public class AnimationImplTest {
         + "motion C 70 440 370 120 60 0 170 85 80 440 370 120 60 0 255 0\n"
         + "motion C 80 440 370 120 60 0 255 0 100 440 370 120 60 0 255 0", exampleModel.toFile());
   }
+
+  /**
+   * Tests that totalDuration returns zero when no shapes have been added.
+   */
+  @Test
+  public void totalDurationEmptyCase() {
+    Animation modelWithNoShape = new AnimationImpl();
+    assertEquals(0,
+        modelWithNoShape.totalDuration());
+  }
+
+  /**
+   * Tests that totalDuration returns zero when no shapes have been added.
+   */
+  @Test
+  public void totalDuration() {
+    Animation modelWithOneShape = new AnimationImpl();
+    modelWithOneShape.addShape("R", "rectangle");
+    modelWithOneShape.addRotationless2DMotion("R",
+        1, 200, 200, 50, 100, 255, 0, 0,
+        10, 200, 200, 50, 100, 255, 0, 0);
+    assertEquals(10,
+        modelWithOneShape.totalDuration());
+  }
+
 }

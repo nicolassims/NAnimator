@@ -1,8 +1,8 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 
 /**
@@ -12,6 +12,7 @@ public class ShapeImpl implements Shape {
   private List<Motion> motions;
   private String name;
   private Shapes shapeType;
+  private Stack<Integer> KeyframeTickOfLastMotionAdded;
 
   /**
    * Initializes ShapeImpl, given a name and a shapeType. Not in that order.
@@ -27,6 +28,8 @@ public class ShapeImpl implements Shape {
     this.name = name;
     this.shapeType = shapeType;
     this.motions = new ArrayList<>();
+    this.KeyframeTickOfLastMotionAdded = new Stack<>();
+    this.KeyframeTickOfLastMotionAdded.push(0);
   }
 
   @Override
@@ -49,7 +52,15 @@ public class ShapeImpl implements Shape {
   }
 
   @Override
-  public void addMotion(Motion... m) {
-    motions.addAll(Arrays.asList(m));
+  public void addMotion(Motion m) {
+    motions.add(m);
+    if (m.getEndFrame().getTick() > this.KeyframeTickOfLastMotionAdded.peek()) {
+      this.KeyframeTickOfLastMotionAdded.push(m.getEndFrame().getTick());
+    }
+  }
+
+  @Override
+  public int totalDuration() {
+    return this.KeyframeTickOfLastMotionAdded.peek();
   }
 }

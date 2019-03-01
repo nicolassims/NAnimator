@@ -35,4 +35,19 @@ public class MotionImpl implements Motion {
     return "motion " + parent.getName() + " " + startFrame.toFile()
         + " " + endFrame.toFile();
   }
+
+  @Override
+  public Shape getParent() {
+    return parent;
+  }
+
+  @Override
+  public Keyframe getStartFrame() {
+    return startFrame;
+  }
+
+  @Override
+  public Keyframe getEndFrame() {
+    return endFrame;
+  }
 }
