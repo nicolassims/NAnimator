@@ -24,4 +24,14 @@ public interface Keyframe {
    * Returns the first y of this keyframe.
    */
   double getFirstY();
+
+  /**
+   * Returns the first width of this keyframe.
+   */
+  double getFirstWidth();
+
+  /**
+   * Returns the first height of this keyframe.
+   */
+  double getFirstHeight();
 }

@@ -34,4 +34,14 @@ public interface Motion {
    * Returns the first y of this motion.
    */
   double getFirstY();
+
+  /**
+   * Returns the first width of this motion.
+   */
+  double getFirstWidth();
+
+  /**
+   * Returns the first height of this motion.
+   */
+  double getFirstHeight();
 }

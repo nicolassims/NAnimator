@@ -50,4 +50,14 @@ public class KeyframeImpl implements Keyframe {
   public double getFirstY() {
     return p.getY();
   }
+
+  @Override
+  public double getFirstWidth() {
+    return s.getWidth();
+  }
+
+  @Override
+  public double getFirstHeight() {
+    return s.getHeight();
+  }
 }

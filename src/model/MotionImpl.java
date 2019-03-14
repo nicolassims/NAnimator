@@ -60,4 +60,14 @@ public class MotionImpl implements Motion {
   public double getFirstY() {
     return startFrame.getFirstY();
   }
+
+  @Override
+  public double getFirstWidth() {
+    return startFrame.getFirstWidth();
+  }
+
+  @Override
+  public double getFirstHeight() {
+    return startFrame.getFirstHeight();
+  }
 }

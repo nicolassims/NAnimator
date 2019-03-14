@@ -39,4 +39,14 @@ public interface Shape {
    * Returns the first y of this shape.
    */
   double getFirstY();
+
+  /**
+   * Returns the first width of this shape.
+   */
+  double getFirstWidth();
+
+  /**
+   * Returns the first height of this shape.
+   */
+  double getFirstHeight();
 }

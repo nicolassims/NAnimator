@@ -73,4 +73,14 @@ public class ShapeImpl implements Shape {
   public double getFirstY() {
     return motions.get(0).getFirstY();
   }
+
+  @Override
+  public double getFirstWidth() {
+    return motions.get(0).getFirstWidth();
+  }
+
+  @Override
+  public double getFirstHeight() {
+    return motions.get(0).getFirstHeight();
+  }
 }
