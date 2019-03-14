@@ -18,6 +18,7 @@ public class SVGViewImpl implements View {
 
   @Override
   public void displayView(Animation model) {
+    String starttag;
     String endtag;
     String xname = "x";
     String yname = "y";
@@ -28,9 +29,12 @@ public class SVGViewImpl implements View {
     Map<String, Shape> shapes = model.getShapes();
 
     for (Shape shape : shapes.values()) {
+      Boolean startsVisible = shape.getFirstTick() == 0;
       if (shape.getShape().equals("rectangle")) {
+        starttag = "<rect";
         endtag = "</rect>\n";
       } else if (shape.getShape().equals("ellipse")) {
+        starttag = "<ellipse";
         endtag = "</ellipse>\n";
         xname = "cx";
         yname = "cy";
@@ -39,7 +43,7 @@ public class SVGViewImpl implements View {
       } else {
         throw new IllegalArgumentException("This shape is not a rectangle or an ellipse.");
       }
-      viewString.append("<rect").append(" id=\"").append(shape.getName()).append("\" ")
+      viewString.append(starttag).append(" id=\"").append(shape.getName()).append("\" ")
           .append(xname).append("=\"")
           .append(shape.getFirstX()).append("\" ").append(yname).append("=\"")
           .append(shape.getFirstY()).append("\"").append(" ").append(widthname).append("=\"")
@@ -47,45 +51,49 @@ public class SVGViewImpl implements View {
           .append(heightname).append("=\"").append(shape.getFirstHeight()).append("\"")
           .append(" fill=\"rgb(")
           .append(shape.getFirstColors()).append(")\" visibility=\"")
-          .append(shape.getFirstTick() == 0 ? "visible" : "hidden").append("\" >\n");
-
+          .append(startsVisible ? "visible" : "hidden").append("\" >\n");
       List<Motion> motions = shape.getMotions();
       for (Motion motion : motions) {
         String[] motionArray = motion.toFile().split(" ");
         String attributeName;
-        for (int i = 3; i < 9; i++) {
-          if (!motionArray[i].equals(motionArray[i + 8])) {
-            if (i == 3) {
+        for (int j = 3; j < 9; j++) {
+          if (!motionArray[j].equals(motionArray[j + 8])) {
+            if (j == 3) {
               attributeName = xname;
-            } else if (i == 4) {
+            } else if (j == 4) {
               attributeName = yname;
-            } else if (i == 5) {
+            } else if (j == 5) {
               attributeName = widthname;
-            } else if (i == 6) {
+            } else if (j == 6) {
               attributeName = heightname;
-            } else if (i == 7) {
+            } else if (j == 7) {
               attributeName = xname;
             } else {
               attributeName = "fill";
             }
+            if (!startsVisible) {
+              viewString.append("<animate attributeType=\"xml\" begin=\"")
+                  .append(motion.getFirstTick() * ticksPerSecond).append("ms\" dur=\"")
+                  .append((shape.totalDuration() - motion.getFirstTick()) * ticksPerSecond).append(
+                  "ms\" attributeName=\"visibility\" from=\"hidden\" to=\"visible\" fill=\"freeze\" />\n");
+              startsVisible = true;
+            }
             viewString.append("<animate attributeType=\"xml\" begin=\"")
                 .append(motion.getStartFrame().getTick() * ticksPerSecond).append("ms\"")
-                .append(" dur=\"").append(motion.getEndFrame().getTick() * ticksPerSecond)
+                .append(" dur=\"")
+                .append((motion.getEndFrame().getTick() - motion.getFirstTick()) * ticksPerSecond)
                 .append("ms\" attributeName=\"").append(attributeName).append("\" from=\"")
-                .append(motionArray[i]).append("\" to=\"").append(motionArray[i + 8])
+                .append(motionArray[j]).append("\" to=\"").append(motionArray[j + 8])
                 .append("\" fill=\"remove\" />\n");
           }
         }
       }
-      //       name time x   y  w  h  r   g b time x   y  w  h  r   g  b
-      //motion S0   0    100 75 20 15 255 0 0 0    100 75 20 15 255 0  0
-      //     0 1    2    3   4  5  6  7   8 9 10   11  12 13 14 15  16 17
-      //3 > 11
-      //9 > 17
-
-      //<animate attributeType="xml" begin="2000.0ms" dur="5000.0ms" attributeName="cx" from="500" to="600" fill="remove" />
       viewString.append(endtag);
     }
+    viewString.append("</svg>");
     System.out.println(viewString);
   }
 }
+
+///FIX DURATIONS: DURATIONS AREN'T AN ENDPOINT, THEY'RE A LENGTH
+///LOOK INTO IF YOU'RE CHANGING COLORS PROPERLY
