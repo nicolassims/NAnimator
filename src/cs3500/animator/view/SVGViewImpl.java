@@ -66,8 +66,6 @@ public class SVGViewImpl implements View {
               attributeName = widthname;
             } else if (j == 6) {
               attributeName = heightname;
-            } else if (j == 7) {
-              attributeName = xname;
             } else {
               attributeName = "fill";
             }
@@ -83,7 +81,12 @@ public class SVGViewImpl implements View {
                 .append(" dur=\"")
                 .append((motion.getEndFrame().getTick() - motion.getFirstTick()) * ticksPerSecond)
                 .append("ms\" attributeName=\"").append(attributeName).append("\" from=\"")
-                .append(motionArray[j]).append("\" to=\"").append(motionArray[j + 8])
+                .append((j <= 6 ? motionArray[j]
+                    : "rgb(" + motionArray[7] + "," + motionArray[8] + "," + motionArray[9] + ")"))
+                .append("\" to=\"")
+                .append((j <= 6 ? motionArray[j + 8]
+                    : "rgb(" + motionArray[15] + "," + motionArray[16] + "," + motionArray[17]
+                        + ")"))
                 .append("\" fill=\"remove\" />\n");
           }
         }
@@ -95,5 +98,4 @@ public class SVGViewImpl implements View {
   }
 }
 
-///FIX DURATIONS: DURATIONS AREN'T AN ENDPOINT, THEY'RE A LENGTH
-///LOOK INTO IF YOU'RE CHANGING COLORS PROPERLY
+///FIX DURATIONS: Why is total duration saying that the durations of both shapes are 6000?

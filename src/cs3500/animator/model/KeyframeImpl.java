@@ -63,6 +63,6 @@ public class KeyframeImpl implements Keyframe {
 
   @Override
   public String getFirstColors() {
-    return String.valueOf(t.getRed()) + "," + String.valueOf(t.getRed()) + "," + String.valueOf(t.getRed());
+    return String.valueOf(t.getRed()) + "," + String.valueOf(t.getBlue()) + "," + String.valueOf(t.getGreen());
   }
 }
