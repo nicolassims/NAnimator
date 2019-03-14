@@ -24,4 +24,14 @@ public interface Motion {
    * Returns the end frame of the motion.
    */
   Keyframe getEndFrame();
+
+  /**
+   * Returns the first x of this motion.
+   */
+  double getFirstX();
+
+  /**
+   * Returns the first y of this motion.
+   */
+  double getFirstY();
 }

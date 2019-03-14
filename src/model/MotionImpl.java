@@ -50,4 +50,14 @@ public class MotionImpl implements Motion {
   public Keyframe getEndFrame() {
     return endFrame;
   }
+
+  @Override
+  public double getFirstX() {
+    return startFrame.getFirstX();
+  }
+
+  @Override
+  public double getFirstY() {
+    return startFrame.getFirstY();
+  }
 }

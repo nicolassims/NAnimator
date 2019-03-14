@@ -29,4 +29,14 @@ public interface Shape {
    * Returns the total duration of the animation in ticks.
    */
   int totalDuration();
+
+  /**
+   * Returns the first x of this shape.
+   */
+  double getFirstX();
+
+  /**
+   * Returns the first y of this shape.
+   */
+  double getFirstY();
 }
