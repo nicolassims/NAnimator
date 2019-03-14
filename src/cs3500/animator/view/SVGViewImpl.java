@@ -21,14 +21,15 @@ public class SVGViewImpl implements View {
     StringBuilder viewString = new StringBuilder(
         "<svg width=\"700\" height=\"500\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n");
     Map<String, Shape> shapes = model.getShapes();
+
     for (Shape shape : shapes.values()) {
       if (shape.getShape().equals("rectangle")) {
-        endtag = "</rect>";
+        endtag = "</rect>\n";
         viewString.append("<rect").append(" id=\"").append(shape.getName()).append("\" x=\"")
             .append(shape.getFirstX()).append("\" y=\"").append(shape.getFirstY()).append("\"")
             .append(" width=\"").append(shape.getFirstWidth()).append("\" height=\"");
       } else if (shape.getShape().equals("ellipse")) {
-        endtag = "</ellipse>";
+        endtag = "</ellipse>\n";
         viewString.append("<ellipse").append(" id=\"").append(shape.getName()).append("\" cx=\"")
             .append(shape.getFirstX()).append("\" cy=\"").append(shape.getFirstY()).append("\"")
             .append(" rx=\"").append(shape.getFirstWidth()).append("\" ry=\"");
@@ -41,9 +42,11 @@ public class SVGViewImpl implements View {
 
       List<Motion> motions = shape.getMotions();
       for (Motion motion : motions) {
+        String[] motionArray = motion.toFile().split(" ");
         viewString.append("<animate attributeType=\"xml\" begin=\"" + motion.getStartFrame().getTick() * ticksPerSecond + "\""
-            + " dur=\"" + motion.getEndFrame().getTick() * ticksPerSecond + "\""); //add attributeName, from, to, fill
+            + " dur=\"" + motion.getEndFrame().getTick() * ticksPerSecond + "\"\n"); //add attributeName, from, to, fill
       }
+
 
     //<animate attributeType="xml" begin="2000.0ms" dur="5000.0ms" attributeName="cx" from="500" to="600" fill="remove" />
 
@@ -53,6 +56,8 @@ public class SVGViewImpl implements View {
 
 
       viewString.append(endtag);
+
     }
+    System.out.println(viewString);
   }
 }
