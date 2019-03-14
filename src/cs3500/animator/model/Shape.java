@@ -1,5 +1,7 @@
 package cs3500.animator.model;
 
+import java.util.List;
+
 /**
  * This class represents a shape, and every motion it will go through is stored within.
  */
@@ -59,4 +61,6 @@ public interface Shape {
    * Returns the first tick this shape appears at.
    */
   int getFirstTick();
+
+  List<Motion> getMotions();
 }
