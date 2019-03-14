@@ -70,4 +70,9 @@ public class MotionImpl implements Motion {
   public double getFirstHeight() {
     return startFrame.getFirstHeight();
   }
+
+  @Override
+  public String getFirstColors() {
+    return startFrame.getFirstColors();
+  }
 }

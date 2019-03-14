@@ -44,4 +44,9 @@ public interface Motion {
    * Returns the first height of this motion.
    */
   double getFirstHeight();
+
+  /**
+   * Returns a string representation of the the first colors of this shape.
+   */
+  String getFirstColors();
 }

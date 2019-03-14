@@ -18,8 +18,9 @@ public class SVGViewImpl implements View {
       } else {
         throw new IllegalArgumentException("This shape is not a rectangle or an ellipse.");
       }
-      viewString.append(" id=\"" + shape.getName() +"\" x=\"" + shape.getFirstX() + "\"y=\"" + shape.getFirstY() + "\"");
-      viewString.append(" width=\"" + shape.getFirstWidth() + "\"height=\"" + shape.getFirstHeight() + "\"");
+      viewString.append(" id=\"" + shape.getName() +"\" x=\"" + shape.getFirstX() + "\" y=\"" + shape.getFirstY() + "\"");
+      viewString.append(" width=\"" + shape.getFirstWidth() + "\" height=\"" + shape.getFirstHeight() + "\"");
+      viewString.append(" fill=\"rgb(" + shape.getFirstColors() + ")\" visibility=\"visible\""); //alter this if not visible on first frame
     }
     //<rect id="P" x="200" y="200" width="50" height="100" fill="rgb(128,0,128)" visibility="visible" >
 

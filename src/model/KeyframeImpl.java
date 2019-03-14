@@ -60,4 +60,9 @@ public class KeyframeImpl implements Keyframe {
   public double getFirstHeight() {
     return s.getHeight();
   }
+
+  @Override
+  public String getFirstColors() {
+    return String.valueOf(t.getRed()) + "," + String.valueOf(t.getRed()) + "," + String.valueOf(t.getRed());
+  }
 }

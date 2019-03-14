@@ -49,4 +49,9 @@ public interface Shape {
    * Returns the first height of this shape.
    */
   double getFirstHeight();
+
+  /**
+   * Returns the a string representation of the first color of this shape.
+   */
+  String getFirstColors();
 }

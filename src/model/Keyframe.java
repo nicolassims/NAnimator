@@ -34,4 +34,9 @@ public interface Keyframe {
    * Returns the first height of this keyframe.
    */
   double getFirstHeight();
+
+  /**
+   * Returns a string representation of the first colors of this keyframe.
+   */
+  String getFirstColors();
 }
