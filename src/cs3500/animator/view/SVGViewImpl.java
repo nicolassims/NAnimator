@@ -1,8 +1,9 @@
 package cs3500.animator.view;
 
+import cs3500.animator.model.Animation;
+import cs3500.animator.model.Shape;
+
 import java.util.Map;
-import model.Animation;
-import model.Shape;
 
 public class SVGViewImpl implements View {
 

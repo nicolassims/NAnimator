@@ -1,6 +1,6 @@
 package cs3500.animator.view;
 
-import model.Animation;
+import cs3500.animator.model.Animation;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,7 +1,7 @@
 package cs3500.animator.view;
 
-import model.Animation;
-import model.AnimationImpl;
+import cs3500.animator.model.Animation;
+import cs3500.animator.model.AnimationImpl;
 import org.junit.Before;
 import org.junit.Test;
 
