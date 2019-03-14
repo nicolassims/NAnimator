@@ -88,4 +88,9 @@ public class ShapeImpl implements Shape {
   public String getFirstColors() {
     return motions.get(0).getFirstColors();
   }
+
+  @Override
+  public int getFirstTick() {
+    return motions.get(0).getFirstTick();
+  }
 }

@@ -75,4 +75,9 @@ public class MotionImpl implements Motion {
   public String getFirstColors() {
     return startFrame.getFirstColors();
   }
+
+  @Override
+  public int getFirstTick() {
+    return startFrame.getTick();
+  }
 }

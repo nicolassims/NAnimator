@@ -46,7 +46,12 @@ public interface Motion {
   double getFirstHeight();
 
   /**
-   * Returns a string representation of the the first colors of this shape.
+   * Returns a string representation of the the first colors of this motion.
    */
   String getFirstColors();
+
+  /**
+   * Returns the first tick this motion occurs on.
+   */
+  int getFirstTick();
 }

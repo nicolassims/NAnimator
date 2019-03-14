@@ -54,4 +54,9 @@ public interface Shape {
    * Returns the a string representation of the first color of this shape.
    */
   String getFirstColors();
+
+  /**
+   * Returns the first tick this shape appears at.
+   */
+  int getFirstTick();
 }
