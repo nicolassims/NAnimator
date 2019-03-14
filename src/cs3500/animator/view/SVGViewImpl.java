@@ -8,7 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 public class SVGViewImpl implements View {
-  int ticksPerSecond = 60;
+  private int ticksPerSecond = 60;
+
+  @Override
+  public void setTicksPerSecond(int i) {
+    ticksPerSecond = i;
+  }
 
   @Override
   public void displayView(Animation model) {

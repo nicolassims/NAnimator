@@ -7,6 +7,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class VisualViewImpl extends JFrame implements View {
+  private int ticksPerSecond = 60;
+
+  @Override
+  public void setTicksPerSecond(int i) {
+    ticksPerSecond = i;
+  }
 
   @Override
   public void displayView(Animation model) {
