@@ -50,4 +50,34 @@ public class MotionImpl implements Motion {
   public Keyframe getEndFrame() {
     return endFrame;
   }
+
+  @Override
+  public double getFirstX() {
+    return startFrame.getFirstX();
+  }
+
+  @Override
+  public double getFirstY() {
+    return startFrame.getFirstY();
+  }
+
+  @Override
+  public double getFirstWidth() {
+    return startFrame.getFirstWidth();
+  }
+
+  @Override
+  public double getFirstHeight() {
+    return startFrame.getFirstHeight();
+  }
+
+  @Override
+  public String getFirstColors() {
+    return startFrame.getFirstColors();
+  }
+
+  @Override
+  public int getFirstTick() {
+    return startFrame.getTick();
+  }
 }

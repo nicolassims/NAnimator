@@ -63,4 +63,34 @@ public class ShapeImpl implements Shape {
   public int totalDuration() {
     return this.keyframeTickOfLastMotionAdded.peek();
   }
+
+  @Override
+  public double getFirstX() {
+    return motions.get(0).getFirstX();
+  }
+
+  @Override
+  public double getFirstY() {
+    return motions.get(0).getFirstY();
+  }
+
+  @Override
+  public double getFirstWidth() {
+    return motions.get(0).getFirstWidth();
+  }
+
+  @Override
+  public double getFirstHeight() {
+    return motions.get(0).getFirstHeight();
+  }
+
+  @Override
+  public String getFirstColors() {
+    return motions.get(0).getFirstColors();
+  }
+
+  @Override
+  public int getFirstTick() {
+    return motions.get(0).getFirstTick();
+  }
 }

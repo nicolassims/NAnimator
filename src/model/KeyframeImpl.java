@@ -40,4 +40,29 @@ public class KeyframeImpl implements Keyframe {
   public int getTick() {
     return tick;
   }
+
+  @Override
+  public double getFirstX() {
+    return p.getX();
+  }
+
+  @Override
+  public double getFirstY() {
+    return p.getY();
+  }
+
+  @Override
+  public double getFirstWidth() {
+    return s.getWidth();
+  }
+
+  @Override
+  public double getFirstHeight() {
+    return s.getHeight();
+  }
+
+  @Override
+  public String getFirstColors() {
+    return String.valueOf(t.getRed()) + "," + String.valueOf(t.getRed()) + "," + String.valueOf(t.getRed());
+  }
 }

@@ -24,4 +24,34 @@ public interface Motion {
    * Returns the end frame of the motion.
    */
   Keyframe getEndFrame();
+
+  /**
+   * Returns the first x of this motion.
+   */
+  double getFirstX();
+
+  /**
+   * Returns the first y of this motion.
+   */
+  double getFirstY();
+
+  /**
+   * Returns the first width of this motion.
+   */
+  double getFirstWidth();
+
+  /**
+   * Returns the first height of this motion.
+   */
+  double getFirstHeight();
+
+  /**
+   * Returns a string representation of the the first colors of this motion.
+   */
+  String getFirstColors();
+
+  /**
+   * Returns the first tick this motion occurs on.
+   */
+  int getFirstTick();
 }

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Map;
+
 /**
  * This class represents an animation. Which is defined as timeline where stuff is going to happen
  * and starts at tick 0 to end on a defined tick. is composed by a list of shapes with a defined
@@ -37,4 +39,5 @@ public interface Animation {
    */
   int totalDuration();
 
+  Map<String, Shape> getShapes();
 }

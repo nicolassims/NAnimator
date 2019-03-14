@@ -29,4 +29,34 @@ public interface Shape {
    * Returns the total duration of the animation in ticks.
    */
   int totalDuration();
+
+  /**
+   * Returns the first x of this shape.
+   */
+  double getFirstX();
+
+  /**
+   * Returns the first y of this shape.
+   */
+  double getFirstY();
+
+  /**
+   * Returns the first width of this shape.
+   */
+  double getFirstWidth();
+
+  /**
+   * Returns the first height of this shape.
+   */
+  double getFirstHeight();
+
+  /**
+   * Returns the a string representation of the first color of this shape.
+   */
+  String getFirstColors();
+
+  /**
+   * Returns the first tick this shape appears at.
+   */
+  int getFirstTick();
 }
