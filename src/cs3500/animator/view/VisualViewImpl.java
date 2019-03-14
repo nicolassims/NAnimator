@@ -53,6 +53,9 @@ public class VisualViewImpl extends JFrame implements View {
 
     this.pack();
 
+      //set the view visible
+      this.setVisible(true);
+
   }
 
 
