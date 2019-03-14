@@ -9,6 +9,7 @@ import java.util.Stack;
  * This class represents a shape, and every motion it will go through is stored within.
  */
 public class ShapeImpl implements Shape {
+
   private List<Motion> motions;
   private String name;
   private Shapes shapeType;
@@ -92,5 +93,10 @@ public class ShapeImpl implements Shape {
   @Override
   public int getFirstTick() {
     return motions.get(0).getFirstTick();
+  }
+
+  @Override
+  public List<Motion> getMotions() {
+    return motions;
   }
 }
