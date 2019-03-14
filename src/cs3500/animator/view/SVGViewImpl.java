@@ -53,16 +53,29 @@ public class SVGViewImpl implements View {
       for (Motion motion : motions) {
         String[] motionArray = motion.toFile().split(" ");
         String attributeName;
-        viewString.append("<animate attributeType=\"xml\" begin=\""
-            + motion.getStartFrame().getTick() * ticksPerSecond + "\""
-            + " dur=\"" + motion.getEndFrame().getTick() * ticksPerSecond
-            + "\"\n"); //add attributeName, from, to, fill
         for (int i = 3; i < 9; i++) {
           if (!motionArray[i].equals(motionArray[i + 8])) {
-            if (i == 3)
+            if (i == 3) {
+              attributeName = xname;
+            } else if (i == 4) {
+              attributeName = yname;
+            } else if (i == 5) {
+              attributeName = widthname;
+            } else if (i == 6) {
+              attributeName = heightname;
+            } else if (i == 7) {
+              attributeName = xname;
+            } else {
+              attributeName = "fill";
+            }
+            viewString.append("<animate attributeType=\"xml\" begin=\"")
+                .append(motion.getStartFrame().getTick() * ticksPerSecond).append("ms\"")
+                .append(" dur=\"").append(motion.getEndFrame().getTick() * ticksPerSecond)
+                .append("ms\" attributeName=\"").append(attributeName).append("\" from=\"")
+                .append(motionArray[i]).append("\" to=\"").append(motionArray[i + 8])
+                .append("\" fill=\"remove\" />\n");
           }
         }
-
       }
       //       name time x   y  w  h  r   g b time x   y  w  h  r   g  b
       //motion S0   0    100 75 20 15 255 0 0 0    100 75 20 15 255 0  0
@@ -71,9 +84,7 @@ public class SVGViewImpl implements View {
       //9 > 17
 
       //<animate attributeType="xml" begin="2000.0ms" dur="5000.0ms" attributeName="cx" from="500" to="600" fill="remove" />
-
       viewString.append(endtag);
-
     }
     System.out.println(viewString);
   }

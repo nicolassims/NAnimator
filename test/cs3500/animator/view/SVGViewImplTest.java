@@ -18,7 +18,7 @@ public class SVGViewImplTest {
         exampleModel = new AnimationImpl();
         exampleModel.addShape("R", "rectangle");
         exampleModel.addRotationless2DMotion("R",
-                1, 200, 200, 50, 100, 255, 0, 0,
+                0, 200, 200, 50, 100, 255, 0, 0,
                 10, 200, 200, 50, 100, 255, 0, 0);
         exampleModel.addRotationless2DMotion("R",
                 10, 200, 200, 50, 100, 255, 0, 0,
