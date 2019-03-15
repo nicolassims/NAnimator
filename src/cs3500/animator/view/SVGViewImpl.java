@@ -7,6 +7,9 @@ import cs3500.animator.model.Shape;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class represents the formatted text used to create an SVG File.
+ */
 public class SVGViewImpl implements View {
 
   private int ticksPerSecond = 60;

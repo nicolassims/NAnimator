@@ -12,6 +12,6 @@ public class TextualViewImpl implements View {
 
     @Override
     public void displayView(Animation model) {
-
+        System.out.println(model.toFile());
     }
 }
