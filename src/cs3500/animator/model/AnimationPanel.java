@@ -1,4 +1,4 @@
-package cs3500.animator.view;
+package cs3500.animator.model;
 
 import javax.swing.*;
 import java.awt.*;

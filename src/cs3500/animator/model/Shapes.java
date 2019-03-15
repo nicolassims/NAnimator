@@ -5,5 +5,5 @@ package cs3500.animator.model;
  * shapes here, only rectangle and ellipse needed to be implemented. Our other  code reflects that.
  */
 public enum Shapes {
-  rectangle, ellipse, oval, circle, square, triangle, pentagon
+    rectangle, ellipse, oval, circle, square, triangle, pentagon
 }

@@ -7,17 +7,17 @@ import cs3500.animator.model.qualities.Quality;
  */
 public interface Texture extends Quality {
 
-  /**
-   * Returns a java awt version of this color.
-   */
-  java.awt.Color getAsJavaAwtColor();
+    /**
+     * Returns a java awt version of this color.
+     */
+    java.awt.Color getAsJavaAwtColor();
 
-  double getRed();
+    double getRed();
 
-  double getGreen();
+    double getGreen();
 
-  double getBlue();
+    double getBlue();
 
-  double getAlpha();
+    double getAlpha();
 
 }

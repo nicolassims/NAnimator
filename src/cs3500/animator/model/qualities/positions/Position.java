@@ -8,20 +8,20 @@ import cs3500.animator.model.qualities.Quality;
  */
 public interface Position extends Quality {
 
-  /**
-   * Returns the position of an object in terms of x.
-   */
-  double getX();
+    /**
+     * Returns the position of an object in terms of x.
+     */
+    double getX();
 
-  /**
-   * Returns the position of an object in terms of y.
-   */
-  double getY();
+    /**
+     * Returns the position of an object in terms of y.
+     */
+    double getY();
 
-  /**
-   * Returns the position of an object in terms of z.
-   */
-  double getZ();
+    /**
+     * Returns the position of an object in terms of z.
+     */
+    double getZ();
 
 
 }
