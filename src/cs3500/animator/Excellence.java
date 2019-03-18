@@ -6,12 +6,19 @@ import cs3500.animator.view.SVGViewImpl;
 import cs3500.animator.view.TextualViewImpl;
 import cs3500.animator.view.View;
 import cs3500.animator.view.VisualViewImpl;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public final class Excellence {
     public static void main(String[] args) {
-        View mainView;
+        View mainView = null;
         String input = "";
-        String output = "";
+        PrintStream output = System.out;
         int speed = 1;
         for (int i = 0; i < args.length; i += 2) {
             if (args[i].equals("-view") && args[i + 1].equals("text")) {
@@ -25,10 +32,15 @@ public final class Excellence {
             } else if (args[i].equals("-in")) {
                 input = args[i + 1];
             } else if (args[i].equals("-out")) {
-                output = args[i + 1];
+                //output = args[i + 1];
             }
         }
-        //mainView.setTicksPerSecond(speed);
+        if (mainView == null) {
+            throw new IllegalArgumentException("View type was unspecified.");
+        } else {
+            mainView.setTicksPerSecond(speed);
+
+        }
 
         //runVisualExample();
 
