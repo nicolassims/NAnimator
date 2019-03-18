@@ -30,3 +30,6 @@ Classes:
 Notes for file I/O:
   Files to be read from must be placed in resources file.
   Generated files are similarly placed in resources file.
+
+Design changes since last assignment:
+  We added a lot of new getters so the view and model could communicate more easily.
