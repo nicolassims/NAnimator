@@ -1,7 +1,6 @@
 package cs3500.animator.view;
 
 import cs3500.animator.model.Animation;
-import cs3500.animator.model.AnimationPanel;
 
 import javax.swing.*;
 import java.awt.*;
