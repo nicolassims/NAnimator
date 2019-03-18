@@ -143,4 +143,14 @@ public class SVGViewImpl implements View {
   public void setOutputDestination(String outArg) {
     this.outputDestination = outArg;
   }
+
+  @Override
+  public void setCurrentTick(int currentTick) {
+
+  }
+
+  @Override
+  public void refresh() {
+
+  }
 }

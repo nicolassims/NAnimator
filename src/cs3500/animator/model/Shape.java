@@ -1,5 +1,9 @@
 package cs3500.animator.model;
 
+import cs3500.animator.model.qualities.color.Texture;
+import cs3500.animator.model.qualities.positions.Position;
+
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -63,4 +67,23 @@ public interface Shape {
     int getFirstTick();
 
     List<Motion> getMotions();
+
+    /**
+     * Sets a shape visibility.
+     */
+    void setVisibility(boolean visibility);
+
+    /**
+     * Returns whether a shape is  visible
+     */
+    boolean isVisible();
+
+    /**
+     * Uses interpolation to calculate the correct color of a shape at a given tick.
+     */
+    Texture getColorAt(int currentTick);
+
+    Position getPositionAt(int currentTick);
+
+    Dimension getDimensionsAt(int currentTick);
 }

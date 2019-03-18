@@ -47,17 +47,32 @@ public interface Animation {
     int totalDuration();
 
     /**
-     * Returns a map containing the shapes that compose the animation
+     * Returns a map containing the shapes that compose the animation.
      */
     Map<String, Shape> getShapes();
 
     /**
-     * Returns a Builder capable of loading a model from a document
+     * Returns a Builder capable of loading a model from a document.
      */
     AnimationBuilder<Animation> getBuilder();
 
     /**
-     * Sets the animation bounds
+     * Sets the animation bounds.
      */
     void setBounds(int x, int y, int width, int height);
+
+    /**
+     * Sets a shape visibility if the given shape exists.
+     */
+    void setShapeVisibility(String shapeName, boolean visibility) throws IllegalArgumentException;
+
+    /**
+     * Gets the canvas width.
+     */
+    int getCanvasWidth();
+
+    /**
+     * Gets the canvas height.
+     */
+    int getCanvasHeight();
 }
