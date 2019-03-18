@@ -57,7 +57,7 @@ public final class EasyAnimator {
             View view = new ViewFactoryImpl().getView(viewArg);
             view.setTicksPerSecond(speedArg);
             view.setOutputDestination(outArg);
-
+            view.displayView(model);
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException("File not found: " + inArg);
         }

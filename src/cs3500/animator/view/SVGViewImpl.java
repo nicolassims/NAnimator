@@ -14,6 +14,7 @@ import java.util.Map;
  * This class represents the formatted text used to create an SVG File.
  */
 public class SVGViewImpl implements View {
+
   private float ticksPerSecond = 1;
   private int x = 0;
   private int y = 0;
@@ -79,12 +80,14 @@ public class SVGViewImpl implements View {
         if (!startsVisible) {
           viewString.append("<animate attributeType=\"xml\" begin=\"")
               .append(motion.getFirstTick() / ticksPerSecond).append("s\" dur=\"")
-              .append((shape.totalDuration() - motion.getFirstTick()) / ticksPerSecond).append(
+              .append(0.01).append(
               "s\" attributeName=\"visibility\" from=\"hidden\" to=\"visible\" fill=\"freeze\" />\n");
           startsVisible = true;
         }
+        //boolean allSame = true;
         for (int j = 3; j < 9; j++) {
           if (!motionArray[j].equals(motionArray[j + 8])) {
+            //allSame = false;
             if (j == 3) {
               attributeName = xname;
             } else if (j == 4) {
@@ -108,7 +111,7 @@ public class SVGViewImpl implements View {
                 .append((j <= 6 ? motionArray[j + 8]
                     : "rgb(" + motionArray[15] + "," + motionArray[16] + "," + motionArray[17]
                         + ")"))
-                .append("\" fill=\"remove\" />\n");
+                .append("\" fill=\"freeze\" />\n");
           }
         }
       }
