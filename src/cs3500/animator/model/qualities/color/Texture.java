@@ -12,12 +12,23 @@ public interface Texture extends Quality {
      */
     java.awt.Color getAsJavaAwtColor();
 
+    /**
+     * Returns the red value of this color.
+     */
     double getRed();
 
+    /**
+     * Returns the green value of this color.
+     */
     double getGreen();
 
+    /**
+     * Returns the blue value of this color.
+     */
     double getBlue();
 
+    /**
+     * Returns the alpha value of this color.
+     */
     double getAlpha();
-
 }

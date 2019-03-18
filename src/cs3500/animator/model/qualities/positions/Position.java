@@ -22,6 +22,4 @@ public interface Position extends Quality {
      * Returns the position of an object in terms of z.
      */
     double getZ();
-
-
 }

@@ -35,8 +35,10 @@ public interface Quality {
     /**
      * Checks if two qualities are equal.
      */
-
     boolean equals(Object other);
 
+    /**
+     * Returns a string representation of the Quality.
+     */
     String toFile();
 }
