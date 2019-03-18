@@ -28,7 +28,7 @@ public final class Excellence {
                 output = args[i + 1];
             }
         }
-        mainView.setTicksPerSecond(speed);
+        //mainView.setTicksPerSecond(speed);
 
         //runVisualExample();
 
