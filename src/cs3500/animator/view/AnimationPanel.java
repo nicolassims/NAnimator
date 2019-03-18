@@ -1,5 +1,8 @@
 package cs3500.animator.view;
 
+import cs3500.animator.model.Animation;
+import cs3500.animator.model.Shape;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -9,10 +12,12 @@ import java.awt.geom.AffineTransform;
  */
 public class AnimationPanel extends JPanel {
 
+    Animation model;
+    int currentTick;
 
-    public AnimationPanel() {
+    public AnimationPanel(Animation model) {
         super();
-
+        this.model = model;
         this.setBackground(Color.WHITE);
     }
 
@@ -46,29 +51,30 @@ public class AnimationPanel extends JPanel {
         //the order of transforms is bottom-to-top
         //so as a result of the two lines below,
         //each y will first be scaled, and then translated
-        /*
-        for (int i = 0; i < this.model.getObjectKeys().size(); i++) {
-            String currentKey = model.getObjectKeys().get(i);
-            AnimatableObject currentObject = model.getObjectMap().get(currentKey);
-            Color color = currentObject.getColor().getAsJavaAwtColor();
-            int x = (int) currentObject.getPosition().getX();
-            int y = (int) currentObject.getPosition().getY();
-            int w = (int) currentObject.getDimensions().getWidth();
-            int h = (int) currentObject.getDimensions().getHeight();
+
+        for (Shape s : model.getShapes().values()) {
+            Color color = s.getColorAt(currentTick).getAsJavaAwtColor();
+            int x = (int) s.getPositionAt(currentTick).getX();
+            int y = (int) s.getPositionAt(currentTick).getY();
+            int w = (int) s.getDimensionsAt(currentTick).getWidth();
+            int h = (int) s.getDimensionsAt(currentTick).getHeight();
             g2d.setColor(color);
-            if (currentObject.isVisible()) {
-                if (currentObject instanceof Rectangle) {
+            if (s.isVisible()) {
+                if (s.getShape().equalsIgnoreCase("rectangle")) {
                     g2d.fillRect(x, y, w, h);
-                } else if (currentObject instanceof Ellipse) {
+                } else if (s.getShape().equalsIgnoreCase("ellipse")) {
                     g2d.fillOval(x, y, w, h);
                 }
             }
         }
-        */
+
 
         //reset the transform to what it was!
         g2d.setTransform(originalTransform);
     }
 
 
+    public void setCurrentTick(int currentTick) {
+        this.currentTick = currentTick;
+    }
 }

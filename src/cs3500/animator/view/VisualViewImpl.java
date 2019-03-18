@@ -4,7 +4,8 @@ import cs3500.animator.model.Animation;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * This view is capable to interpret and draw an animation model on a JavaFx window.
@@ -23,48 +24,6 @@ public class VisualViewImpl extends JFrame implements View {
     private String outputDestination;
 
 
-    /**
-     * Constructs a VisualViewImpl.
-     */
-    public VisualViewImpl() {
-        super();
-        this.setTitle("Turtles!");
-        this.setSize(w, h);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //use a borderlayout with drawing panel in center and button panel in south
-        this.setLayout(new BorderLayout());
-        animationPanel = new AnimationPanel();
-        animationPanel.setPreferredSize(new Dimension(w, h));
-        this.add(animationPanel, BorderLayout.CENTER);
-
-        //button panel
-        buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout());
-        this.add(buttonPanel, BorderLayout.SOUTH);
-
-        //input textfield
-        input = new JTextField(15);
-        buttonPanel.add(input);
-
-        //buttons
-        commandButton = new JButton("Execute");
-        buttonPanel.add(commandButton);
-
-        //quit button
-        quitButton = new JButton("Quit");
-        quitButton.addActionListener((ActionEvent e) -> {
-            System.exit(0);
-        });
-        buttonPanel.add(quitButton);
-
-        this.pack();
-
-        //set the view visible
-        //this.setVisible(true);
-
-    }
-
     @Override
     public void setTicksPerSecond(float i) {
         ticksPerSecond = i;
@@ -80,10 +39,52 @@ public class VisualViewImpl extends JFrame implements View {
 
     @Override
     public void displayView(Animation model) {
+        this.setTitle("Nick & Luis Easy Animator!");
+        this.setSize(model.getCanvasWidth(), model.getCanvasHeight());
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //use a borderlayout with drawing panel in center and button panel in south
+        this.setLayout(new BorderLayout());
+        animationPanel = new AnimationPanel(model);
+        animationPanel.setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
+        this.add(animationPanel, BorderLayout.CENTER);
+        this.pack();
+
+
+        setVisible(true);
+
+        class Refresh extends TimerTask {
+
+            int currentTick = 0;
+
+            public void run() {
+                if (currentTick <= model.totalDuration()) {
+                    currentTick++;
+                    setCurrentTick(currentTick);
+                    refresh();
+                } else {
+                    currentTick = 0;
+                }
+            }
+        }
+
+        // And From your main() method or any other method
+        java.util.Timer timer = new Timer();
+        timer.schedule(new Refresh(), 0, (long) (1000 / this.ticksPerSecond));
     }
 
     @Override
     public void setOutputDestination(String outArg) {
         this.outputDestination = outArg;
+    }
+
+    @Override
+    public void setCurrentTick(int currentTick) {
+        animationPanel.setCurrentTick(currentTick);
+    }
+
+    @Override
+    public void refresh() {
+        this.repaint();
     }
 }

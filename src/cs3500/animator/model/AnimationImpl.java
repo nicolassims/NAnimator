@@ -15,6 +15,7 @@ public class AnimationImpl implements Animation {
 
     private Map<String, Shape> shapes;
     private Stack<Integer> lastKeyframeTickOnWholeAnimation;
+    private int x, y, width, height;
 
     /**
      * Initializes ShapeImpl.
@@ -122,6 +123,23 @@ public class AnimationImpl implements Animation {
     @Override
     public void setBounds(int x, int y, int width, int height) {
 
+    }
+
+    @Override
+    public void setShapeVisibility(String shapeName, boolean visibility) throws IllegalArgumentException {
+        if (this.shapes.containsKey(shapeName)) {
+            this.shapes.get(shapeName).setVisibility(visibility);
+        }
+    }
+
+    @Override
+    public int getCanvasWidth() {
+        return this.width;
+    }
+
+    @Override
+    public int getCanvasHeight() {
+        return this.height;
     }
 
     /**

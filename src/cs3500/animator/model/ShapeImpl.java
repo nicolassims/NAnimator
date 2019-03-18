@@ -1,5 +1,9 @@
 package cs3500.animator.model;
 
+import cs3500.animator.model.qualities.color.Texture;
+import cs3500.animator.model.qualities.positions.Position;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -14,6 +18,7 @@ public class ShapeImpl implements Shape {
     private String name;
     private Shapes shapeType;
     private Stack<Integer> keyframeTickOfLastMotionAdded;
+    private boolean visible;
 
     /**
      * Initializes ShapeImpl, given a name and a shapeType. Not in that order.
@@ -31,6 +36,7 @@ public class ShapeImpl implements Shape {
         this.motions = new ArrayList<>();
         this.keyframeTickOfLastMotionAdded = new Stack<>();
         this.keyframeTickOfLastMotionAdded.push(0);
+        this.visible = true;
     }
 
     @Override
@@ -99,5 +105,30 @@ public class ShapeImpl implements Shape {
     @Override
     public List<Motion> getMotions() {
         return motions;
+    }
+
+    @Override
+    public void setVisibility(boolean visibility) {
+        this.visible = visibility;
+    }
+
+    @Override
+    public boolean isVisible() {
+        return visible;
+    }
+
+    @Override
+    public Texture getColorAt(int currentTick) {
+        return null;
+    }
+
+    @Override
+    public Position getPositionAt(int currentTick) {
+        return null;
+    }
+
+    @Override
+    public Dimension getDimensionsAt(int currentTick) {
+        return null;
     }
 }
