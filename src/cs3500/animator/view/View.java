@@ -7,7 +7,7 @@ public interface View {
     /**
      * Sets the number of unitless "ticks" that happen per second. Default is 60.
      */
-    void setTicksPerSecond(int i);
+    void setTicksPerSecond(float i);
 
     /**
      * Sets the dimensions of the canvas.

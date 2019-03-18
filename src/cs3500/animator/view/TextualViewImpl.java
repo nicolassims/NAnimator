@@ -12,7 +12,7 @@ public class TextualViewImpl implements View {
     private int h = 500;
 
     @Override
-    public void setTicksPerSecond(int i) { }
+    public void setTicksPerSecond(float i) { }
 
     @Override
     public void setDimensions(int x, int y, int w, int h) {

@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
  * This view is capable to interpret and draw an animation model on a JavaFx window.
  */
 public class VisualViewImpl extends JFrame implements View {
-    private int ticksPerSecond = 1;
+    private float ticksPerSecond = 1;
     private JButton commandButton, quitButton;
     private JPanel buttonPanel;
     private AnimationPanel animationPanel;
@@ -66,7 +66,7 @@ public class VisualViewImpl extends JFrame implements View {
     }
 
     @Override
-    public void setTicksPerSecond(int i) {
+    public void setTicksPerSecond(float i) {
         ticksPerSecond = i;
     }
 

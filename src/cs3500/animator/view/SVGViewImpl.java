@@ -11,14 +11,14 @@ import java.util.Map;
  * This class represents the formatted text used to create an SVG File.
  */
 public class SVGViewImpl implements View {
-  private int ticksPerSecond = 1;
+  private float ticksPerSecond = 10;
   private int x = 0;
   private int y = 0;
   private int w = 700;
   private int h = 500;
 
   @Override
-  public void setTicksPerSecond(int i) {
+  public void setTicksPerSecond(float i) {
     ticksPerSecond = i;
   }
 
@@ -73,8 +73,8 @@ public class SVGViewImpl implements View {
         String attributeName;
         if (!startsVisible) {
           viewString.append("<animate attributeType=\"xml\" begin=\"")
-              .append(motion.getFirstTick() * ticksPerSecond).append("s\" dur=\"")
-              .append((shape.totalDuration() - motion.getFirstTick()) * ticksPerSecond).append(
+              .append(motion.getFirstTick() / ticksPerSecond).append("s\" dur=\"")
+              .append((shape.totalDuration() - motion.getFirstTick()) / ticksPerSecond).append(
               "s\" attributeName=\"visibility\" from=\"hidden\" to=\"visible\" fill=\"freeze\" />\n");
           startsVisible = true;
         }
@@ -93,9 +93,9 @@ public class SVGViewImpl implements View {
             }
 
             viewString.append("<animate attributeType=\"xml\" begin=\"")
-                .append(motion.getStartFrame().getTick() * ticksPerSecond).append("s\"")
+                .append(motion.getStartFrame().getTick() / ticksPerSecond).append("s\"")
                 .append(" dur=\"")
-                .append((motion.getEndFrame().getTick() - motion.getFirstTick()) * ticksPerSecond)
+                .append((motion.getEndFrame().getTick() - motion.getFirstTick()) / ticksPerSecond)
                 .append("s\" attributeName=\"").append(attributeName).append("\" from=\"")
                 .append((j <= 6 ? motionArray[j]
                     : "rgb(" + motionArray[7] + "," + motionArray[8] + "," + motionArray[9] + ")"))
