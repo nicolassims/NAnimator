@@ -27,6 +27,11 @@ Classes:
   TextureImpl      -- Represents a color that some shape could display.
   VisualViewImpl   -- Interprets and draws an animation model on a JavaFx window.
 
+Implementation notes:
+  A shape is invisible up until its first motion occurs.
+  Default ticksPerSecond is 1.
+  Default output location is System.out.
+
 Notes for file I/O:
   Files to be read from must be placed in resources file.
   Generated files are similarly placed in resources file.

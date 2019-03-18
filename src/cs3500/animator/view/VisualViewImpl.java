@@ -10,80 +10,81 @@ import java.awt.event.ActionEvent;
  * This view is capable to interpret and draw an animation model on a JavaFx window.
  */
 public class VisualViewImpl extends JFrame implements View {
-    private float ticksPerSecond = 1;
-    private JButton commandButton, quitButton;
-    private JPanel buttonPanel;
-    private AnimationPanel animationPanel;
-    private JTextField input;
-    private JLabel display;
-    private int x = 0;
-    private int y = 0;
-    private int w = 700;
-    private int h = 500;
-    private String outputDestination;
+
+  private float ticksPerSecond = 1;
+  private JButton commandButton, quitButton;
+  private JPanel buttonPanel;
+  private AnimationPanel animationPanel;
+  private JTextField input;
+  private JLabel display;
+  private int x = 0;
+  private int y = 0;
+  private int w = 700;
+  private int h = 500;
+  private String outputDestination;
 
 
-    /**
-     * Constructs a VisualViewImpl.
-     */
-    public VisualViewImpl() {
-        super();
-        this.setTitle("Turtles!");
-        this.setSize(w, h);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  /**
+   * Constructs a VisualViewImpl.
+   */
+  public VisualViewImpl() {
+    super();
+    this.setTitle("Turtles!");
+    this.setSize(w, h);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //use a borderlayout with drawing panel in center and button panel in south
-        this.setLayout(new BorderLayout());
-        animationPanel = new AnimationPanel();
-        animationPanel.setPreferredSize(new Dimension(w, h));
-        this.add(animationPanel, BorderLayout.CENTER);
+    //use a borderlayout with drawing panel in center and button panel in south
+    this.setLayout(new BorderLayout());
+    animationPanel = new AnimationPanel();
+    animationPanel.setPreferredSize(new Dimension(w, h));
+    this.add(animationPanel, BorderLayout.CENTER);
 
-        //button panel
-        buttonPanel = new JPanel();
-        buttonPanel.setLayout(new FlowLayout());
-        this.add(buttonPanel, BorderLayout.SOUTH);
+    //button panel
+    buttonPanel = new JPanel();
+    buttonPanel.setLayout(new FlowLayout());
+    this.add(buttonPanel, BorderLayout.SOUTH);
 
-        //input textfield
-        input = new JTextField(15);
-        buttonPanel.add(input);
+    //input textfield
+    input = new JTextField(15);
+    buttonPanel.add(input);
 
-        //buttons
-        commandButton = new JButton("Execute");
-        buttonPanel.add(commandButton);
+    //buttons
+    commandButton = new JButton("Execute");
+    buttonPanel.add(commandButton);
 
-        //quit button
-        quitButton = new JButton("Quit");
-        quitButton.addActionListener((ActionEvent e) -> {
-            System.exit(0);
-        });
-        buttonPanel.add(quitButton);
+    //quit button
+    quitButton = new JButton("Quit");
+    quitButton.addActionListener((ActionEvent e) -> {
+      System.exit(0);
+    });
+    buttonPanel.add(quitButton);
 
-        this.pack();
+    this.pack();
 
-        //set the view visible
-        //this.setVisible(true);
+    //set the view visible
+    //this.setVisible(true);
 
-    }
+  }
 
-    @Override
-    public void setTicksPerSecond(float i) {
-        ticksPerSecond = i;
-    }
+  @Override
+  public void setTicksPerSecond(float i) {
+    ticksPerSecond = i;
+  }
 
-    @Override
-    public void setDimensions(int x, int y, int w, int h) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-    }
+  @Override
+  public void setDimensions(int x, int y, int w, int h) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+  }
 
-    @Override
-    public void displayView(Animation model) {
-    }
+  @Override
+  public void displayView(Animation model) {
+  }
 
-    @Override
-    public void setOutputDestination(String outArg) {
-        this.outputDestination = outArg;
-    }
+  @Override
+  public void setOutputDestination(String outArg) {
+    this.outputDestination = outArg;
+  }
 }
