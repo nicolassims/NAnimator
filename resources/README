@@ -1,5 +1,6 @@
 Enums:
   Shapes           -- A list of the types of shapes the models/views/etc. support.
+    <Currently supported: ellipse, rectangle>
 
 Interfaces:
   Animation        -- implemented by AnimationImpl.
@@ -25,3 +26,7 @@ Classes:
   TextualViewImpl  -- Represents the formatted text that can be used to create an Animation.
   TextureImpl      -- Represents a color that some shape could display.
   VisualViewImpl   -- Interprets and draws an animation model on a JavaFx window.
+
+Notes for file I/O:
+  Files to be read from must be placed in resources file.
+  Generated files are similarly placed in resources file.
