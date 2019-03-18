@@ -19,6 +19,10 @@ public class VisualViewImpl extends JFrame implements View {
     private int w = 700;
     private int h = 500;
 
+
+    /**
+     * Constructs a VisualViewImpl.
+     */
     public VisualViewImpl() {
         super();
         this.setTitle("Turtles!");

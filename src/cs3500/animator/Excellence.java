@@ -2,13 +2,35 @@ package cs3500.animator;
 
 import cs3500.animator.model.Animation;
 import cs3500.animator.model.AnimationImpl;
+import cs3500.animator.view.SVGViewImpl;
+import cs3500.animator.view.TextualViewImpl;
 import cs3500.animator.view.View;
 import cs3500.animator.view.VisualViewImpl;
 
 public final class Excellence {
     public static void main(String[] args) {
+        View mainView;
+        String input = "";
+        String output = "";
+        int speed = 1;
+        for (int i = 0; i < args.length; i += 2) {
+            if (args[i].equals("-view") && args[i + 1].equals("text")) {
+                mainView = new TextualViewImpl();
+            } else if (args[i].equals("-view") && args[i + 1].equals("visual")) {
+                mainView = new VisualViewImpl();
+            } else if (args[i].equals("-view") && args[i + 1].equals("text")) {
+                mainView = new SVGViewImpl();
+            } else if (args[i].equals("-speed")) {
+                speed = Integer.parseInt(args[i + 1]);
+            } else if (args[i].equals("-in")) {
+                input = args[i + 1];
+            } else if (args[i].equals("-out")) {
+                output = args[i + 1];
+            }
+        }
+        mainView.setTicksPerSecond(speed);
 
-        runVisualExample();
+        //runVisualExample();
 
     }
 
