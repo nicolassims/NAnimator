@@ -82,6 +82,4 @@ public class VisualViewImpl extends JFrame implements View {
     public void displayView(Animation model) {
 
     }
-
-
 }

@@ -86,16 +86,16 @@ public class SVGViewImpl implements View {
             }
             if (!startsVisible) {
               viewString.append("<animate attributeType=\"xml\" begin=\"")
-                  .append(motion.getFirstTick() * ticksPerSecond).append("ms\" dur=\"")
+                  .append(motion.getFirstTick() * ticksPerSecond).append("s\" dur=\"")
                   .append((shape.totalDuration() - motion.getFirstTick()) * ticksPerSecond).append(
-                  "ms\" attributeName=\"visibility\" from=\"hidden\" to=\"visible\" fill=\"freeze\" />\n");
+                  "s\" attributeName=\"visibility\" from=\"hidden\" to=\"visible\" fill=\"freeze\" />\n");
               startsVisible = true;
             }
             viewString.append("<animate attributeType=\"xml\" begin=\"")
-                .append(motion.getStartFrame().getTick() * ticksPerSecond).append("ms\"")
+                .append(motion.getStartFrame().getTick() * ticksPerSecond).append("s\"")
                 .append(" dur=\"")
                 .append((motion.getEndFrame().getTick() - motion.getFirstTick()) * ticksPerSecond)
-                .append("ms\" attributeName=\"").append(attributeName).append("\" from=\"")
+                .append("s\" attributeName=\"").append(attributeName).append("\" from=\"")
                 .append((j <= 6 ? motionArray[j]
                     : "rgb(" + motionArray[7] + "," + motionArray[8] + "," + motionArray[9] + ")"))
                 .append("\" to=\"")
