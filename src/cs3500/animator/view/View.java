@@ -10,6 +10,11 @@ public interface View {
     void setTicksPerSecond(int i);
 
     /**
+     * Sets the dimensions of the canvas.
+     */
+    void setDimensions(int x, int y, int w, int h);
+
+    /**
      * Displays the model through some visual form.
      */
     void displayView(Animation model);

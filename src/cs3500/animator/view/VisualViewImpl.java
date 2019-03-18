@@ -14,17 +14,21 @@ public class VisualViewImpl extends JFrame implements View {
     private AnimationPanel animationPanel;
     private JTextField input;
     private JLabel display;
+    private int x = 0;
+    private int y = 0;
+    private int w = 700;
+    private int h = 500;
 
     public VisualViewImpl() {
         super();
         this.setTitle("Turtles!");
-        this.setSize(500, 500);
+        this.setSize(w, h);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //use a borderlayout with drawing panel in center and button panel in south
         this.setLayout(new BorderLayout());
         animationPanel = new AnimationPanel();
-        animationPanel.setPreferredSize(new Dimension(500, 500));
+        animationPanel.setPreferredSize(new Dimension(w, h));
         this.add(animationPanel, BorderLayout.CENTER);
 
         //button panel
@@ -57,6 +61,14 @@ public class VisualViewImpl extends JFrame implements View {
     @Override
     public void setTicksPerSecond(int i) {
         ticksPerSecond = i;
+    }
+
+    @Override
+    public void setDimensions(int x, int y, int w, int h) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
     }
 
     @Override

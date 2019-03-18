@@ -11,12 +11,23 @@ import java.util.Map;
  * This class represents the formatted text used to create an SVG File.
  */
 public class SVGViewImpl implements View {
-
   private int ticksPerSecond = 60;
+  private int x = 0;
+  private int y = 0;
+  private int w = 700;
+  private int h = 500;
 
   @Override
   public void setTicksPerSecond(int i) {
     ticksPerSecond = i;
+  }
+
+  @Override
+  public void setDimensions(int x, int y, int w, int h) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
   }
 
   @Override
@@ -27,8 +38,9 @@ public class SVGViewImpl implements View {
     String yname = "y";
     String widthname = "width";
     String heightname = "height";
-    StringBuilder viewString = new StringBuilder(
-        "<svg width=\"700\" height=\"500\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n");
+    StringBuilder viewString = new StringBuilder();
+    viewString.append("<svg viewBox=\"").append(x).append(" ").append(y).append(" ").append(w)
+        .append(" ").append(h).append("\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n");
     Map<String, Shape> shapes = model.getShapes();
 
     for (Shape shape : shapes.values()) {
