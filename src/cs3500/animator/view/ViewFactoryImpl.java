@@ -9,7 +9,7 @@ public class ViewFactoryImpl implements ViewFactory {
 
 
     /**
-     * Default constructor that contains all the initial supported views as indicated by Excellence Animator initial features.
+     * Default constructor that contains all the initial supported views as indicated by EasyAnimator initial features.
      */
     public ViewFactoryImpl() {
         supportedViews = new HashMap<>();

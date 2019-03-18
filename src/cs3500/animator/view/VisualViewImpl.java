@@ -61,7 +61,7 @@ public class VisualViewImpl extends JFrame implements View {
         this.pack();
 
         //set the view visible
-        this.setVisible(true);
+        //this.setVisible(true);
 
     }
 
@@ -80,7 +80,6 @@ public class VisualViewImpl extends JFrame implements View {
 
     @Override
     public void displayView(Animation model) {
-
     }
 
     @Override
