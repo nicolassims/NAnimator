@@ -4,6 +4,9 @@ import cs3500.animator.model.Animation;
 import cs3500.animator.model.Motion;
 import cs3500.animator.model.Shape;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +19,8 @@ public class SVGViewImpl implements View {
   private int y = 0;
   private int w = 700;
   private int h = 500;
+  private String outputDestination;
+  private BufferedWriter writer;
 
   @Override
   public void setTicksPerSecond(float i) {
@@ -110,6 +115,31 @@ public class SVGViewImpl implements View {
       viewString.append(endtag);
     }
     viewString.append("</svg>");
-    System.out.println(viewString);
+
+    if (outputDestination.equals("System.out")) {
+      System.out.println(viewString.toString());
+    } else {
+      try {
+        writer = new BufferedWriter(new FileWriter(this.outputDestination));
+        writer.write(viewString.toString());
+      } catch (IOException e) {
+        e.printStackTrace();
+      } finally {
+        try {
+          if (writer != null) {
+            writer.close();
+          } else {
+            System.out.println("Buffer has not been initialized!");
+          }
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
+    }
+  }
+
+  @Override
+  public void setOutputDestination(String outArg) {
+    this.outputDestination = outArg;
   }
 }
