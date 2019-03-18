@@ -2,47 +2,62 @@ package cs3500.animator;
 
 import cs3500.animator.model.Animation;
 import cs3500.animator.model.AnimationImpl;
-import cs3500.animator.view.SVGViewImpl;
-import cs3500.animator.view.TextualViewImpl;
+import cs3500.animator.model.AnimationReader;
 import cs3500.animator.view.View;
+import cs3500.animator.view.ViewFactoryImpl;
 import cs3500.animator.view.VisualViewImpl;
+
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public final class Excellence {
     public static void main(String[] args) {
-        View mainView = null;
-        String input = "";
-        PrintStream output = System.out;
-        int speed = 1;
-        for (int i = 0; i < args.length; i += 2) {
-            if (args[i].equals("-view") && args[i + 1].equals("text")) {
-                mainView = new TextualViewImpl();
-            } else if (args[i].equals("-view") && args[i + 1].equals("visual")) {
-                mainView = new VisualViewImpl();
-            } else if (args[i].equals("-view") && args[i + 1].equals("text")) {
-                mainView = new SVGViewImpl();
-            } else if (args[i].equals("-speed")) {
-                speed = Integer.parseInt(args[i + 1]);
-            } else if (args[i].equals("-in")) {
-                input = args[i + 1];
-            } else if (args[i].equals("-out")) {
-                //output = args[i + 1];
+        String inArg = "";
+        String viewArg = "";
+        int speedArg = 1;
+        String outArg = "System.out";
+
+        for (int i = 0; i < args.length; i = i + 2) {
+            String command = args[i];
+            String value = args[i + 1];
+            System.out.println("command " + command);
+            System.out.println("value " + value);
+
+            switch (command) {
+                case "-in":
+                    inArg = value;
+                    break;
+                case "-out":
+                    outArg = value;
+                    break;
+                case "-view":
+                    viewArg = value;
+                    break;
+                case "-speed":
+                    speedArg = Integer.parseInt(value);
+                    break;
             }
         }
-        if (mainView == null) {
-            throw new IllegalArgumentException("View type was unspecified.");
-        } else {
-            mainView.setTicksPerSecond(speed);
 
+        if (inArg.equals("")) {
+            throw new IllegalArgumentException("-in not provided");
+        }
+        if (viewArg.equals("")) {
+            throw new IllegalArgumentException("-view not provided");
         }
 
-        //runVisualExample();
+
+        try {
+            Animation model = new AnimationReader().parseFile(new FileReader(new File(inArg).getAbsolutePath()), new AnimationImpl.Builder());
+
+            View view = new ViewFactoryImpl().getView(viewArg);
+            view.setTicksPerSecond(speedArg);
+            view.setOutputDestination(outArg);
+
+        } catch (FileNotFoundException e) {
+            throw new IllegalArgumentException("File not found: " + inArg);
+        }
 
     }
 

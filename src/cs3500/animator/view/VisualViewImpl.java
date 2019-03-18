@@ -21,6 +21,7 @@ public class VisualViewImpl extends JFrame implements View {
     private int y = 0;
     private int w = 700;
     private int h = 500;
+    private String outputDestination;
 
 
     /**
@@ -81,5 +82,10 @@ public class VisualViewImpl extends JFrame implements View {
     @Override
     public void displayView(Animation model) {
 
+    }
+
+    @Override
+    public void setOutputDestination(String outArg) {
+        this.outputDestination = outArg;
     }
 }
