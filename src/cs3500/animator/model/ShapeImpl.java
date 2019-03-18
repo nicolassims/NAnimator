@@ -65,6 +65,7 @@ public class ShapeImpl implements Shape {
         return this.keyframeTickOfLastMotionAdded.peek();
     }
 
+
     @Override
     public double getFirstX() {
         return motions.get(0).getFirstX();
