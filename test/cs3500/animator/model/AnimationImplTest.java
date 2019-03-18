@@ -1,5 +1,7 @@
 package cs3500.animator.model;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -208,7 +210,7 @@ public class AnimationImplTest {
     }
 
     /**
-     * Tests that totalDuration returns zero when no shapes have been added.
+     * Tests that totalDuration returns a correct value in an Animation with one shape.
      */
     @Test
     public void totalDuration() {
@@ -217,8 +219,23 @@ public class AnimationImplTest {
         modelWithOneShape.addRotationless2DMotion("R",
                 1, 200, 200, 50, 100, 255, 0, 0,
                 10, 200, 200, 50, 100, 255, 0, 0);
-        assertEquals(10,
-                modelWithOneShape.totalDuration());
+        assertEquals(10, modelWithOneShape.totalDuration());
     }
 
+    /**
+     * Tests that totalDuration returns a correct value in an Animation with multiple shapes.
+     */
+    @Test
+    public void totalDuration2() {
+        Animation modelWithTwoShapes = new AnimationImpl();
+        modelWithTwoShapes.addShape("R", "rectangle");
+        modelWithTwoShapes.addRotationless2DMotion("R",
+            1, 200, 200, 50, 100, 255, 0, 0,
+            10, 200, 200, 50, 100, 255, 0, 0);
+        modelWithTwoShapes.addShape("E", "ellipse");
+        modelWithTwoShapes.addRotationless2DMotion("E",
+            1, 200, 200, 50, 100, 255, 0, 0,
+            12, 200, 200, 50, 100, 255, 0, 0);
+        assertEquals(12, modelWithTwoShapes.totalDuration());
+    }
 }

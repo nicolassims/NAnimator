@@ -71,6 +71,13 @@ public class SVGViewImpl implements View {
       for (Motion motion : motions) {
         String[] motionArray = motion.toFile().split(" ");
         String attributeName;
+        if (!startsVisible) {
+          viewString.append("<animate attributeType=\"xml\" begin=\"")
+              .append(motion.getFirstTick() * ticksPerSecond).append("s\" dur=\"")
+              .append((shape.totalDuration() - motion.getFirstTick()) * ticksPerSecond).append(
+              "s\" attributeName=\"visibility\" from=\"hidden\" to=\"visible\" fill=\"freeze\" />\n");
+          startsVisible = true;
+        }
         for (int j = 3; j < 9; j++) {
           if (!motionArray[j].equals(motionArray[j + 8])) {
             if (j == 3) {
@@ -84,13 +91,7 @@ public class SVGViewImpl implements View {
             } else {
               attributeName = "fill";
             }
-            if (!startsVisible) {
-              viewString.append("<animate attributeType=\"xml\" begin=\"")
-                  .append(motion.getFirstTick() * ticksPerSecond).append("s\" dur=\"")
-                  .append((shape.totalDuration() - motion.getFirstTick()) * ticksPerSecond).append(
-                  "s\" attributeName=\"visibility\" from=\"hidden\" to=\"visible\" fill=\"freeze\" />\n");
-              startsVisible = true;
-            }
+
             viewString.append("<animate attributeType=\"xml\" begin=\"")
                 .append(motion.getStartFrame().getTick() * ticksPerSecond).append("s\"")
                 .append(" dur=\"")
@@ -112,5 +113,3 @@ public class SVGViewImpl implements View {
     System.out.println(viewString);
   }
 }
-
-///FIX DURATIONS: Why is total duration saying that the durations of both shapes are 6000?

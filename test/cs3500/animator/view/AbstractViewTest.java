@@ -44,6 +44,6 @@ public abstract class AbstractViewTest {
         80, 440, 370, 120, 60, 0, 255, 0);
     exampleModel.addRotationless2DMotion("C",
         80, 440, 370, 120, 60, 0, 255, 0,
-        100, 440, 370, 120, 60, 0, 255, 0);
+        100, 440, 370, 120, 60, 255, 255, 0);
   }
 }
