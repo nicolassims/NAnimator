@@ -2,6 +2,9 @@ package cs3500.animator.view;
 
 import cs3500.animator.model.Animation;
 
+/**
+ * This class represents the formatted text that can be used to create an Animation.
+ */
 public class TextualViewImpl implements View {
     private int x = 0;
     private int y = 0;

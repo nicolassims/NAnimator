@@ -17,6 +17,13 @@ public interface Animation {
     void addShape(String name, String type);
 
     /**
+     * Removes a shape from the animation. Does noting if a shape with that name is not within the
+     * animation.
+     * @param name the name of the shape to be removed.
+     */
+    void removeShape(String name);
+
+    /**
      * Given a shape name, and two keyframes a motion is added.
      */
     void addMotion(String shapeName, Keyframe start, Keyframe end);

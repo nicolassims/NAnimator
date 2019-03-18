@@ -45,7 +45,12 @@ public class AnimationImpl implements Animation {
         shapes.put(name, new ShapeImpl(shapeType, name));
     }
 
-    @Override
+  @Override
+  public void removeShape(String name) {
+    shapes.remove(name);
+  }
+
+  @Override
     public void addMotion(String shapeName, Keyframe start, Keyframe end) {
         if (end.getTick() > this.lastKeyframeTickOnWholeAnimation.peek()) {
             this.lastKeyframeTickOnWholeAnimation.push(end.getTick());

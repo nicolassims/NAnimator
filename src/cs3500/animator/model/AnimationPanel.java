@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 
+/**
+ * It's a Java Swing Panel Capable of drawing animations.
+ */
 public class AnimationPanel extends JPanel {
 
 

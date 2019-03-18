@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * This view is capable to interpret and draw an animation model on a JavaFx window.
+ */
 public class VisualViewImpl extends JFrame implements View {
     private int ticksPerSecond = 1;
     private JButton commandButton, quitButton;
