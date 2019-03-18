@@ -14,12 +14,12 @@ import java.util.Map;
  * This class represents the formatted text used to create an SVG File.
  */
 public class SVGViewImpl implements View {
-  private float ticksPerSecond = 10;
+  private float ticksPerSecond = 1;
   private int x = 0;
   private int y = 0;
   private int w = 700;
   private int h = 500;
-  private String outputDestination;
+  private String outputDestination = "System.out";
   private BufferedWriter writer;
 
   @Override

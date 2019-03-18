@@ -11,14 +11,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-public final class Excellence {
+public final class EasyAnimator {
     public static void main(String[] args) {
         String inArg = "";
         String viewArg = "";
-        int speedArg = 1;
+        float speedArg = 1;
         String outArg = "System.out";
 
-        for (int i = 0; i < args.length; i = i + 2) {
+        for (int i = 0; i < args.length; i += 2) {
             String command = args[i];
             String value = args[i + 1];
             System.out.println("command " + command);
@@ -35,7 +35,7 @@ public final class Excellence {
                     viewArg = value;
                     break;
                 case "-speed":
-                    speedArg = Integer.parseInt(value);
+                    speedArg = Float.parseFloat(value);
                     break;
             }
         }
@@ -49,7 +49,9 @@ public final class Excellence {
 
 
         try {
-            Animation model = new AnimationReader().parseFile(new FileReader(new File(inArg).getAbsolutePath()), new AnimationImpl.Builder());
+            new AnimationReader();
+            //new File(inArg).getAbsolutePath()
+            Animation model = AnimationReader.parseFile(new FileReader(new File(inArg).getAbsolutePath()), new AnimationImpl.Builder());
 
             View view = new ViewFactoryImpl().getView(viewArg);
             view.setTicksPerSecond(speedArg);
