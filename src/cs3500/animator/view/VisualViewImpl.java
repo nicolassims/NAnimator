@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class VisualViewImpl extends JFrame implements View {
-    private int ticksPerSecond = 60;
+    private int ticksPerSecond = 1;
     private JButton commandButton, quitButton;
     private JPanel buttonPanel;
     private AnimationPanel animationPanel;
