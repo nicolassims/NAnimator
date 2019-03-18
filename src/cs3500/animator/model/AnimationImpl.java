@@ -56,7 +56,7 @@ public class AnimationImpl implements Animation {
             this.lastKeyframeTickOnWholeAnimation.push(end.getTick());
         }
 
-        if (end.getTick() <= start.getTick()) {
+        if (end.getTick() < start.getTick()) {
             throw new IllegalArgumentException("End keyframe is before/concurrent with start keyframe");
         }
         if (!shapes.containsKey(shapeName)) {
