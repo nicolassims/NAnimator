@@ -28,10 +28,6 @@ public class SVGViewImpl implements View {
   public void displayView(Animation model) {
     String starttag;
     String endtag;
-    String xname = "x";
-    String yname = "y";
-    String widthname = "width";
-    String heightname = "height";
     int x = model.getX();
     int y = model.getY();
     int w = model.getCanvasWidth();
@@ -42,6 +38,10 @@ public class SVGViewImpl implements View {
     Map<String, Shape> shapes = model.getShapes();
 
     for (Shape shape : shapes.values()) {
+      String xname = "x";
+      String yname = "y";
+      String widthname = "width";
+      String heightname = "height";
       Boolean startsVisible = shape.getFirstTick() == 0;
       if (shape.getShape().equals("rectangle")) {
         starttag = "<rect";
@@ -77,7 +77,7 @@ public class SVGViewImpl implements View {
                   + "from=\"hidden\" to=\"visible\" fill=\"freeze\" />\n");
           startsVisible = true;
         }
-        for (int j = 3; j < 8; j++) {
+        for (int j = 3; j < 10; j++) {
           if (!motionArray[j].equals(motionArray[j + 8])) {
             if (j == 3) {
               attributeName = xname;
