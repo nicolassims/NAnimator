@@ -8,6 +8,7 @@ import cs3500.animator.model.qualities.positions.Position;
  * This class represents a collection of qualities that some shape could display at one tick.
  */
 public class KeyframeImpl implements Keyframe {
+
   private int tick;
   private Position p;
   private Size s;
@@ -63,6 +64,7 @@ public class KeyframeImpl implements Keyframe {
 
   @Override
   public String getFirstColors() {
-    return String.valueOf(t.getRed()) + "," + String.valueOf(t.getBlue()) + "," + String.valueOf(t.getGreen());
+    return String.valueOf(t.getRed()) + "," + String.valueOf(t.getBlue()) + "," + String
+        .valueOf(t.getGreen());
   }
 }

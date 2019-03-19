@@ -14,6 +14,7 @@ import java.util.Map;
  * This class represents the formatted text used to create an SVG File.
  */
 public class SVGViewImpl implements View {
+
   private float ticksPerSecond = 1;
   private int x = 0;
   private int y = 0;
@@ -144,8 +145,10 @@ public class SVGViewImpl implements View {
   }
 
   @Override
-  public void setCurrentTick(int currentTick) { }
+  public void setCurrentTick(int currentTick) {
+  }
 
   @Override
-  public void refresh() { }
+  public void refresh() {
+  }
 }
