@@ -77,7 +77,7 @@ public class SVGViewImpl implements View {
                   + "from=\"hidden\" to=\"visible\" fill=\"freeze\" />\n");
           startsVisible = true;
         }
-        for (int j = 3; j < 9; j++) {
+        for (int j = 3; j < 8; j++) {
           if (!motionArray[j].equals(motionArray[j + 8])) {
             if (j == 3) {
               attributeName = xname;
