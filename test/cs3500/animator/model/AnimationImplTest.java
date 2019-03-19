@@ -263,25 +263,49 @@ public class AnimationImplTest {
 
     @Test
     public void testGetPositionAtBeginningOfMotion() {
-        Shape ellipse = exampleModel.getShapes().get("C");
-        assertEquals("0 0 255", ellipse.getPositionAt(50).toFile());
+        Shape ellipse = exampleModel.getShapes().get("R");
+        assertEquals("200 200", ellipse.getPositionAt(10).toFile());
     }
 
     @Test
     public void testGetPositionAtEndingOfMotion() {
-        Shape ellipse = exampleModel.getShapes().get("C");
-        assertEquals("0 170 85", ellipse.getPositionAt(70).toFile());
+        Shape ellipse = exampleModel.getShapes().get("R");
+        assertEquals("300 300", ellipse.getPositionAt(50).toFile());
     }
 
     @Test
     public void testGetPositionMiddleOfMotion() {
-        Shape ellipse = exampleModel.getShapes().get("C");
-        assertEquals("0 89 165", ellipse.getPositionAt(60).toFile());
+        Shape ellipse = exampleModel.getShapes().get("R");
+        assertEquals("251 251", ellipse.getPositionAt(30).toFile());
     }
 
     @Test
     public void testGetPositionAtFirstTick() {
-        Shape ellipse = exampleModel.getShapes().get("C");
-        assertEquals("0 0 255", ellipse.getPositionAt(6).toFile());
+        Shape ellipse = exampleModel.getShapes().get("R");
+        assertEquals("200 200", ellipse.getPositionAt(1).toFile());
+    }
+
+    @Test
+    public void testGetSizeAtBeginningOfMotion() {
+        Shape ellipse = exampleModel.getShapes().get("R");
+        assertEquals("50 100", ellipse.getSizeAt(51).toFile());
+    }
+
+    @Test
+    public void testGetSizeAtEndingOfMotion() {
+        Shape ellipse = exampleModel.getShapes().get("R");
+        assertEquals("25 100", ellipse.getSizeAt(70).toFile());
+    }
+
+    @Test
+    public void testGetSizeMiddleOfMotion() {
+        Shape ellipse = exampleModel.getShapes().get("R");
+        assertEquals("37 100", ellipse.getSizeAt(60).toFile());
+    }
+
+    @Test
+    public void testGetSizeAtFirstTick() {
+        Shape ellipse = exampleModel.getShapes().get("R");
+        assertEquals("50 100", ellipse.getSizeAt(1).toFile());
     }
 }

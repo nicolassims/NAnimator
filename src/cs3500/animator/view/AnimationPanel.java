@@ -2,6 +2,7 @@ package cs3500.animator.view;
 
 import cs3500.animator.model.Animation;
 import cs3500.animator.model.Shape;
+import cs3500.animator.model.qualities.color.Texture;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,24 +55,22 @@ public class AnimationPanel extends JPanel {
 
         for (Shape s : model.getShapes().values()) {
             if (this.currentTick >= s.getFirstTick() && this.currentTick <= s.totalDuration()) {
-                System.out.println(s.getName() + " visible at tick " + this.currentTick);
-                Color color = s.getColorAt(currentTick).getAsJavaAwtColor();
+
+                Texture t = s.getColorAt(currentTick);
+                Color color = new Color((int) t.getRed(), (int) t.getGreen(), (int) t.getBlue());
                 int x = (int) s.getPositionAt(currentTick).getX();
                 int y = (int) s.getPositionAt(currentTick).getY();
                 int w = (int) s.getSizeAt(currentTick).getWidth();
                 int h = (int) s.getSizeAt(currentTick).getHeight();
+                System.out.println(s.getName() + " visible at tick " + this.currentTick + " " + s.getPositionAt(currentTick).toFile() + " " + s.getSizeAt(currentTick).toFile() + " " + s.getColorAt(currentTick).toFile());
+
                 g2d.setColor(color);
                 //if (s.isVisible()) {
                 if (s.getShape().equalsIgnoreCase("rectangle")) {
                     g2d.fillRect(x, y, w, h);
                 } else if (s.getShape().equalsIgnoreCase("ellipse")) {
                     g2d.fillOval(x, y, w, h);
-                } else {
-                    System.out.println("Unsupported Shape");
                 }
-                //}
-            } else {
-                System.out.println(s.getName() + " not visible at tick " + this.currentTick);
             }
         }
 
