@@ -21,18 +21,18 @@ public class SVGViewImplTest {
    */
   @Test
   public void SVGView() {
-    String string = "-in big-bang-big-crunch.txt -view svg -out bang.svg";
+    String string = "-in toh-3.txt -view svg -out toh-3.svg";
     EasyAnimator.main(string.split(" "));
     StringBuilder contentBuilder = new StringBuilder();
     try (Stream<String> stream = Files
-        .lines(Paths.get("resources/bang.svg"), StandardCharsets.UTF_8)) {
+        .lines(Paths.get("resources/toh-3.svg"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder.append(s).append("\n"));
     } catch (IOException e) {
       assertEquals(true, false);
     }
     StringBuilder contentBuilder2 = new StringBuilder();
     try (Stream<String> stream = Files
-        .lines(Paths.get("resources/bangExample.svg"), StandardCharsets.UTF_8)) {
+        .lines(Paths.get("resources/tohExample-3.svg"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder2.append(s).append("\n"));
     } catch (IOException e) {
       assertEquals(true, false);
@@ -69,7 +69,7 @@ public class SVGViewImplTest {
    */
   @Test(expected = IllegalArgumentException.class)
   public void nonExistentView() {
-    String string = "-in big-bang-big-crunch.txt -view pop";
+    String string = "-in toh-3.txt -view pop";
     EasyAnimator.main(string.split(" "));
   }
 

@@ -20,18 +20,18 @@ public class TextualViewImplTest {
    */
   @Test
   public void textView() {
-    String string = "-in big-bang-big-crunch.txt -view text -out bang.txt";
+    String string = "-in toh-3.txt -view text -out new-toh-3.txt";
     EasyAnimator.main(string.split(" "));
     StringBuilder contentBuilder = new StringBuilder();
     try (Stream<String> stream = Files
-        .lines(Paths.get("resources/bang.txt"), StandardCharsets.UTF_8)) {
+        .lines(Paths.get("resources/toh-3.txt"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder.append(s).append("\n"));
     } catch (IOException e) {
       assertEquals(true, false);
     }
     StringBuilder contentBuilder2 = new StringBuilder();
     try (Stream<String> stream = Files
-        .lines(Paths.get("resources/bangExample.txt"), StandardCharsets.UTF_8)) {
+        .lines(Paths.get("resources/tohExample-3.txt"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder2.append(s).append("\n"));
     } catch (IOException e) {
       assertEquals(true, false);
@@ -45,18 +45,18 @@ public class TextualViewImplTest {
    */
   @Test
   public void textViewWithSpeed() {
-    String string = "-in big-bang-big-crunch.txt -view text -out bang.txt -speed 20";
+    String string = "-in toh-3.txt -view text -out new-toh-3.txt -speed 20";
     EasyAnimator.main(string.split(" "));
     StringBuilder contentBuilder = new StringBuilder();
     try (Stream<String> stream = Files
-        .lines(Paths.get("resources/bang.txt"), StandardCharsets.UTF_8)) {
+        .lines(Paths.get("resources/new-toh-3.txt"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder.append(s).append("\n"));
     } catch (IOException e) {
       assertEquals(true, false);
     }
     StringBuilder contentBuilder2 = new StringBuilder();
     try (Stream<String> stream = Files
-        .lines(Paths.get("resources/bangExample.txt"), StandardCharsets.UTF_8)) {
+        .lines(Paths.get("resources/tohExample-3.txt"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder2.append(s).append("\n"));
     } catch (IOException e) {
       assertEquals(true, false);
