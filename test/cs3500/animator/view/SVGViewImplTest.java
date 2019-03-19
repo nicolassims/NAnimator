@@ -10,7 +10,11 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 import org.junit.Test;
 
-public class SVGViewImplTest extends AbstractViewTest {
+/**
+ * This class tests the methods of the SVGViewImpl. It also contains a test to determine that an
+ * instance of main given a nonexistent view will throw an exception.
+ */
+public class SVGViewImplTest {
 
   /**
    * A test to determine if the animator can properly run an svg view.
@@ -60,12 +64,18 @@ public class SVGViewImplTest extends AbstractViewTest {
     assertEquals(contentBuilder2.toString(), contentBuilder.toString());
   }
 
+  /**
+   * Test to determine that an instance of main given a nonexistent view will throw an exception.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void nonExistentView() {
     String string = "-in big-bang-big-crunch.txt -view pop";
     EasyAnimator.main(string.split(" "));
   }
 
+  /**
+   * Test to determine that textual view given a nonexistent file will throw an exception.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void nonExistentFile() {
     String string = "-in oingoboingo.txt -view svg";

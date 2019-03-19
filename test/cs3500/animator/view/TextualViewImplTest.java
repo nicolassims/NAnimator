@@ -10,7 +10,10 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 import org.junit.Test;
 
-public class TextualViewImplTest extends AbstractViewTest {
+/**
+ * This class tests the methods of the TextualViewImpl.
+ */
+public class TextualViewImplTest {
 
   /**
    * A test to determine if the animator can properly run a textual view.
@@ -37,8 +40,8 @@ public class TextualViewImplTest extends AbstractViewTest {
   }
 
   /**
-   * A test to determine if the animator can properly run a text view when speed is involved.
-   * Also asserting that speed has no effect on a textual view.
+   * A test to determine if the animator can properly run a text view when speed is involved. Also
+   * asserting that speed has no effect on a textual view.
    */
   @Test
   public void textViewWithSpeed() {
@@ -61,6 +64,9 @@ public class TextualViewImplTest extends AbstractViewTest {
     assertEquals(contentBuilder2.toString(), contentBuilder.toString());
   }
 
+  /**
+   * Test to determine that a textual view given a nonexistent file will throw an exception.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void nonExistentFile() {
     String string = "-in oingoboingo.txt -view text";
