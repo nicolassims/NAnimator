@@ -18,69 +18,69 @@ import static org.junit.Assert.fail;
  */
 public class SVGViewImplTest {
 
-    /**
-     * A test to determine if the animator can properly run an svg view.
-     */
-    @Test
-    public void SVGView() {
-        String string = "-in toh-3.txt -view svg -out toh-3.svg";
-        EasyAnimator.main(string.split(" "));
-        StringBuilder contentBuilder = new StringBuilder();
-        try (Stream<String> stream = Files
-                .lines(Paths.get("resources/toh-3.svg"), StandardCharsets.UTF_8)) {
-            stream.forEach(s -> contentBuilder.append(s).append("\n"));
-        } catch (IOException e) {
-            fail("Threw an exception");
-        }
-        StringBuilder contentBuilder2 = new StringBuilder();
-        try (Stream<String> stream = Files
-                .lines(Paths.get("resources/tohExample-3.svg"), StandardCharsets.UTF_8)) {
-            stream.forEach(s -> contentBuilder2.append(s).append("\n"));
-        } catch (IOException e) {
-            fail("Threw an exception");
-        }
-        assertEquals(contentBuilder2.toString(), contentBuilder.toString());
+  /**
+   * A test to determine if the animator can properly run an svg view.
+   */
+  @Test
+  public void SVGView() {
+    String string = "-in toh-3.txt -view svg -out toh-3.svg";
+    EasyAnimator.main(string.split(" "));
+    StringBuilder contentBuilder = new StringBuilder();
+    try (Stream<String> stream = Files
+        .lines(Paths.get("resources/toh-3.svg"), StandardCharsets.UTF_8)) {
+      stream.forEach(s -> contentBuilder.append(s).append("\n"));
+    } catch (IOException e) {
+      fail("Threw an exception");
     }
+    StringBuilder contentBuilder2 = new StringBuilder();
+    try (Stream<String> stream = Files
+        .lines(Paths.get("resources/tohExample-3.svg"), StandardCharsets.UTF_8)) {
+      stream.forEach(s -> contentBuilder2.append(s).append("\n"));
+    } catch (IOException e) {
+      fail("Threw an exception");
+    }
+    assertEquals(contentBuilder2.toString(), contentBuilder.toString());
+  }
 
-    /**
-     * A test to determine if the animator can properly run an svg view when speed is involved.
-     */
-    @Test
-    public void SVGViewWithSpeed() {
-        String string = "-view svg -in toh-12.txt -out new-toh-at-20.svg -speed 20";
-        EasyAnimator.main(string.split(" "));
-        StringBuilder contentBuilder = new StringBuilder();
-        try (Stream<String> stream = Files
-                .lines(Paths.get("resources/new-toh-at-20.svg"), StandardCharsets.UTF_8)) {
-            stream.forEach(s -> contentBuilder.append(s).append("\n"));
-        } catch (IOException e) {
-            fail("Threw an exception");
-        }
-        StringBuilder contentBuilder2 = new StringBuilder();
-        try (Stream<String> stream = Files
-                .lines(Paths.get("resources/toh-at-20.svg"), StandardCharsets.UTF_8)) {
-            stream.forEach(s -> contentBuilder2.append(s).append("\n"));
-        } catch (IOException e) {
-            fail("Threw an exception");
-        }
-        assertEquals(contentBuilder2.toString(), contentBuilder.toString());
+  /**
+   * A test to determine if the animator can properly run an svg view when speed is involved.
+   */
+  @Test
+  public void SVGViewWithSpeed() {
+    String string = "-view svg -in toh-8.txt -out new-toh-at-20.svg -speed 20";
+    EasyAnimator.main(string.split(" "));
+    StringBuilder contentBuilder = new StringBuilder();
+    try (Stream<String> stream = Files
+        .lines(Paths.get("resources/new-toh-at-20.svg"), StandardCharsets.UTF_8)) {
+      stream.forEach(s -> contentBuilder.append(s).append("\n"));
+    } catch (IOException e) {
+      fail("Threw an exception");
     }
+    StringBuilder contentBuilder2 = new StringBuilder();
+    try (Stream<String> stream = Files
+        .lines(Paths.get("resources/toh-at-20.svg"), StandardCharsets.UTF_8)) {
+      stream.forEach(s -> contentBuilder2.append(s).append("\n"));
+    } catch (IOException e) {
+      fail("Threw an exception");
+    }
+    assertEquals(contentBuilder2.toString(), contentBuilder.toString());
+  }
 
-    /**
-     * A test to determine that an animator given a non-existent view will throw an exception.
-     */
-    @Test(expected = IllegalArgumentException.class)
-    public void nonExistentView() {
-        String string = "-in toh-3.txt -view pop";
-        EasyAnimator.main(string.split(" "));
-    }
+  /**
+   * A test to determine that an animator given a non-existent view will throw an exception.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void nonExistentView() {
+    String string = "-in toh-3.txt -view pop";
+    EasyAnimator.main(string.split(" "));
+  }
 
-    /**
-     * A test to determine that an svg view given a non-existent file will throw an exception.
-     */
-    @Test(expected = IllegalArgumentException.class)
-    public void nonExistentFile() {
-        String string = "-in oingoboingo.txt -view svg";
-        EasyAnimator.main(string.split(" "));
-    }
+  /**
+   * A test to determine that an svg view given a non-existent file will throw an exception.
+   */
+  @Test(expected = IllegalArgumentException.class)
+  public void nonExistentFile() {
+    String string = "-in oingoboingo.txt -view svg";
+    EasyAnimator.main(string.split(" "));
+  }
 }
