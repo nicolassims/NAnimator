@@ -23,7 +23,7 @@ public class SVGViewImplTest {
    */
   @Test
   public void SVGView() {
-    String string = "-in toh-3.txt -view svg -out toh-3.svg";
+    String string = "-in resources/toh-3.txt -view svg -out resources/toh-3.svg";
     EasyAnimator.main(string.split(" "));
     StringBuilder contentBuilder = new StringBuilder();
     try (Stream<String> stream = Files
@@ -47,7 +47,7 @@ public class SVGViewImplTest {
    */
   @Test
   public void SVGViewWithSpeed() {
-    String string = "-view svg -in toh-8.txt -out new-toh-at-20.svg -speed 20";
+    String string = "-view svg -in resources/toh-8.txt -out resources/new-toh-at-20.svg -speed 20";
     EasyAnimator.main(string.split(" "));
     StringBuilder contentBuilder = new StringBuilder();
     try (Stream<String> stream = Files

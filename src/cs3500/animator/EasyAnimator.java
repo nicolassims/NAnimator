@@ -19,6 +19,7 @@ public final class EasyAnimator {
 
   /**
    * This method takes parameters to visualize an animation.
+   *
    * @param args The list of parameters to base the animation's visualization on.
    */
   public static void main(String[] args) {
