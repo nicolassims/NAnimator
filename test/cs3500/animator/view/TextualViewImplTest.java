@@ -10,7 +10,11 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
+/**
+ * This class contains the tests for the TextualViewImpl.
+ */
 public class TextualViewImplTest {
 
   /**
@@ -25,14 +29,14 @@ public class TextualViewImplTest {
         .lines(Paths.get("resources/new-toh-3.txt"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder.append(s).append("\n"));
     } catch (IOException e) {
-      assertEquals(true, false);
+      fail("Threw an exception");
     }
     StringBuilder contentBuilder2 = new StringBuilder();
     try (Stream<String> stream = Files
         .lines(Paths.get("resources/tohExample-3.txt"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder2.append(s).append("\n"));
     } catch (IOException e) {
-      assertEquals(true, false);
+      fail("Threw an exception");
     }
     assertEquals(contentBuilder2.toString(), contentBuilder.toString());
   }
@@ -50,14 +54,14 @@ public class TextualViewImplTest {
         .lines(Paths.get("resources/new-toh-3.txt"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder.append(s).append("\n"));
     } catch (IOException e) {
-      assertEquals(true, false);
+      fail("Threw an exception");
     }
     StringBuilder contentBuilder2 = new StringBuilder();
     try (Stream<String> stream = Files
         .lines(Paths.get("resources/tohExample-3.txt"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder2.append(s).append("\n"));
     } catch (IOException e) {
-      assertEquals(true, false);
+      fail("Threw an exception");
     }
     assertEquals(contentBuilder2.toString(), contentBuilder.toString());
   }

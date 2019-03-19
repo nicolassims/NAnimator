@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 /**
  * This class contains the tests for the SVGViewImpl, as well as one general test to determine that
@@ -29,14 +30,14 @@ public class SVGViewImplTest {
         .lines(Paths.get("resources/toh-3.svg"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder.append(s).append("\n"));
     } catch (IOException e) {
-      assertEquals(true, false);
+      fail("Threw an exception");
     }
     StringBuilder contentBuilder2 = new StringBuilder();
     try (Stream<String> stream = Files
         .lines(Paths.get("resources/tohExample-3.svg"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder2.append(s).append("\n"));
     } catch (IOException e) {
-      assertEquals(true, false);
+      fail("Threw an exception");
     }
     assertEquals(contentBuilder2.toString(), contentBuilder.toString());
   }
@@ -53,14 +54,14 @@ public class SVGViewImplTest {
         .lines(Paths.get("resources/new-toh-at-20.svg"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder.append(s).append("\n"));
     } catch (IOException e) {
-      assertEquals(true, false);
+      fail("Threw an exception");
     }
     StringBuilder contentBuilder2 = new StringBuilder();
     try (Stream<String> stream = Files
         .lines(Paths.get("resources/toh-at-20.svg"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder2.append(s).append("\n"));
     } catch (IOException e) {
-      assertEquals(true, false);
+      fail("Threw an exception");
     }
     assertEquals(contentBuilder2.toString(), contentBuilder.toString());
   }

@@ -29,6 +29,15 @@ public class AnimationImpl implements Animation {
     this.lastKeyframeTickOnWholeAnimation.push(0);
   }
 
+  @Override
+  public int getX() {
+    return x;
+  }
+
+  @Override
+  public int getY() {
+    return y;
+  }
 
   @Override
   public void addShape(String name, String type) {
@@ -195,4 +204,6 @@ public class AnimationImpl implements Animation {
       return this;
     }
   }
+
+
 }

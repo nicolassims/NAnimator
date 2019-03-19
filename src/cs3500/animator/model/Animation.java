@@ -10,6 +10,16 @@ import java.util.Map;
 public interface Animation {
 
   /**
+   * Returns the left edge of the canvas.
+   */
+  int getX();
+
+  /**
+   * Returns the top edge of the canvas.
+   */
+  int getY();
+
+  /**
    * Given two strings, one for a name and one for a type of shape, it declares a shape. Throws an
    * IllegalArgument Exception if a shape with said name already exist of the shape\ is not
    * supported by the current implementation
