@@ -161,6 +161,9 @@ public class ShapeImpl implements Shape {
         throw new IllegalArgumentException("This shape does not exist at tick " + tick);
     }
 
+    /**
+     * Helper that interpolates between two qualities.
+     */
     private Quality interpolateQualities(int currentTick, Quality start, Quality end, Motion currentMotion) {
         int numberOfTicks = (currentMotion.getEndFrame().getTick() - currentMotion.getStartFrame().getTick()) + 1;
         Quality rateOfChange = start.getDifference(end).divideBy(numberOfTicks);
