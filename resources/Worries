@@ -1,0 +1,6 @@
+//Does the main method sanitize input properly?
+//Is there absolutely no way we can prevent our classes from relying on methods that they don't need?
+//Can we prevent the duplicate code in the SVGViewImpl and TextualViewImpl
+//Can we implement more tests?
+//Does SVGViewImpl need to be refactored now it doesn't have a dimension-setter anymore.
+//Why are three of our tests failing?
