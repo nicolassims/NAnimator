@@ -228,12 +228,12 @@ public class AnimationImplTest {
         Animation modelWithTwoShapes = new AnimationImpl();
         modelWithTwoShapes.addShape("R", "rectangle");
         modelWithTwoShapes.addRotationless2DMotion("R",
-            1, 200, 200, 50, 100, 255, 0, 0,
-            10, 200, 200, 50, 100, 255, 0, 0);
+                1, 200, 200, 50, 100, 255, 0, 0,
+                10, 200, 200, 50, 100, 255, 0, 0);
         modelWithTwoShapes.addShape("E", "ellipse");
         modelWithTwoShapes.addRotationless2DMotion("E",
-            1, 200, 200, 50, 100, 255, 0, 0,
-            12, 200, 200, 50, 100, 255, 0, 0);
+                1, 200, 200, 50, 100, 255, 0, 0,
+                12, 200, 200, 50, 100, 255, 0, 0);
         assertEquals(12, modelWithTwoShapes.totalDuration());
     }
 

@@ -19,6 +19,7 @@ public interface Animation {
     /**
      * Removes a shape from the animation. Does noting if a shape with that name is not within the
      * animation.
+     *
      * @param name the name of the shape to be removed.
      */
     void removeShape(String name);

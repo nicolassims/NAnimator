@@ -18,7 +18,8 @@ public class TextualViewImpl implements View {
     private BufferedWriter writer;
 
     @Override
-    public void setTicksPerSecond(float i) { }
+    public void setTicksPerSecond(float i) {
+    }
 
     @Override
     public void setDimensions(int x, int y, int w, int h) {
