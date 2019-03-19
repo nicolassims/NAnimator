@@ -29,7 +29,7 @@ public class TextualViewImpl implements View {
             System.out.println("canvas " + x + " " + y + " " + w + " " + h + "\n" + model.toFile());
         } else {
             try {
-                writer = new BufferedWriter(new FileWriter("resources/" + this.outputDestination));
+                writer = new BufferedWriter(new FileWriter(this.outputDestination));
                 writer.write("canvas " + x + " " + y + " " + w + " " + h + "\n" + model.toFile());
             } catch (IOException e) {
                 e.printStackTrace();

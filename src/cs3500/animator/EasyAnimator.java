@@ -67,7 +67,7 @@ public final class EasyAnimator {
     try {
       new AnimationReader();
       Animation model = AnimationReader
-          .parseFile(new FileReader(new File("resources/" + inArg).getAbsolutePath()),
+          .parseFile(new FileReader(new File(inArg).getAbsolutePath()),
               new AnimationImpl.Builder());
 
       View view = new ViewFactoryImpl().getView(viewArg);

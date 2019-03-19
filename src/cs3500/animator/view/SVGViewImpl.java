@@ -115,7 +115,7 @@ public class SVGViewImpl implements View {
       System.out.println(viewString.toString());
     } else {
       try {
-        writer = new BufferedWriter(new FileWriter("resources/" + this.outputDestination));
+        writer = new BufferedWriter(new FileWriter(this.outputDestination));
         writer.write(viewString.toString());
       } catch (IOException e) {
         e.printStackTrace();
