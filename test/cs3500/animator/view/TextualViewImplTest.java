@@ -62,6 +62,9 @@ public class TextualViewImplTest {
     assertEquals(contentBuilder2.toString(), contentBuilder.toString());
   }
 
+  /**
+   * A test to determine that a textual view given a non-existent file will throw an exception.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void nonExistentFile() {
     String string = "-in oingoboingo.txt -view text";

@@ -11,6 +11,10 @@ import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * This class contains the tests for the SVGViewImpl, as well as one general test to determine that
+ * an animator given a nonexistent view will throw an exception.
+ */
 public class SVGViewImplTest {
 
   /**
@@ -61,12 +65,18 @@ public class SVGViewImplTest {
     assertEquals(contentBuilder2.toString(), contentBuilder.toString());
   }
 
+  /**
+   * A test to determine that an animator given a non-existent view will throw an exception.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void nonExistentView() {
     String string = "-in toh-3.txt -view pop";
     EasyAnimator.main(string.split(" "));
   }
 
+  /**
+   * A test to determine that an svg view given a non-existent file will throw an exception.
+   */
   @Test(expected = IllegalArgumentException.class)
   public void nonExistentFile() {
     String string = "-in oingoboingo.txt -view svg";

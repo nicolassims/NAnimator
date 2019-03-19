@@ -4,18 +4,24 @@ import cs3500.animator.model.Animation;
 import cs3500.animator.model.Shape;
 import cs3500.animator.model.qualities.color.Texture;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import javax.swing.JPanel;
 
 /**
  * It's a Java Swing Panel Capable of drawing animations.
  */
 public class AnimationPanel extends JPanel {
 
-  Animation model;
-  int currentTick;
+  private Animation model;
+  private int currentTick;
 
+  /**
+   * Constructs an AnimationPanel based around a provided model.
+   * @param model The model the AnimationPanel is based around.
+   */
   public AnimationPanel(Animation model) {
     super();
     this.model = model;
@@ -23,9 +29,9 @@ public class AnimationPanel extends JPanel {
   }
 
   /**
-   * Override the paintComponent method of the JPanel Do NOT override paint!
+   * Override the paintComponent method of the JPanel.
+   * Do NOT override paint!
    */
-
   @Override
   protected void paintComponent(Graphics g) {
     super.paintComponent(g);

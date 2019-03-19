@@ -2,17 +2,15 @@ package cs3500.animator.view;
 
 import cs3500.animator.model.Animation;
 
+/**
+ * This interface represents all supported types of views.
+ */
 public interface View {
 
   /**
    * Sets the number of unitless "ticks" that happen per second. Default is 60.
    */
   void setTicksPerSecond(float i);
-
-  /**
-   * Sets the dimensions of the canvas.
-   */
-  void setDimensions(int x, int y, int w, int h);
 
   /**
    * Displays the model through some visual form.

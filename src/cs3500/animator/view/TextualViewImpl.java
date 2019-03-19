@@ -20,14 +20,7 @@ public class TextualViewImpl implements View {
 
   @Override
   public void setTicksPerSecond(float i) {
-  }
-
-  @Override
-  public void setDimensions(int x, int y, int w, int h) {
-    this.x = x;
-    this.y = y;
-    this.w = w;
-    this.h = h;
+    //Implemented but empty for future compatibility with a controller.
   }
 
   @Override
@@ -61,11 +54,11 @@ public class TextualViewImpl implements View {
 
   @Override
   public void setCurrentTick(int currentTick) {
-
+    //Implemented but empty for future compatibility with a controller.
   }
 
   @Override
   public void refresh() {
-
+    //Implemented but empty for future compatibility with a controller.
   }
 }

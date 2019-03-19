@@ -3,10 +3,12 @@ package cs3500.animator.view;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class builds a view based on the string parameter passed in to its getView.
+ */
 public class ViewFactoryImpl implements ViewFactory {
 
-  Map<String, View> supportedViews;
-
+  private Map<String, View> supportedViews;
 
   /**
    * Default constructor that contains all the initial supported views as indicated by EasyAnimator

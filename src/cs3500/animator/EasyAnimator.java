@@ -10,8 +10,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+/**
+ * This class visualizes a single animation.
+ */
 public final class EasyAnimator {
 
+  /**
+   * This method takes parameters to visualize an animation.
+   * @param args The list of parameters to base the animation's visualization on.
+   */
   public static void main(String[] args) {
     String inArg = "";
     String viewArg = "";
@@ -35,6 +42,8 @@ public final class EasyAnimator {
         case "-speed":
           speedArg = Float.parseFloat(value);
           break;
+        default:
+          throw new IllegalArgumentException("Unsupported command!");
       }
     }
 

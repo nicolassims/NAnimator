@@ -69,12 +69,12 @@ public interface Shape {
   List<Motion> getMotions();
 
   /**
-   * Sets a shape visibility.
+   * Sets a shape's visibility.
    */
   void setVisibility(boolean visibility);
 
   /**
-   * Returns whether a shape is  visible
+   * Returns whether a shape is visible.
    */
   boolean isVisible();
 
