@@ -67,4 +67,20 @@ public class KeyframeImpl implements Keyframe {
     return String.valueOf(t.getRed()) + "," + String.valueOf(t.getBlue()) + "," + String
         .valueOf(t.getGreen());
   }
+
+    @Override
+    public Texture getTexture() {
+        return this.t;
+    }
+
+    @Override
+    public Size getSize() {
+        return this.s;
+    }
+
+    @Override
+    public Position getPosition() {
+        return this.p;
+    }
+
 }
