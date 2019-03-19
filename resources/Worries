@@ -5,3 +5,4 @@
 --Does SVGViewImpl need to be refactored now it doesn't have a dimension-setter anymore?
 //Why are three of our tests failing?
 //Have we included all extraneous files the assignment asks for. (The answer's NO.)
+//Why do the buildings not display in the visual view?
