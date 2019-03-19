@@ -5,9 +5,9 @@ package cs3500.animator.view;
  */
 public interface ViewFactory {
 
-  /**
-   * Given a string representing a type of view, returns a View if the view exists. Otherwise,
-   * throws an IllegalArgumentException.
-   */
-  View getView(String viewType) throws IllegalArgumentException;
+    /**
+     * Given a string representing a type of view, returns a View if the view exists. Otherwise,
+     * throws an IllegalArgumentException.
+     */
+    View getView(String viewType) throws IllegalArgumentException;
 }
