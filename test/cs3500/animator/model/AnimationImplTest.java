@@ -1,7 +1,5 @@
 package cs3500.animator.model;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -237,5 +235,53 @@ public class AnimationImplTest {
             1, 200, 200, 50, 100, 255, 0, 0,
             12, 200, 200, 50, 100, 255, 0, 0);
         assertEquals(12, modelWithTwoShapes.totalDuration());
+    }
+
+    @Test
+    public void testGetTextureAtBeginningOfMotion() {
+        Shape ellipse = exampleModel.getShapes().get("C");
+        assertEquals("0 0 255", ellipse.getColorAt(50).toFile());
+    }
+
+    @Test
+    public void testGetTextureAtEndingOfMotion() {
+        Shape ellipse = exampleModel.getShapes().get("C");
+        assertEquals("0 170 85", ellipse.getColorAt(70).toFile());
+    }
+
+    @Test
+    public void testGetTextureMiddleOfMotion() {
+        Shape ellipse = exampleModel.getShapes().get("C");
+        assertEquals("0 89 165", ellipse.getColorAt(60).toFile());
+    }
+
+    @Test
+    public void testGetTextureAtFirstTick() {
+        Shape ellipse = exampleModel.getShapes().get("C");
+        assertEquals("0 0 255", ellipse.getColorAt(6).toFile());
+    }
+
+    @Test
+    public void testGetPositionAtBeginningOfMotion() {
+        Shape ellipse = exampleModel.getShapes().get("C");
+        assertEquals("0 0 255", ellipse.getPositionAt(50).toFile());
+    }
+
+    @Test
+    public void testGetPositionAtEndingOfMotion() {
+        Shape ellipse = exampleModel.getShapes().get("C");
+        assertEquals("0 170 85", ellipse.getPositionAt(70).toFile());
+    }
+
+    @Test
+    public void testGetPositionMiddleOfMotion() {
+        Shape ellipse = exampleModel.getShapes().get("C");
+        assertEquals("0 89 165", ellipse.getPositionAt(60).toFile());
+    }
+
+    @Test
+    public void testGetPositionAtFirstTick() {
+        Shape ellipse = exampleModel.getShapes().get("C");
+        assertEquals("0 0 255", ellipse.getPositionAt(6).toFile());
     }
 }

@@ -1,9 +1,10 @@
 package cs3500.animator.model;
 
+import cs3500.animator.model.qualities.Quality;
 import cs3500.animator.model.qualities.color.Texture;
+import cs3500.animator.model.qualities.dimensions.Size;
 import cs3500.animator.model.qualities.positions.Position;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -119,16 +120,50 @@ public class ShapeImpl implements Shape {
 
     @Override
     public Texture getColorAt(int currentTick) {
-        return null;
+        Motion currentMotion = this.getSurroundingMotion(currentTick);
+        Texture texture0 = currentMotion.getStartFrame().getTexture();
+        Texture texture1 = currentMotion.getEndFrame().getTexture();
+        return (Texture) interpolateQualities(currentTick, texture0, texture1, currentMotion);
     }
 
     @Override
     public Position getPositionAt(int currentTick) {
-        return null;
+        Motion currentMotion = this.getSurroundingMotion(currentTick);
+        Position position0 = currentMotion.getStartFrame().getPosition();
+        Position position1 = currentMotion.getEndFrame().getPosition();
+        return (Position) interpolateQualities(currentTick, position0, position1, currentMotion);
     }
 
     @Override
-    public Dimension getDimensionsAt(int currentTick) {
-        return null;
+    public Size getSizeAt(int currentTick) {
+        Motion currentMotion = this.getSurroundingMotion(currentTick);
+        Size size0 = currentMotion.getStartFrame().getSize();
+        Size size1 = currentMotion.getEndFrame().getSize();
+        return (Size) interpolateQualities(currentTick, size0, size1, currentMotion);
+    }
+
+
+    /**
+     * Given a tick it searches for a motion which starting and ending keyframe surround the given tick.
+     */
+    private Motion getSurroundingMotion(int tick) {
+        if (tick < 0) {
+            throw new IllegalArgumentException("There are no negative ticks");
+        }
+
+        for (Motion m : motions) {
+            if (m.getStartFrame().getTick() <= tick
+                    && m.getEndFrame().getTick() >= tick) {
+                return m;
+            }
+        }
+
+        throw new IllegalArgumentException("This shape does not exist at tick " + tick);
+    }
+
+    private Quality interpolateQualities(int currentTick, Quality start, Quality end, Motion currentMotion) {
+        int numberOfTicks = (currentMotion.getEndFrame().getTick() - currentMotion.getStartFrame().getTick()) + 1;
+        Quality rateOfChange = start.getDifference(end).divideBy(numberOfTicks);
+        return start.addTogether(rateOfChange.multiplyBy(currentTick - currentMotion.getStartFrame().getTick() + 1));
     }
 }

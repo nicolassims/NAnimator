@@ -53,18 +53,25 @@ public class AnimationPanel extends JPanel {
         //each y will first be scaled, and then translated
 
         for (Shape s : model.getShapes().values()) {
-            Color color = s.getColorAt(currentTick).getAsJavaAwtColor();
-            int x = (int) s.getPositionAt(currentTick).getX();
-            int y = (int) s.getPositionAt(currentTick).getY();
-            int w = (int) s.getDimensionsAt(currentTick).getWidth();
-            int h = (int) s.getDimensionsAt(currentTick).getHeight();
-            g2d.setColor(color);
-            if (s.isVisible()) {
+            if (this.currentTick >= s.getFirstTick() && this.currentTick <= s.totalDuration()) {
+                System.out.println(s.getName() + " visible at tick " + this.currentTick);
+                Color color = s.getColorAt(currentTick).getAsJavaAwtColor();
+                int x = (int) s.getPositionAt(currentTick).getX();
+                int y = (int) s.getPositionAt(currentTick).getY();
+                int w = (int) s.getSizeAt(currentTick).getWidth();
+                int h = (int) s.getSizeAt(currentTick).getHeight();
+                g2d.setColor(color);
+                //if (s.isVisible()) {
                 if (s.getShape().equalsIgnoreCase("rectangle")) {
                     g2d.fillRect(x, y, w, h);
                 } else if (s.getShape().equalsIgnoreCase("ellipse")) {
                     g2d.fillOval(x, y, w, h);
+                } else {
+                    System.out.println("Unsupported Shape");
                 }
+                //}
+            } else {
+                System.out.println(s.getName() + " not visible at tick " + this.currentTick);
             }
         }
 
