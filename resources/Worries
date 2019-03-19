@@ -3,6 +3,6 @@
 //Can we prevent the duplicate code in the SVGViewImpl and TextualViewImpl?
 //Can we implement more tests?
 --Does SVGViewImpl need to be refactored now it doesn't have a dimension-setter anymore?
-//Why is one of our tests failing?
+--Why is one of our tests failing?
 //Have we included all extraneous files the assignment asks for. (The answer's NO.)
-//Why do the buildings not display properly?
+--Why do the buildings not display properly?

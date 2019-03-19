@@ -37,7 +37,8 @@ public class SVGViewImpl implements View {
         .append(" ").append(h).append("\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n");
     Map<String, Shape> shapes = model.getShapes();
 
-    for (Shape shape : shapes.values()) {
+    for (int i = 0; i < model.getShapeNames().size(); i++) {
+      Shape shape = model.getShapes().get(model.getShapeNames().get(i));
       String xname = "x";
       String yname = "y";
       String widthname = "width";
