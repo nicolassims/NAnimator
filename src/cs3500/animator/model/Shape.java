@@ -3,7 +3,7 @@ package cs3500.animator.model;
 import cs3500.animator.model.qualities.color.Texture;
 import cs3500.animator.model.qualities.positions.Position;
 
-import java.awt.*;
+import java.awt.Dimension;
 import java.util.List;
 
 /**
@@ -74,7 +74,7 @@ public interface Shape {
   void setVisibility(boolean visibility);
 
   /**
-   * Returns whether a shape is  visible
+   * Returns whether a shape is visible.
    */
   boolean isVisible();
 

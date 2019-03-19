@@ -3,7 +3,7 @@ package cs3500.animator.model;
 import cs3500.animator.model.qualities.color.Texture;
 import cs3500.animator.model.qualities.positions.Position;
 
-import java.awt.*;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;

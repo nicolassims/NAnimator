@@ -5,16 +5,20 @@ import cs3500.animator.model.AnimationImpl;
 import cs3500.animator.model.AnimationReader;
 import cs3500.animator.view.View;
 import cs3500.animator.view.ViewFactoryImpl;
-import cs3500.animator.view.VisualViewImpl;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
+/**
+ * This class runs an Animation.
+ */
 public final class EasyAnimator {
 
+  /**
+   * Runs an animation, taking parameters to modify the animation's qualities.
+   * @param args The parameters that modify the animation's qualities.
+   */
   public static void main(String[] args) {
     String inArg = "";
     String viewArg = "";
@@ -38,6 +42,8 @@ public final class EasyAnimator {
         case "-speed":
           speedArg = Float.parseFloat(value);
           break;
+        default:
+          throw new IllegalArgumentException("No such command is recognized.");
       }
     }
 
