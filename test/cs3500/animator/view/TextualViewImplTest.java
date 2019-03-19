@@ -1,18 +1,16 @@
 package cs3500.animator.view;
 
-import static org.junit.Assert.assertEquals;
-
 import cs3500.animator.EasyAnimator;
+import org.junit.Test;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-import org.junit.Test;
 
-/**
- * This class tests the methods of the TextualViewImpl.
- */
+import static org.junit.Assert.assertEquals;
+
 public class TextualViewImplTest {
 
   /**
@@ -24,7 +22,7 @@ public class TextualViewImplTest {
     EasyAnimator.main(string.split(" "));
     StringBuilder contentBuilder = new StringBuilder();
     try (Stream<String> stream = Files
-        .lines(Paths.get("resources/toh-3.txt"), StandardCharsets.UTF_8)) {
+        .lines(Paths.get("resources/new-toh-3.txt"), StandardCharsets.UTF_8)) {
       stream.forEach(s -> contentBuilder.append(s).append("\n"));
     } catch (IOException e) {
       assertEquals(true, false);
@@ -64,9 +62,6 @@ public class TextualViewImplTest {
     assertEquals(contentBuilder2.toString(), contentBuilder.toString());
   }
 
-  /**
-   * Test to determine that a textual view given a nonexistent file will throw an exception.
-   */
   @Test(expected = IllegalArgumentException.class)
   public void nonExistentFile() {
     String string = "-in oingoboingo.txt -view text";

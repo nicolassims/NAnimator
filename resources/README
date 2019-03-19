@@ -31,8 +31,6 @@ Implementation notes:
   A shape is invisible up until its first motion occurs.
   Default ticksPerSecond is 1.
   Default output location is System.out.
-  Some classes have currently empty methods implemented.
-    They were made public in the interface so they can be used later by a Controller.
 
 Notes for file I/O:
   Files to be read from must be placed in resources file.

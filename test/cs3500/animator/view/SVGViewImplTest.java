@@ -1,19 +1,16 @@
 package cs3500.animator.view;
 
-import static org.junit.Assert.assertEquals;
-
 import cs3500.animator.EasyAnimator;
+import org.junit.Test;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-import org.junit.Test;
 
-/**
- * This class tests the methods of the SVGViewImpl. It also contains a test to determine that an
- * instance of main given a nonexistent view will throw an exception.
- */
+import static org.junit.Assert.assertEquals;
+
 public class SVGViewImplTest {
 
   /**
@@ -64,18 +61,12 @@ public class SVGViewImplTest {
     assertEquals(contentBuilder2.toString(), contentBuilder.toString());
   }
 
-  /**
-   * Test to determine that an instance of main given a nonexistent view will throw an exception.
-   */
   @Test(expected = IllegalArgumentException.class)
   public void nonExistentView() {
     String string = "-in toh-3.txt -view pop";
     EasyAnimator.main(string.split(" "));
   }
 
-  /**
-   * Test to determine that textual view given a nonexistent file will throw an exception.
-   */
   @Test(expected = IllegalArgumentException.class)
   public void nonExistentFile() {
     String string = "-in oingoboingo.txt -view svg";

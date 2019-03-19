@@ -1,9 +1,5 @@
 package cs3500.animator.model;
 
-
-/**
- * This interface represents a collection of methods that can be used to build an animation.
- */
 public interface AnimationBuilder<Doc> {
 
   /**
@@ -29,9 +25,9 @@ public interface AnimationBuilder<Doc> {
    * Adds a new shape to the growing document.
    *
    * @param name The unique name of the shape to be added. No shape with this name should already
-   *             exist.
+   * exist.
    * @param type The type of shape (e.g. "ellipse", "rectangle") to be added. The set of supported
-   *             shapes is unspecified, but should include "ellipse" and "rectangle" as a minimum.
+   * shapes is unspecified, but should include "ellipse" and "rectangle" as a minimum.
    * @return This {@link AnimationBuilder}
    */
   AnimationBuilder<Doc> declareShape(String name, String type);

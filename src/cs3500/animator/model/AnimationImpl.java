@@ -15,10 +15,7 @@ public class AnimationImpl implements Animation {
 
   private Map<String, Shape> shapes;
   private Stack<Integer> lastKeyframeTickOnWholeAnimation;
-  private int x;
-  private int y;
-  private int width;
-  private int height;
+  private int x, y, width, height;
 
   /**
    * Initializes ShapeImpl.
@@ -125,10 +122,7 @@ public class AnimationImpl implements Animation {
 
   @Override
   public void setBounds(int x, int y, int width, int height) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
+
   }
 
   @Override
@@ -152,7 +146,7 @@ public class AnimationImpl implements Animation {
   /**
    * This is a Builder class capable of building an Animation.
    */
-  public static final class Builder implements AnimationBuilder<Animation> {
+  public final static class Builder implements AnimationBuilder<Animation> {
 
     Animation animation;
 
@@ -191,7 +185,7 @@ public class AnimationImpl implements Animation {
     public AnimationBuilder<Animation> addKeyframe(String name, int t, int x, int y, int w, int h,
         int r, int g, int b) {
       //TODO
-      //Split where the tick belongs and create two separate new motions.
+      //the way to go about this is to split a where the tick belongs and create two separate new motions...
       return this;
     }
   }

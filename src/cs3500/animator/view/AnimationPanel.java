@@ -13,29 +13,26 @@ import java.awt.geom.AffineTransform;
  */
 public class AnimationPanel extends JPanel {
 
-    Animation model;
-    int currentTick;
+  Animation model;
+  int currentTick;
 
-    public AnimationPanel(Animation model) {
-        super();
-        this.model = model;
-        this.setBackground(Color.WHITE);
-    }
+  public AnimationPanel(Animation model) {
+    super();
+    this.model = model;
+    this.setBackground(Color.WHITE);
+  }
 
-    /**
-     * Override the paintComponent method of the JPanel
-     * Do NOT override paint!
-     *
-     * @param g
-     */
+  /**
+   * Override the paintComponent method of the JPanel Do NOT override paint!
+   */
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+  @Override
+  protected void paintComponent(Graphics g) {
+    super.paintComponent(g);
 
-        Graphics2D g2d = (Graphics2D) g;
+    Graphics2D g2d = (Graphics2D) g;
 
-        g2d.setColor(Color.RED);
+    g2d.setColor(Color.RED);
 
     /*
     the origin of the panel is top left. In order
@@ -47,40 +44,41 @@ public class AnimationPanel extends JPanel {
     translating by height.
      */
 
-        AffineTransform originalTransform = g2d.getTransform();
+    AffineTransform originalTransform = g2d.getTransform();
 
-        //the order of transforms is bottom-to-top
-        //so as a result of the two lines below,
-        //each y will first be scaled, and then translated
+    //the order of transforms is bottom-to-top
+    //so as a result of the two lines below,
+    //each y will first be scaled, and then translated
 
-        for (Shape s : model.getShapes().values()) {
-            if (this.currentTick >= s.getFirstTick() && this.currentTick <= s.totalDuration()) {
+    for (Shape s : model.getShapes().values()) {
+      if (this.currentTick >= s.getFirstTick() && this.currentTick <= s.totalDuration()) {
 
-                Texture t = s.getColorAt(currentTick);
-                Color color = new Color((int) t.getRed(), (int) t.getGreen(), (int) t.getBlue());
-                int x = (int) s.getPositionAt(currentTick).getX();
-                int y = (int) s.getPositionAt(currentTick).getY();
-                int w = (int) s.getSizeAt(currentTick).getWidth();
-                int h = (int) s.getSizeAt(currentTick).getHeight();
-                System.out.println(s.getName() + " visible at tick " + this.currentTick + " " + s.getPositionAt(currentTick).toFile() + " " + s.getSizeAt(currentTick).toFile() + " " + s.getColorAt(currentTick).toFile());
+        Texture t = s.getColorAt(currentTick);
+        Color color = new Color((int) t.getRed(), (int) t.getGreen(), (int) t.getBlue());
+        int x = (int) s.getPositionAt(currentTick).getX();
+        int y = (int) s.getPositionAt(currentTick).getY();
+        int w = (int) s.getSizeAt(currentTick).getWidth();
+        int h = (int) s.getSizeAt(currentTick).getHeight();
+        System.out.println(s.getName() + " visible at tick " + this.currentTick + " " + s
+            .getPositionAt(currentTick).toFile() + " " + s.getSizeAt(currentTick).toFile() + " " + s
+            .getColorAt(currentTick).toFile());
 
-                g2d.setColor(color);
-                //if (s.isVisible()) {
-                if (s.getShape().equalsIgnoreCase("rectangle")) {
-                    g2d.fillRect(x, y, w, h);
-                } else if (s.getShape().equalsIgnoreCase("ellipse")) {
-                    g2d.fillOval(x, y, w, h);
-                }
-            }
+        g2d.setColor(color);
+        //if (s.isVisible()) {
+        if (s.getShape().equalsIgnoreCase("rectangle")) {
+          g2d.fillRect(x, y, w, h);
+        } else if (s.getShape().equalsIgnoreCase("ellipse")) {
+          g2d.fillOval(x, y, w, h);
         }
-
-
-        //reset the transform to what it was!
-        g2d.setTransform(originalTransform);
+      }
     }
 
+    //reset the transform to what it was!
+    g2d.setTransform(originalTransform);
+  }
 
-    public void setCurrentTick(int currentTick) {
-        this.currentTick = currentTick;
-    }
+
+  public void setCurrentTick(int currentTick) {
+    this.currentTick = currentTick;
+  }
 }

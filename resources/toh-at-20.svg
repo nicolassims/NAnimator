@@ -2,7 +2,8 @@
   <rect id="disk3" x="181.0" y="171.0" width="36.0" height="7.0" fill="rgb(149.0,83.0,57.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="6.05s" dur="0.5s" attributeName="y" from="171" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="6.6s" dur="0.5s" attributeName="x" from="181" to="331"
@@ -3076,14 +3077,17 @@
     <animate attributeType="xml" begin="6547.95s" dur="0.5s" attributeName="y" from="50" to="171"
       fill="freeze"/>
     <animate attributeType="xml" begin="6548.45s" dur="0.4s" attributeName="fill"
-      from="rgb(149,57,83)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(149,57,83)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="6548.45s" dur="0.4s" attributeName="fill"
-      from="rgb(149,57,83)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(149,57,83)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk4" x="177.0" y="178.0" width="44.0" height="7.0" fill="rgb(197.0,177.0,23.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="12.45s" dur="0.5s" attributeName="y" from="178" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="13.0s" dur="0.5s" attributeName="x" from="177" to="477"
@@ -4621,14 +4625,17 @@
     <animate attributeType="xml" begin="6541.55s" dur="0.5s" attributeName="y" from="50" to="178"
       fill="freeze"/>
     <animate attributeType="xml" begin="6542.05s" dur="0.4s" attributeName="fill"
-      from="rgb(197,23,177)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(197,23,177)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="6542.05s" dur="0.4s" attributeName="fill"
-      from="rgb(197,23,177)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(197,23,177)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk1" x="190.0" y="157.0" width="20.0" height="7.0" fill="rgb(140.0,204.0,117.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="1.25s" dur="0.5s" attributeName="y" from="157" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="1.8s" dur="0.5s" attributeName="x" from="190" to="340"
@@ -16918,14 +16925,17 @@
     <animate attributeType="xml" begin="6552.75s" dur="0.5s" attributeName="y" from="50" to="157"
       fill="freeze"/>
     <animate attributeType="xml" begin="6553.25s" dur="0.4s" attributeName="fill"
-      from="rgb(140,117,204)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(140,117,204)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="6553.25s" dur="0.4s" attributeName="fill"
-      from="rgb(140,117,204)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(140,117,204)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk2" x="185.0" y="164.0" width="28.0" height="7.0" fill="rgb(18.0,118.0,108.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="2.85s" dur="0.5s" attributeName="y" from="164" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="3.4s" dur="0.5s" attributeName="x" from="185" to="485"
@@ -23071,14 +23081,17 @@
     <animate attributeType="xml" begin="6551.15s" dur="0.5s" attributeName="y" from="50" to="164"
       fill="freeze"/>
     <animate attributeType="xml" begin="6551.65s" dur="0.4s" attributeName="fill"
-      from="rgb(18,108,118)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(18,108,118)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="6551.65s" dur="0.4s" attributeName="fill"
-      from="rgb(18,108,118)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(18,108,118)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk7" x="165.0" y="199.0" width="69.0" height="7.0" fill="rgb(88.0,28.0,139.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="102.05s" dur="0.5s" attributeName="y" from="199" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="102.6s" dur="0.5s" attributeName="x" from="165" to="315"
@@ -23272,14 +23285,17 @@
     <animate attributeType="xml" begin="6451.95s" dur="0.5s" attributeName="y" from="50" to="199"
       fill="freeze"/>
     <animate attributeType="xml" begin="6452.45s" dur="0.4s" attributeName="fill"
-      from="rgb(88,139,28)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(88,139,28)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="6452.45s" dur="0.4s" attributeName="fill"
-      from="rgb(88,139,28)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(88,139,28)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk8" x="161.0" y="206.0" width="77.0" height="7.0" fill="rgb(59.0,30.0,204.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="204.45s" dur="0.5s" attributeName="y" from="206" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="205.0s" dur="0.5s" attributeName="x" from="161" to="461"
@@ -23377,14 +23393,17 @@
     <animate attributeType="xml" begin="6349.55s" dur="0.5s" attributeName="y" from="50" to="206"
       fill="freeze"/>
     <animate attributeType="xml" begin="6350.05s" dur="0.4s" attributeName="fill"
-      from="rgb(59,204,30)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(59,204,30)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="6350.05s" dur="0.4s" attributeName="fill"
-      from="rgb(59,204,30)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(59,204,30)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk5" x="173.0" y="185.0" width="52.0" height="7.0" fill="rgb(201.0,209.0,153.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="25.25s" dur="0.5s" attributeName="y" from="185" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="25.8s" dur="0.5s" attributeName="x" from="173" to="323"
@@ -24154,14 +24173,17 @@
     <animate attributeType="xml" begin="6528.75s" dur="0.5s" attributeName="y" from="50" to="185"
       fill="freeze"/>
     <animate attributeType="xml" begin="6529.25s" dur="0.4s" attributeName="fill"
-      from="rgb(201,153,209)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(201,153,209)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="6529.25s" dur="0.4s" attributeName="fill"
-      from="rgb(201,153,209)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(201,153,209)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk6" x="169.0" y="192.0" width="60.0" height="7.0" fill="rgb(50.0,217.0,72.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="50.85s" dur="0.5s" attributeName="y" from="192" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="51.4s" dur="0.5s" attributeName="x" from="169" to="469"
@@ -24547,14 +24569,17 @@
     <animate attributeType="xml" begin="6503.15s" dur="0.5s" attributeName="y" from="50" to="192"
       fill="freeze"/>
     <animate attributeType="xml" begin="6503.65s" dur="0.4s" attributeName="fill"
-      from="rgb(50,72,217)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(50,72,217)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="6503.65s" dur="0.4s" attributeName="fill"
-      from="rgb(50,72,217)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(50,72,217)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk12" x="145.0" y="234.0" width="110.0" height="7.0" fill="rgb(50.0,163.0,45.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="3276.45s" dur="0.5s" attributeName="y" from="234" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="3277.0s" dur="0.5s" attributeName="x" from="145" to="445"
@@ -24562,14 +24587,17 @@
     <animate attributeType="xml" begin="3277.55s" dur="0.5s" attributeName="y" from="50" to="234"
       fill="freeze"/>
     <animate attributeType="xml" begin="3278.05s" dur="0.4s" attributeName="fill"
-      from="rgb(50,45,163)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(50,45,163)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="3278.05s" dur="0.4s" attributeName="fill"
-      from="rgb(50,45,163)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(50,45,163)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk9" x="157.0" y="213.0" width="85.0" height="7.0" fill="rgb(143.0,11.0,132.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="409.25s" dur="0.5s" attributeName="y" from="213" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="409.8s" dur="0.5s" attributeName="x" from="157" to="307"
@@ -24619,14 +24647,17 @@
     <animate attributeType="xml" begin="6144.75s" dur="0.5s" attributeName="y" from="50" to="213"
       fill="freeze"/>
     <animate attributeType="xml" begin="6145.25s" dur="0.4s" attributeName="fill"
-      from="rgb(143,132,11)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(143,132,11)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="6145.25s" dur="0.4s" attributeName="fill"
-      from="rgb(143,132,11)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(143,132,11)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk10" x="153.0" y="220.0" width="93.0" height="7.0" fill="rgb(73.0,243.0,19.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="818.85s" dur="0.5s" attributeName="y" from="220" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="819.4s" dur="0.5s" attributeName="x" from="153" to="453"
@@ -24652,14 +24683,17 @@
     <animate attributeType="xml" begin="5735.15s" dur="0.5s" attributeName="y" from="50" to="220"
       fill="freeze"/>
     <animate attributeType="xml" begin="5735.65s" dur="0.4s" attributeName="fill"
-      from="rgb(73,19,243)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(73,19,243)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="5735.65s" dur="0.4s" attributeName="fill"
-      from="rgb(73,19,243)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(73,19,243)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
   <rect id="disk11" x="149.0" y="227.0" width="101.0" height="7.0" fill="rgb(212.0,201.0,112.0)"
     visibility="hidden">
     <animate attributeType="xml" begin="0.05s" dur="0.01s" attributeName="visibility" from="hidden"
-      to="visible" fill="freeze"/>
+      to="visible"
+      fill="freeze"/>
     <animate attributeType="xml" begin="1638.05s" dur="0.5s" attributeName="y" from="227" to="50"
       fill="freeze"/>
     <animate attributeType="xml" begin="1638.6s" dur="0.5s" attributeName="x" from="149" to="299"
@@ -24673,8 +24707,10 @@
     <animate attributeType="xml" begin="4915.95s" dur="0.5s" attributeName="y" from="50" to="227"
       fill="freeze"/>
     <animate attributeType="xml" begin="4916.45s" dur="0.4s" attributeName="fill"
-      from="rgb(212,112,201)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(212,112,201)"
+      to="rgb(0,255,0)" fill="freeze"/>
     <animate attributeType="xml" begin="4916.45s" dur="0.4s" attributeName="fill"
-      from="rgb(212,112,201)" to="rgb(0,255,0)" fill="freeze"/>
+      from="rgb(212,112,201)"
+      to="rgb(0,255,0)" fill="freeze"/>
   </rect>
 </svg>

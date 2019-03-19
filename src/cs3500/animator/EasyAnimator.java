@@ -10,15 +10,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-/**
- * This class runs an Animation.
- */
 public final class EasyAnimator {
 
-  /**
-   * Runs an animation, taking parameters to modify the animation's qualities.
-   * @param args The parameters that modify the animation's qualities.
-   */
   public static void main(String[] args) {
     String inArg = "";
     String viewArg = "";
@@ -42,8 +35,6 @@ public final class EasyAnimator {
         case "-speed":
           speedArg = Float.parseFloat(value);
           break;
-        default:
-          throw new IllegalArgumentException("No such command is recognized.");
       }
     }
 
