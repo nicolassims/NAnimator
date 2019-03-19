@@ -9,6 +9,8 @@ import cs3500.animator.view.ViewFactoryImpl;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  * This class visualizes a single animation.
@@ -40,9 +42,17 @@ public final class EasyAnimator {
           viewArg = value;
           break;
         case "-speed":
-          speedArg = Float.parseFloat(value);
+          try {
+            speedArg = Float.parseFloat(value);
+          } catch (NumberFormatException e) {
+            JFrame frame = new JFrame("Error Message");
+            JOptionPane.showMessageDialog(frame, "Not a valid speed.");
+            throw new IllegalArgumentException("Not a valid speed!");
+          }
           break;
         default:
+          JFrame frame = new JFrame("Error Message");
+          JOptionPane.showMessageDialog(frame, "Unsupported command.");
           throw new IllegalArgumentException("Unsupported command!");
       }
     }
