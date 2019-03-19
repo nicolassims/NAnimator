@@ -4,9 +4,11 @@ import cs3500.animator.model.Animation;
 import cs3500.animator.model.Shape;
 import cs3500.animator.model.qualities.color.Texture;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import javax.swing.JPanel;
 
 /**
  * It's a Java Swing Panel Capable of drawing animations.

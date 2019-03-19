@@ -4,7 +4,11 @@ import cs3500.animator.model.qualities.color.TextureImpl;
 import cs3500.animator.model.qualities.dimensions.Size2D;
 import cs3500.animator.model.qualities.positions.Position2D;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Stack;
 
 /**
  * This class represents a collection of Shapes that could be displayed during one animation.

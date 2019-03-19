@@ -2,10 +2,11 @@ package cs3500.animator.view;
 
 import cs3500.animator.model.Animation;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JFrame;
 
 /**
  * This view is capable to interpret and draw an animation model on a JavaFx window.

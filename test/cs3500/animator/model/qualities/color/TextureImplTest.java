@@ -2,10 +2,9 @@ package cs3500.animator.model.qualities.color;
 
 import cs3500.animator.model.qualities.dimensions.Size2D;
 import cs3500.animator.model.qualities.positions.Position2D;
+import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.awt.*;
 
 import static org.junit.Assert.assertEquals;
 
