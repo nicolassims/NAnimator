@@ -47,7 +47,7 @@ public class SVGViewImplTest {
    */
   @Test
   public void SVGViewWithSpeed() {
-    String string = "-view svg -in toh-12.txt -out new-toh-at-20.svg -speed 20";
+    String string = "-view svg -in toh-8.txt -out new-toh-at-20.svg -speed 20";
     EasyAnimator.main(string.split(" "));
     StringBuilder contentBuilder = new StringBuilder();
     try (Stream<String> stream = Files

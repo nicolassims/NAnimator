@@ -16,10 +16,6 @@ import java.util.Map;
 public class SVGViewImpl implements View {
 
   private float ticksPerSecond = 1;
-  private int x = 0;
-  private int y = 0;
-  private int w = 700;
-  private int h = 500;
   private String outputDestination = "System.out";
   private BufferedWriter writer;
 
@@ -36,6 +32,10 @@ public class SVGViewImpl implements View {
     String yname = "y";
     String widthname = "width";
     String heightname = "height";
+    int x = model.getX();
+    int y = model.getY();
+    int w = model.getCanvasWidth();
+    int h = model.getCanvasHeight();
     StringBuilder viewString = new StringBuilder();
     viewString.append("<svg viewBox=\"").append(x).append(" ").append(y).append(" ").append(w)
         .append(" ").append(h).append("\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n");
