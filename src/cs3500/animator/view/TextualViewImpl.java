@@ -4,10 +4,6 @@ import static cs3500.animator.view.FileWriter.writeToDestination;
 
 import cs3500.animator.model.Animation;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-
 /**
  * This class represents the formatted text that can be used to create an Animation.
  */

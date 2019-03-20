@@ -6,9 +6,6 @@ import cs3500.animator.model.Animation;
 import cs3500.animator.model.Motion;
 import cs3500.animator.model.Shape;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
