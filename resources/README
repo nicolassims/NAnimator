@@ -5,13 +5,16 @@ Enums:
 Interfaces:
   Animation        -- implemented by AnimationImpl.
   AnimationBuilder -- implemented by Builder.
+  FileWriter       -- implemented by nothing, contains a static method.
   Keyframe         -- implemented by KeyframeImpl.
   Motion           -- implemented by MotionImpl.
   Position         -- implemented by Position2D.
   Shape            -- implemented by ShapeImpl.
   Size             -- implemented by Size2D.
   Texture          -- implemented by Texture2D.
-  View             -- implemented by SVGViewImpl, TextualViewImpl, VisualViewImpl.
+  View             -- implemented by SVGViewImpl, TextualViewImpl, VisualView.
+  ViewFactory      -- implemented by ViewFactoryImpl.
+  VisualView       -- implemented by VisualViewImpl.
 
 Classes:
   AnimationImpl    -- Represents a collection of Shapes that could be displayed during one animation.
@@ -25,10 +28,11 @@ Classes:
   SVGViewImpl      -- Represents the formatted text used to create an SVG File.
   TextualViewImpl  -- Represents the formatted text that can be used to create an Animation.
   TextureImpl      -- Represents a color that some shape could display.
+  ViewFactoryImpl  -- Builds a view based on the string parameter passed in to its getView.
   VisualViewImpl   -- Interprets and draws an animation model on a JavaFx window.
 
 Implementation notes:
-  A shape is invisible up until its first motion occurs.
+  In SVG files, a shape is invisible up until its first motion occurs.
   Default ticksPerSecond is 1.
   Default output location is System.out.
 
@@ -36,5 +40,5 @@ Notes for file I/O:
   Files to be read from must be placed in resources file.
   Generated files are similarly placed in resources file.
 
-Design changes since last assignment:
+Design *changes* since last assignment:
   We added a lot of new getters so the view and model could communicate more easily.

@@ -1,5 +1,7 @@
 package cs3500.animator.view;
 
+import static cs3500.animator.view.FileWriter.writeToDestination;
+
 import cs3500.animator.model.Animation;
 import cs3500.animator.model.Motion;
 import cs3500.animator.model.Shape;
@@ -14,10 +16,8 @@ import java.util.Map;
  * This class represents the formatted text used to create an SVG File.
  */
 public class SVGViewImpl implements View {
-
   private float ticksPerSecond = 1;
   private String outputDestination = "System.out";
-  private BufferedWriter writer;
 
   @Override
   public void setTicksPerSecond(float i) {
@@ -110,41 +110,11 @@ public class SVGViewImpl implements View {
       viewString.append(endtag);
     }
     viewString.append("</svg>");
-
-    if (outputDestination.equals("System.out")) {
-      System.out.println(viewString.toString());
-    } else {
-      try {
-        writer = new BufferedWriter(new FileWriter(this.outputDestination));
-        writer.write(viewString.toString());
-      } catch (IOException e) {
-        e.printStackTrace();
-      } finally {
-        try {
-          if (writer != null) {
-            writer.close();
-          } else {
-            System.out.println("Buffer has not been initialized!");
-          }
-        } catch (IOException e) {
-          e.printStackTrace();
-        }
-      }
-    }
+    writeToDestination(this.outputDestination, viewString.toString());
   }
 
   @Override
   public void setOutputDestination(String outArg) {
     this.outputDestination = outArg;
-  }
-
-  @Override
-  public void setCurrentTick(int currentTick) {
-    //Implemented but empty for future compatibility with a controller.
-  }
-
-  @Override
-  public void refresh() {
-    //Implemented but empty for future compatibility with a controller.
   }
 }

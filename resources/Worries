@@ -1,8 +1,8 @@
---Does the main method sanitize input properly? [SOLVED]
-??Is there absolutely no way we can prevent our classes from relying on methods that they don't need?
-??Can we prevent the duplicate code in the SVGViewImpl and TextualViewImpl?
+--Does the main method sanitize input properly? [SOLVED by Nicolas]
+--Is there absolutely no way we can prevent our classes from relying on methods that they don't need? [SOLVED by Nicolas]
+-- Can we prevent the duplicate code in the SVGViewImpl and TextualViewImpl? [SOLVED by Nicolas]
 ??Can we implement more tests?
---Does SVGViewImpl need to be refactored now it doesn't have a dimension-setter anymore? [SOLVED]
---Why is one of our tests failing? [SOLVED]
---Have we included all extra files the assignment asks for? [SOLVED]
---Why do the buildings not display properly? [SOLVED]
+--Does SVGViewImpl need to be refactored now it doesn't have a dimension-setter anymore? [SOLVED by Nicolas]
+--Why are three of our tests failing? [SOLVED by Nicolas]
+--Have we included all extra files the assignment asks for? [SOLVED by Nicolas]
+--Why do the buildings not display properly? [SOLVED by Luis]

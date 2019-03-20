@@ -22,14 +22,4 @@ public interface View {
    * the command line.
    */
   void setOutputDestination(String outArg);
-
-  /**
-   * Sets the current tick the model is at.
-   */
-  void setCurrentTick(int currentTick);
-
-  /**
-   * Refreshes the view after setting a new current tick.
-   */
-  void refresh();
 }

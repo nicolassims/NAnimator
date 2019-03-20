@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 /**
  * This view is capable to interpret and draw an animation model on a JavaFx window.
  */
-public class VisualViewImpl extends JFrame implements View {
+public class VisualViewImpl extends JFrame implements VisualView {
 
   private float ticksPerSecond = 1;
   private AnimationPanel animationPanel;
