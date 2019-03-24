@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 /**
  * This view is capable to interpret and draw an animation model on a JavaFx window.
  */
-public class VisualViewImpl extends JFrame implements VisualView {
+public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView {
 
   private float ticksPerSecond = 1;
   private AnimationPanel animationPanel;
@@ -54,11 +54,6 @@ public class VisualViewImpl extends JFrame implements VisualView {
     // And From your main() method or any other method
     java.util.Timer timer = new Timer();
     timer.schedule(new Refresh(), 0, (long) (1000 / this.ticksPerSecond));
-  }
-
-  @Override
-  public void setOutputDestination(String outArg) {
-    //Included for compatibility purposes
   }
 
   @Override

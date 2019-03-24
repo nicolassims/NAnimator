@@ -7,12 +7,11 @@ import cs3500.animator.model.Motion;
 import cs3500.animator.model.Shape;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * This class represents the formatted text used to create an SVG File.
  */
-public class SVGViewImpl implements View {
+public class SVGViewImpl implements TextBasedView, TimeBasedView {
   private float ticksPerSecond = 1;
   private String outputDestination = "System.out";
 
@@ -32,7 +31,6 @@ public class SVGViewImpl implements View {
     StringBuilder viewString = new StringBuilder();
     viewString.append("<svg viewBox=\"").append(x).append(" ").append(y).append(" ").append(w)
         .append(" ").append(h).append("\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">\n");
-    Map<String, Shape> shapes = model.getShapes();
 
     for (int i = 0; i < model.getShapeNames().size(); i++) {
       Shape shape = model.getShapes().get(model.getShapeNames().get(i));

@@ -7,7 +7,7 @@ import cs3500.animator.model.Animation;
 /**
  * This class represents the formatted text that can be used to create an Animation.
  */
-public class TextualViewImpl implements View {
+public class TextualViewImpl implements TextBasedView {
   private String outputDestination;
 
   @Override
@@ -25,8 +25,4 @@ public class TextualViewImpl implements View {
     this.outputDestination = outArg;
   }
 
-  @Override
-  public void setTicksPerSecond(float i) {
-    //Implemented but empty for future compatibility with a controller.
-  }
 }
