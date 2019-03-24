@@ -210,8 +210,51 @@ public class AnimationImpl implements Animation {
     @Override
     public AnimationBuilder<Animation> addKeyframe(String name, int t, int x, int y, int w, int h,
         int r, int g, int b) {
-      //TODO
-      //Split where the tick belongs and create two separate new motions.
+      if (this.animation.getShapeNames().contains(name)) {
+        Shape thisShape = this.animation.getShapes().get(name);
+        List<Motion> motions = thisShape.getMotions();
+        Keyframe newKeyframe = new KeyframeImpl(t, new Position2D(x, y), new Size2D(w, h),
+            new TextureImpl(r, g, b, 1));
+          /* If the shape has no motions */
+        if (motions.size() == 0) {
+          motions.add(new MotionImpl(0, 0, thisShape, newKeyframe, newKeyframe));
+          /* If t is before the first motion in the shape. */
+        } else if (t < motions.get(0).getStartFrame().getTick()) {
+          motions.add(0, new MotionImpl(t, motions.get(0).getStartFrame().getTick(),
+              thisShape, newKeyframe, motions.get(0).getStartFrame()));
+          /* If t is after the last motion of the shape. */
+        } else if (t > motions.get(motions.size() - 1).getEndFrame().getTick()) {
+          motions.add(new MotionImpl(motions.get(motions.size() - 1).getEndFrame().getTick(), t,
+              thisShape, motions.get(motions.size() - 1).getEndFrame(), newKeyframe));
+        } else {
+          for (int i = 0; i < motions.size(); i++) {
+            /* If a startFrame already exists at t, overwrite it.*/
+            if (motions.get(i).getStartFrame().getTick() == t) {
+              motions.get(i).setStartFrame(x, y, w, h, r, g, b);
+            /* If an endFrame already exists at t, overwrite it.*/
+            } else if (motions.get(i).getEndFrame().getTick() == t) {
+              motions.get(i).setEndFrame(x, y, w, h, r, g, b);
+            /* If t is between two other motions.*/
+            } else if (i != motions.size() - 1 && motions.get(i).getEndFrame().getTick() < t
+                && motions.get(i + 1).getStartFrame().getTick() > t) {
+              motions.add(i + 1, new MotionImpl(motions.get(i).getEndFrame().getTick(),
+                  t, thisShape, motions.get(i).getEndFrame(),
+                  newKeyframe));
+              motions.add(i + 2, new MotionImpl(t, motions.get(i + 2).getStartFrame().getTick(),
+                  thisShape, newKeyframe,
+                  motions.get(i + 2).getStartFrame()));
+            /* If t is within an existing motion */
+            } else if (motions.get(i).getStartFrame().getTick() < t
+                && motions.get(i).getEndFrame().getTick() > t) {
+              Keyframe saveEndframe = motions.get(i).getEndFrame();
+              motions.set(i, new MotionImpl(motions.get(i).getStartFrame().getTick(), t,
+                  thisShape, motions.get(i).getStartFrame(), newKeyframe));
+              motions.add(i + 1, new MotionImpl(t, saveEndframe.getTick(),
+                  thisShape, newKeyframe, saveEndframe));
+            }
+          }
+        }
+      }
       return this;
     }
 
@@ -261,6 +304,4 @@ public class AnimationImpl implements Animation {
       return this;
     }
   }
-
-
 }
