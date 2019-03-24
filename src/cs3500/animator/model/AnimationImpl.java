@@ -218,11 +218,28 @@ public class AnimationImpl implements Animation {
     @Override
     public AnimationBuilder<Animation> deleteKeyFrame(String name, int t) {
       if (this.animation.getShapeNames().contains(name)) {
-        for (Motion motion : this.animation.getShapes().get(name).getMotions()) {
-          if (motion.getStartFrame().getTick() == t) {
-
-          } else if (motion.getEndFrame().getTick() == t) {
-
+        List<Motion> motions = this.animation.getShapes().get(name).getMotions();
+        for (int i = 0; i < motions.size(); i++) {
+          if (motions.get(i).getStartFrame().getTick() == t) {
+            motions.get(i).setStartFrame(motions.get(i == 0 ? i : i - 1).getEndFrame());
+          } else if (motions.get(i).getEndFrame().getTick() == t) {
+            if (i != motions.size() - 1) {
+              motions.get(i).setEndFrame(motions.get(i).getStartFrame());
+            } else {
+              /*If the last keyframe of the shape is removed, than the total length of this motion
+               * is 0, and, as such, is not worth keeping.
+               */
+              motions.remove(i);
+            }
+          }
+          /* If this isn't the first motion, but the last motion has the same endFrame as this
+           * motion's startFrame, make this motion's startFrame the same as the last motion's
+           * startFrame. Then delete the last motion. This ensures every list of motions is short
+           * as possible.
+           */
+          if (i != 0 && motions.get(i).getStartFrame() == motions.get(i - 1).getEndFrame()) {
+            motions.get(i).setStartFrame(motions.get(i - 1).getStartFrame());
+            motions.remove(i - 1);
           }
         }
       }
