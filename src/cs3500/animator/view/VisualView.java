@@ -13,4 +13,10 @@ public interface VisualView extends View {
    * Refreshes the view after setting a new current tick.
    */
   void refresh();
+
+  /**
+   * Gets the number of ticks per second the animation is running at right now.
+   * @return the number of ticks per second the animation is running at right now.
+   */
+  float getTicksPerSecond();
 }
