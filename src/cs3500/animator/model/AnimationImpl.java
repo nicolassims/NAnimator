@@ -214,6 +214,35 @@ public class AnimationImpl implements Animation {
       //Split where the tick belongs and create two separate new motions.
       return this;
     }
+
+    @Override
+    public AnimationBuilder<Animation> deleteKeyFrame(String name, int t) {
+      if (this.animation.getShapeNames().contains(name)) {
+        for (Motion motion : this.animation.getShapes().get(name).getMotions()) {
+          if (motion.getStartFrame().getTick() == t) {
+
+          } else if (motion.getEndFrame().getTick() == t) {
+
+          }
+        }
+      }
+      return this;
+    }
+
+    @Override
+    public AnimationBuilder<Animation> setKeyFrame(String name, int t, int x, int y, int w, int h,
+        int r, int g, int b) {
+      if (this.animation.getShapeNames().contains(name)) {
+        for (Motion motion : this.animation.getShapes().get(name).getMotions()) {
+          if (motion.getStartFrame().getTick() == t) {
+            motion.setStartFrame(x, y, w, h, r, g, b);
+          } else if (motion.getEndFrame().getTick() == t) {
+            motion.setEndFrame(x, y, w, h, r, g, b);
+          }
+        }
+      }
+      return this;
+    }
   }
 
 

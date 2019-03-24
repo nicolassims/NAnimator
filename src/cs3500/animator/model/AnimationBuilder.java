@@ -28,9 +28,9 @@ public interface AnimationBuilder<Doc> {
    * Adds a new shape to the growing document.
    *
    * @param name The unique name of the shape to be added. No shape with this name should already
-   *             exist.
+   * exist.
    * @param type The type of shape (e.g. "ellipse", "rectangle") to be added. The set of supported
-   *             shapes is unspecified, but should include "ellipse" and "rectangle" as a minimum.
+   * shapes is unspecified, but should include "ellipse" and "rectangle" as a minimum.
    * @return This {@link AnimationBuilder}
    */
   AnimationBuilder<Doc> declareShape(String name, String type);
@@ -76,5 +76,33 @@ public interface AnimationBuilder<Doc> {
    * @return This {@link AnimationBuilder}
    */
   AnimationBuilder<Doc> addKeyframe(String name,
+      int t, int x, int y, int w, int h, int r, int g, int b);
+
+  /**
+   * Deletes an established keyframe in the document. Does nothing if no keyframe exists at the
+   * passed-in time. an individual keyframe to the growing document.
+   *
+   * @param name The name of the shape (added with {@link AnimationBuilder#declareShape})
+   * @param t The time for this keyframe
+   * @return This {@link AnimationBuilder}
+   */
+  AnimationBuilder<Doc> deleteKeyFrame(String name, int t);
+
+  /**
+   * Sets a pre-existing keyframe to be something else.Does nothing if no keyframe exists at the
+   * passed-in time.
+   *
+   * @param name The name of the shape (added with {@link AnimationBuilder#declareShape})
+   * @param t The time for this keyframe
+   * @param x The x-position of the shape
+   * @param y The y-position of the shape
+   * @param w The width of the shape
+   * @param h The height of the shape
+   * @param r The red color-value of the shape
+   * @param g The green color-value of the shape
+   * @param b The blue color-value of the shape
+   * @return This {@link AnimationBuilder}
+   */
+  AnimationBuilder<Doc> setKeyFrame(String name,
       int t, int x, int y, int w, int h, int r, int g, int b);
 }

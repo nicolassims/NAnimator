@@ -1,5 +1,9 @@
 package cs3500.animator.model;
 
+import cs3500.animator.model.qualities.color.TextureImpl;
+import cs3500.animator.model.qualities.dimensions.Size2D;
+import cs3500.animator.model.qualities.positions.Position2D;
+
 /**
  * This class represents a motion affecting one shape across some range of ticks.
  */
@@ -79,5 +83,15 @@ public class MotionImpl implements Motion {
   @Override
   public int getFirstTick() {
     return startFrame.getTick();
+  }
+
+  @Override
+  public void setStartFrame(int x, int y, int w, int h, int r, int g, int b) {
+    startFrame = new KeyframeImpl(startFrame.getTick(), new Position2D(x, y), new Size2D(w, h), new TextureImpl(r, g, b, 1));
+  }
+
+  @Override
+  public void setEndFrame(int x, int y, int w, int h, int r, int g, int b) {
+    endFrame = new KeyframeImpl(startFrame.getTick(), new Position2D(x, y), new Size2D(w, h), new TextureImpl(r, g, b, 1));
   }
 }

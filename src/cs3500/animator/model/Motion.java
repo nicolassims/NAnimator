@@ -54,4 +54,28 @@ public interface Motion {
    * Returns the first tick this motion occurs on.
    */
   int getFirstTick();
+
+  /**
+   * Sets the start frame of the motion to be something new, though it occurs at the same time.
+   * @param x the location of the left side of the shape during this new frame.
+   * @param y the location of the top side of the shape during this new frame.
+   * @param w the width of the shape during this new frame.
+   * @param h the height of the shape during this new frame.
+   * @param r the redness of the shape during this new frame.
+   * @param g the greenness of the shape during this new frame.
+   * @param b the blueness of the shape during this new frame.
+   */
+  void setStartFrame(int x, int y, int w, int h, int r, int g, int b);
+
+  /**
+   * Sets the end frame of the motion to be something new, though it occurs at the same time.
+   * @param x the location of the left side of the shape during this new frame.
+   * @param y the location of the top side of the shape during this new frame.
+   * @param w the width of the shape during this new frame.
+   * @param h the height of the shape during this new frame.
+   * @param r the redness of the shape during this new frame.
+   * @param g the greenness of the shape during this new frame.
+   * @param b the blueness of the shape during this new frame.
+   */
+  void setEndFrame(int x, int y, int w, int h, int r, int g, int b);
 }
