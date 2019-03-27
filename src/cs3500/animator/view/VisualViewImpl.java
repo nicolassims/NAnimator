@@ -70,4 +70,9 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
   public float getTicksPerSecond() {
     return ticksPerSecond;
   }
+
+  @Override
+  public void makeVisible() {
+    this.setVisible(true);
+  }
 }
