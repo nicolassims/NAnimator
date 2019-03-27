@@ -135,7 +135,7 @@ public class AnimationImpl implements Animation {
 
   @Override
   public AnimationBuilder<Animation> getBuilder() {
-    return new Builder();
+    return new Builder(this);
   }
 
   @Override
@@ -176,8 +176,20 @@ public class AnimationImpl implements Animation {
 
     Animation animation;
 
+    /**
+     * Creates a builder with no animation. Seems pointless.
+     */
     public Builder() {
-      this.animation = new AnimationImpl();
+      this(new AnimationImpl());
+    }
+
+    /**
+     * Creates a builder based on a pre-existing animation.
+     *
+     * @param anime The pre-existing animation to be built.
+     */
+    public Builder(Animation anime) {
+      this.animation = anime;
     }
 
     @Override
@@ -254,6 +266,8 @@ public class AnimationImpl implements Animation {
             }
           }
         }
+      } else {
+        throw new IllegalArgumentException(name + " is not a valid shape name.");
       }
       return this;
     }
@@ -262,10 +276,13 @@ public class AnimationImpl implements Animation {
     public AnimationBuilder<Animation> deleteKeyFrame(String name, int t) {
       if (this.animation.getShapeNames().contains(name)) {
         List<Motion> motions = this.animation.getShapes().get(name).getMotions();
+        Boolean frameFound = false;
         for (int i = 0; i < motions.size(); i++) {
           if (motions.get(i).getStartFrame().getTick() == t) {
+            frameFound = true;
             motions.get(i).setStartFrame(motions.get(i == 0 ? i : i - 1).getEndFrame());
           } else if (motions.get(i).getEndFrame().getTick() == t) {
+            frameFound = true;
             if (i != motions.size() - 1) {
               motions.get(i).setEndFrame(motions.get(i).getStartFrame());
             } else {
@@ -273,18 +290,28 @@ public class AnimationImpl implements Animation {
                * is 0, and, as such, is not worth keeping.
                */
               motions.remove(i);
+              break;
             }
           }
-          /* If this isn't the first motion, but the last motion has the same endFrame as this
-           * motion's startFrame, make this motion's startFrame the same as the last motion's
-           * startFrame. Then delete the last motion. This ensures every list of motions is short
-           * as possible.
+          /* If this isn't the first motion, but the last motion has the same startFrame and
+           * endFrame as this motion's startFrame, make this motion's startFrame the same as the
+           * last motion's startFrame. Then delete the last motion. This ensures every list of
+           * motions has no zero-duration motions with no change from one point to the other.
+           * However, this only applies to affected motions. If the shapes were set up to have
+           * "dead" motions, running deleteKeyFrame won't fix that.
            */
-          if (i != 0 && motions.get(i).getStartFrame() == motions.get(i - 1).getEndFrame()) {
-            motions.get(i).setStartFrame(motions.get(i - 1).getStartFrame());
+          if (i != 0 && motions.get(i).getStartFrame().toFile()
+              .equals(motions.get(i - 1).getStartFrame().toFile()) &&
+              motions.get(i - 1).getStartFrame().toFile()
+                  .equals(motions.get(i - 1).getEndFrame().toFile())) {
             motions.remove(i - 1);
           }
         }
+        if (!frameFound) {
+          throw new IllegalArgumentException("There is not a frame located at " + t + ".");
+        }
+      } else {
+        throw new IllegalArgumentException(name + " is not a valid shape name.");
       }
       return this;
     }
@@ -293,13 +320,21 @@ public class AnimationImpl implements Animation {
     public AnimationBuilder<Animation> setKeyFrame(String name, int t, int x, int y, int w, int h,
         int r, int g, int b) {
       if (this.animation.getShapeNames().contains(name)) {
+        Boolean frameFound = false;
         for (Motion motion : this.animation.getShapes().get(name).getMotions()) {
           if (motion.getStartFrame().getTick() == t) {
             motion.setStartFrame(x, y, w, h, r, g, b);
+            frameFound = true;
           } else if (motion.getEndFrame().getTick() == t) {
             motion.setEndFrame(x, y, w, h, r, g, b);
+            frameFound = true;
           }
         }
+        if (!frameFound) {
+          throw new IllegalArgumentException("There is not a frame located at " + t + ".");
+        }
+      } else {
+        throw new IllegalArgumentException(name + " is not a valid shape name.");
       }
       return this;
     }

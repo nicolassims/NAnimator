@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class AnimationImplTest {
 
-  Animation exampleModel;
+  protected Animation exampleModel;
 
   @Before
   public void setUp() throws Exception {

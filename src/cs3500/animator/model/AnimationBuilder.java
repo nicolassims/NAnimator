@@ -80,7 +80,7 @@ public interface AnimationBuilder<Doc> {
 
   /**
    * Deletes an established keyframe in the document. Does nothing if no keyframe exists at the
-   * passed-in time. an individual keyframe to the growing document.
+   * passed-in time.
    *
    * @param name The name of the shape (added with {@link AnimationBuilder#declareShape})
    * @param t The time for this keyframe
@@ -89,7 +89,7 @@ public interface AnimationBuilder<Doc> {
   AnimationBuilder<Doc> deleteKeyFrame(String name, int t);
 
   /**
-   * Sets a pre-existing keyframe to be something else.Does nothing if no keyframe exists at the
+   * Sets a pre-existing keyframe to be something else. Does nothing if no keyframe exists at the
    * passed-in time.
    *
    * @param name The name of the shape (added with {@link AnimationBuilder#declareShape})

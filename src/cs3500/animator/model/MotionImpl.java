@@ -98,7 +98,7 @@ public class MotionImpl implements Motion {
 
   @Override
   public void setEndFrame(int x, int y, int w, int h, int r, int g, int b) {
-    endFrame = new KeyframeImpl(startFrame.getTick(), new Position2D(x, y), new Size2D(w, h),
+    endFrame = new KeyframeImpl(endFrame.getTick(), new Position2D(x, y), new Size2D(w, h),
         new TextureImpl(r, g, b, 1));
   }
 
