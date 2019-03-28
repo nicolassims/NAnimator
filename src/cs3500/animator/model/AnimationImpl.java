@@ -219,7 +219,7 @@ public class AnimationImpl implements Animation {
         List<Motion> motions = thisShape.getMotions();
         Keyframe newKeyframe = new KeyframeImpl(t, new Position2D(x, y), new Size2D(w, h),
             new TextureImpl(r, g, b, 1));
-          /* If the shape has no motions */
+        /* If the shape has no motions */
         if (motions.size() == 0) {
           motions.add(new MotionImpl(0, 0, thisShape, newKeyframe, newKeyframe));
           /* If t is before the first motion in the shape. */

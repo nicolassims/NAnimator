@@ -21,7 +21,7 @@ public class MotionImpl implements Motion {
    * @param startFrame The state of this motion on its first frame.
    * @param endFrame The state of this motion on its last frame.
    * @throws IllegalArgumentException if the tick measurements are impossible, or if any of the
-   * constructor's variables are null.
+   *                                  constructor's variables are null.
    */
   public MotionImpl(int startTick, int endTick, Shape parent,
       Keyframe startFrame, Keyframe endFrame) {
