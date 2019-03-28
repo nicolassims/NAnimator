@@ -1,78 +1,23 @@
 package cs3500.animator.view;
 
 import cs3500.animator.model.Animation;
-import cs3500.animator.model.Shape;
-import cs3500.animator.model.qualities.color.Texture;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
-import javax.swing.JPanel;
+import java.awt.*;
 
-/**
- * It's a Java Swing Panel Capable of drawing animations.
- */
-public class AnimationPanel extends JPanel {
+public interface AnimationPanel {
 
-  private Animation model;
-  private int currentTick;
+    /**
+     * Sets the current tick
+     */
+    void setCurrentTick(int currentTick);
 
-  /**
-   * Constructs an AnimationPanel based around a provided model.
-   *
-   * @param model The model the AnimationPanel is based around.
-   */
-  public AnimationPanel(Animation model) {
-    super();
-    this.model = model;
-    this.setBackground(Color.WHITE);
-  }
+    /**
+     * Sets the model to represent.
+     */
+    void setModel(Animation model);
 
-  /**
-   * Override the paintComponent method of the JPanel. Do NOT override paint!
-   */
-  @Override
-  protected void paintComponent(Graphics g) {
-    super.paintComponent(g);
-
-    Graphics2D g2d = (Graphics2D) g;
-
-    g2d.setColor(Color.RED);
-
-    AffineTransform originalTransform = g2d.getTransform();
-
-    for (int i = 0; i < model.getShapeNames().size(); i++) {
-      Shape s = model.getShapes().get(model.getShapeNames().get(i));
-      if (this.currentTick >= s.getFirstTick() && this.currentTick <= s.totalDuration()) {
-
-        Texture t = s.getColorAt(currentTick);
-        Color color = new Color((int) t.getRed(), (int) t.getGreen(), (int) t.getBlue());
-        int x = (int) s.getPositionAt(currentTick).getX();
-        int y = (int) s.getPositionAt(currentTick).getY();
-        int w = (int) s.getSizeAt(currentTick).getWidth();
-        int h = (int) s.getSizeAt(currentTick).getHeight();
-        System.out.println(s.getName() + " visible at tick " + this.currentTick + " " + s
-            .getPositionAt(currentTick).toFile() + " " + s.getSizeAt(currentTick).toFile() + " " + s
-            .getColorAt(currentTick).toFile());
-
-        g2d.setColor(color);
-        if (s.getShape().equalsIgnoreCase("rectangle")) {
-          g2d.fillRect(x, y, w, h);
-        } else if (s.getShape().equalsIgnoreCase("ellipse")) {
-          g2d.fillOval(x, y, w, h);
-        }
-      } else {
-        System.out.println(s.getName() + " NOT visible at tick " + this.currentTick);
-      }
-    }
-
-    //reset the transform to what it was!
-    g2d.setTransform(originalTransform);
-  }
-
-
-  public void setCurrentTick(int currentTick) {
-    this.currentTick = currentTick;
-  }
+    /**
+     * Sets the preferred size
+     */
+    void setPreferredSize(Dimension dimension);
 }

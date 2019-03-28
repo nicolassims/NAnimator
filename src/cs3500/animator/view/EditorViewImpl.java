@@ -41,7 +41,6 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
 
     //Model Stuff
     private Animation model;
-    private int speed;
     private Shape currentObject;
     private String projectURL = "";
     private JPanel fileManagementPanel;
@@ -243,13 +242,10 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
     private void updatePreview() {
         // preview.setModel(this.model.atTick(currentTick));
         preview.setTitle("Preview at tick: " + currentTick);
-        try {
-            // preview.setSelectedObject(this.currentObject.getName());
-        } catch (NullPointerException e) {
+        preview.peekAtTick(this.model, this.currentTick, "");
 
-        }
-        preview.refresh();
-        preview.makeVisible();
+        //preview.refresh();
+        // preview.makeVisible();
     }
 
     /**
@@ -264,7 +260,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
      * Opens ands runs a preview window.
      */
     private void runPreview() {
-        this.preview.setTicksPerSecond(this.speed);
+        this.preview.setTicksPerSecond(this.ticksPerSecond);
         this.preview.displayView(this.model);
     }
 
@@ -298,8 +294,8 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
                 break;
             case "preview":
                 try {
-                    this.speed = Integer
-                            .parseInt(JOptionPane.showInputDialog("Select a speed"));
+                    this.ticksPerSecond = Integer
+                            .parseInt(JOptionPane.showInputDialog("Select a ticksPerSecond "));
                     runPreview();
                 } catch (InputMismatchException e) {
                     displayError(e.getMessage());
@@ -384,7 +380,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
     @Override
     public void displayView(Animation model) {
         setTitle("Animator Editor");
-        setSize(600, 600);
+        setSize(800, 800);
         this.model = model;
         mainPanel = new JPanel();
         //for elements to be arranged vertically within this panel
@@ -393,6 +389,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
         mainScrollPane = new JScrollPane(mainPanel);
         add(mainScrollPane);
         preview = new VisualViewImpl();
+        this.currentTick = 0;
         setFileManagementPanel();
         setObjectStatusPanel();
         setPreviewControls();

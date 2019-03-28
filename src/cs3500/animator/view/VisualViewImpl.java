@@ -13,8 +13,12 @@ import java.util.TimerTask;
 public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView {
 
   private float ticksPerSecond = 1;
-  private AnimationPanel animationPanel;
+  private AnimationPanel animationPanelImpl;
   private Animation model;
+
+  public VisualViewImpl() throws HeadlessException {
+
+  }
 
   @Override
   public void setTicksPerSecond(float i) {
@@ -23,21 +27,8 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
 
   @Override
   public void displayView(Animation model) {
-    this.setTitle("Nicolas & Luis Easy Animator!");
-    this.setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
-    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     this.model = model;
-
-    //use a borderlayout with drawing panel in center and button panel in south
-    this.setLayout(new BorderLayout());
-    animationPanel = new AnimationPanel(model);
-    animationPanel.setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
-    this.add(animationPanel, BorderLayout.CENTER);
-    this.pack();
-    this.setSize(model.getCanvasWidth(), model.getCanvasHeight());
-
-    setVisible(true);
-
+    setUp(model);
     class Refresh extends TimerTask {
 
       private int currentTick = 0;
@@ -58,9 +49,23 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
     timer.schedule(new Refresh(), 0, (long) (1000 / this.ticksPerSecond));
   }
 
+  private void setUp(Animation model) {
+    this.setTitle("Nicolas & Luis Easy Animator!");
+    this.setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
+    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    //use a borderlayout with drawing panel in center and button panel in south
+    this.setLayout(new BorderLayout());
+    animationPanelImpl = new AnimationPanelImpl(model);
+    animationPanelImpl.setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
+    this.add((Component) animationPanelImpl, BorderLayout.CENTER);
+    this.pack();
+    this.setSize(model.getCanvasWidth(), model.getCanvasHeight());
+    setVisible(true);
+  }
+
   @Override
   public void setCurrentTick(int currentTick) {
-    animationPanel.setCurrentTick(currentTick);
+    animationPanelImpl.setCurrentTick(currentTick);
     this.setTitle("Nicolas & Luis Easy Animator! tick(" + currentTick + "/" + model.totalDuration() + ")");
   }
 
@@ -77,5 +82,12 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
   @Override
   public void makeVisible() {
     this.setVisible(true);
+  }
+
+  @Override
+  public void peekAtTick(Animation model, int tick, String selectedShapeKey) {
+    setUp(model);
+    setCurrentTick(tick);
+    refresh();
   }
 }

@@ -1,5 +1,7 @@
 package cs3500.animator.view;
 
+import cs3500.animator.model.Animation;
+
 /**
  * This interface represents some special methods for the visualView.
  */
@@ -29,4 +31,9 @@ public interface VisualView extends TimeBasedView {
    * Makes the view visible.
    */
   void makeVisible();
+
+  /**
+   * Displays the model at the given tick without running the animation and showing the highlighted shape if any
+   */
+  void peekAtTick(Animation model, int tick, String selectedShapeKey);
 }
