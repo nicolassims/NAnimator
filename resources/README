@@ -39,7 +39,7 @@ Implementation notes:
   Default output location is System.out.
 
 Notes for file I/O:
-  Files to be read from must be placed in resources file.
+  If files read are placed in resources file, then their -in path must start with "resources/".
   Generated files are similarly placed in resources file.
 
 Design *changes* since last assignment:

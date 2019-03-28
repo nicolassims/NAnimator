@@ -66,6 +66,9 @@ public interface Shape {
    */
   int getFirstTick();
 
+  /**
+   * Get a list of the shape's motions.
+   */
   List<Motion> getMotions();
 
   /**
