@@ -1,12 +1,11 @@
 package cs3500.animator.view;
 
-import static cs3500.animator.view.FileWriter.writeToDestination;
+import static cs3500.animator.view.AppendableWriter.writeToDestination;
 
 import cs3500.animator.model.Animation;
 import cs3500.animator.model.Motion;
 import cs3500.animator.model.Shape;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -14,7 +13,7 @@ import java.util.List;
  */
 public class SVGViewImpl implements TextBasedView, TimeBasedView {
   private float ticksPerSecond = 1;
-  private String outputDestination = "System.out";
+  private Appendable outputDestination;
 
   @Override
   public void setTicksPerSecond(float i) {
@@ -112,7 +111,7 @@ public class SVGViewImpl implements TextBasedView, TimeBasedView {
   }
 
   @Override
-  public void setOutputDestination(String outArg) {
+  public void setOutputDestination(Appendable outArg) {
     this.outputDestination = outArg;
   }
 }
