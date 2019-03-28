@@ -203,11 +203,15 @@ Represents a shape, and every motion it will go through is stored within. To put
   String name, a stack of integers used to keep track of the last tick in all its keyframes, and a
   boolean indicating whether it's visible.
 
+==========
+= Size2D =
+==========
+Represents the size of an object described by width and height dimensions. Contains doubles of the
+  same.
 
 
 
-
-  Size2D           -- Represents the size of an object described by width and height dimensions.
+             -- Represents the size of an object described by width and height dimensions.
   SVGViewImpl      -- Represents the formatted text used to create an SVG File.
   TextualViewImpl  -- Represents the formatted text that can be used to create an Animation.
   TextureImpl      -- Represents a color that some shape could display.
