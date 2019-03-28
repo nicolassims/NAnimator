@@ -3,7 +3,7 @@ package cs3500.animator.view;
 /**
  * This interface represents some special methods for the visualView.
  */
-public interface VisualView extends View {
+public interface VisualView extends TimeBasedView {
   /**
    * Sets the current tick the model is at.
    */
