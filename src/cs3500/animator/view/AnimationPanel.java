@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
 
 /**
@@ -44,6 +46,11 @@ public class AnimationPanel extends JPanel {
 
     for (int i = 0; i < model.getShapeNames().size(); i++) {
       Shape s = model.getShapes().get(model.getShapeNames().get(i));
+      List<Integer> keyframes = new ArrayList<>();
+      for (int j = 0; j < s.getMotions().size(); j++) {
+        keyframes.add(s.getMotions().get(j).getStartFrame().getTick());
+        keyframes.add(s.getMotions().get(j).getEndFrame().getTick());
+      }
       if (this.currentTick >= s.getFirstTick() && this.currentTick <= s.totalDuration()) {
 
         Texture t = s.getColorAt(currentTick);
@@ -52,9 +59,12 @@ public class AnimationPanel extends JPanel {
         int y = (int) s.getPositionAt(currentTick).getY();
         int w = (int) s.getSizeAt(currentTick).getWidth();
         int h = (int) s.getSizeAt(currentTick).getHeight();
-        System.out.println(s.getName() + " visible at tick " + this.currentTick + " " + s
-            .getPositionAt(currentTick).toFile() + " " + s.getSizeAt(currentTick).toFile() + " " + s
-            .getColorAt(currentTick).toFile());
+        if (keyframes.contains(this.currentTick)) {
+          System.out.println(s.getName() + " visible at tick " + this.currentTick + " "
+              + s.getPositionAt(currentTick).toFile() + " "
+              + s.getSizeAt(currentTick).toFile() + " "
+              + s.getColorAt(currentTick).toFile());
+        }
 
         g2d.setColor(color);
         if (s.getShape().equalsIgnoreCase("rectangle")) {
@@ -62,8 +72,6 @@ public class AnimationPanel extends JPanel {
         } else if (s.getShape().equalsIgnoreCase("ellipse")) {
           g2d.fillOval(x, y, w, h);
         }
-      } else {
-        System.out.println(s.getName() + " NOT visible at tick " + this.currentTick);
       }
     }
 
