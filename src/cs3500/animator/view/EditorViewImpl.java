@@ -10,7 +10,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -19,8 +20,8 @@ import java.util.InputMismatchException;
 /**
  * This class represents a view that contains a VisualView, and can edit it.
  */
-public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView, ActionListener, ItemListener,
-        ListSelectionListener, KeyListener, View {
+public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView, ActionListener,
+        ListSelectionListener, View {
     private VisualView view;
     private float ticksPerSecond;
     private int currentTick;
@@ -53,7 +54,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
      * untouched, VisualViewImpl.
      */
     public EditorViewImpl() {
-        this(new VisualViewImpl());
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     /**
@@ -65,6 +66,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
     public EditorViewImpl(VisualView view) {
         this.view = view;
         this.ticksPerSecond = view.getTicksPerSecond();
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     @Override
@@ -262,6 +264,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
      * Opens ands runs a preview window.
      */
     private void runPreview() {
+        this.preview.setTicksPerSecond(this.speed);
         this.preview.displayView(this.model);
     }
 
@@ -317,16 +320,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
                     File f = fchooser.getSelectedFile();
                     fileOpenDisplay.setText(f.getAbsolutePath());
                     this.projectURL = f.getAbsolutePath();
-                    System.out.println(this.projectURL);
-                    try {
-                        new AnimationReader();
-                        this.model = AnimationReader
-                                .parseFile(new FileReader(new File(this.projectURL).getAbsolutePath()),
-                                        new AnimationImpl.Builder());
-                        this.refresh();
-                    } catch (FileNotFoundException e) {
-                        this.displayError(e.getMessage());
-                    }
+                    loadNewFile();
                 }
             }
             break;
@@ -363,13 +357,15 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
         }
     }
 
-    @Override
-    public void itemStateChanged(ItemEvent arg0) {
-        // TODO Auto-generated method stub
-        String who = ((JCheckBox) arg0.getItemSelectable()).getActionCommand();
-
-        switch (who) {
-
+    public void loadNewFile() {
+        try {
+            new AnimationReader();
+            this.model = AnimationReader
+                    .parseFile(new FileReader(new File(this.projectURL).getAbsolutePath()),
+                            new AnimationImpl.Builder());
+            this.refresh();
+        } catch (FileNotFoundException e) {
+            this.displayError(e.getMessage());
         }
     }
 
@@ -386,45 +382,22 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
     }
 
     @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        System.out.println("KeyPressed");
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
-
-
-    @Override
     public void displayView(Animation model) {
-        ((TimeBasedView) view).setTicksPerSecond(this.ticksPerSecond);
-        System.out.println(view.getTicksPerSecond());
-        view.displayView(model);
         setTitle("Animator Editor");
-        setSize(400, 400);
+        setSize(600, 600);
         this.model = model;
         mainPanel = new JPanel();
         //for elements to be arranged vertically within this panel
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
-        mainPanel.addKeyListener(this);
         //scroll bars around this main panel
         mainScrollPane = new JScrollPane(mainPanel);
         add(mainScrollPane);
-
         preview = new VisualViewImpl();
-        preview.setTitle("WELCOME! this is your first Preview of the animation at tick: " + currentTick);
-        preview.displayView(model);
-
         setFileManagementPanel();
         setObjectStatusPanel();
         setPreviewControls();
         setObjects();
         refresh();
+        this.setVisible(true);
     }
 }

@@ -2,11 +2,10 @@ package cs3500.animator.view;
 
 import cs3500.animator.model.Animation;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
-import javax.swing.JFrame;
 
 /**
  * This view is capable to interpret and draw an animation model on a JavaFx window.
@@ -15,6 +14,7 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
 
   private float ticksPerSecond = 1;
   private AnimationPanel animationPanel;
+  private Animation model;
 
   @Override
   public void setTicksPerSecond(float i) {
@@ -25,7 +25,8 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
   public void displayView(Animation model) {
     this.setTitle("Nicolas & Luis Easy Animator!");
     this.setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    this.model = model;
 
     //use a borderlayout with drawing panel in center and button panel in south
     this.setLayout(new BorderLayout());
@@ -33,6 +34,7 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
     animationPanel.setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
     this.add(animationPanel, BorderLayout.CENTER);
     this.pack();
+    this.setSize(model.getCanvasWidth(), model.getCanvasHeight());
 
     setVisible(true);
 
@@ -59,6 +61,7 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
   @Override
   public void setCurrentTick(int currentTick) {
     animationPanel.setCurrentTick(currentTick);
+    this.setTitle("Nicolas & Luis Easy Animator! tick(" + currentTick + "/" + model.totalDuration() + ")");
   }
 
   @Override
