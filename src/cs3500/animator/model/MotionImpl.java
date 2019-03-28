@@ -21,7 +21,7 @@ public class MotionImpl implements Motion {
    * @param startFrame The state of this motion on its first frame.
    * @param endFrame The state of this motion on its last frame.
    * @throws IllegalArgumentException if the tick measurements are impossible, or if any of the
-   * constructor's variables are null.
+   *                                  constructor's variables are null.
    */
   public MotionImpl(int startTick, int endTick, Shape parent,
       Keyframe startFrame, Keyframe endFrame) {
@@ -86,7 +86,7 @@ public class MotionImpl implements Motion {
   }
 
   @Override
-  public void setStartFrame(int x, int y, int w, int h, int r, int g, int b) {
+  public void setStartFrame(double x, double y, double w, double h, double r, double g, double b) {
     startFrame = new KeyframeImpl(startFrame.getTick(), new Position2D(x, y), new Size2D(w, h),
         new TextureImpl(r, g, b, 1));
   }
@@ -97,7 +97,7 @@ public class MotionImpl implements Motion {
   }
 
   @Override
-  public void setEndFrame(int x, int y, int w, int h, int r, int g, int b) {
+  public void setEndFrame(double x, double y, double w, double h, double r, double g, double b) {
     endFrame = new KeyframeImpl(endFrame.getTick(), new Position2D(x, y), new Size2D(w, h),
         new TextureImpl(r, g, b, 1));
   }

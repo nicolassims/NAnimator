@@ -147,14 +147,6 @@ public class AnimationImpl implements Animation {
   }
 
   @Override
-  public void setShapeVisibility(String shapeName, boolean visibility)
-      throws IllegalArgumentException {
-    if (this.shapes.containsKey(shapeName)) {
-      this.shapes.get(shapeName).setVisibility(visibility);
-    }
-  }
-
-  @Override
   public int getCanvasWidth() {
     return this.width;
   }
@@ -220,14 +212,15 @@ public class AnimationImpl implements Animation {
     }
 
     @Override
-    public AnimationBuilder<Animation> addKeyframe(String name, int t, int x, int y, int w, int h,
-        int r, int g, int b) {
+    public AnimationBuilder<Animation> addKeyframe(String name, int t, double x, double y, double w,
+        double h,
+        double r, double g, double b) {
       if (this.animation.getShapeNames().contains(name)) {
         Shape thisShape = this.animation.getShapes().get(name);
         List<Motion> motions = thisShape.getMotions();
         Keyframe newKeyframe = new KeyframeImpl(t, new Position2D(x, y), new Size2D(w, h),
             new TextureImpl(r, g, b, 1));
-          /* If the shape has no motions */
+        /* If the shape has no motions */
         if (motions.size() == 0) {
           motions.add(new MotionImpl(0, 0, thisShape, newKeyframe, newKeyframe));
           /* If t is before the first motion in the shape. */
@@ -266,6 +259,23 @@ public class AnimationImpl implements Animation {
             }
           }
         }
+      } else {
+        throw new IllegalArgumentException(name + " is not a valid shape name.");
+      }
+      return this;
+    }
+
+    @Override
+    public AnimationBuilder<Animation> addKeyframe(String name, int t) {
+      if (this.animation.getShapeNames().contains(name)) {
+        Shape thisShape = this.animation.getShapes().get(name);
+        addKeyframe(name, t, thisShape.getPositionAt(t).getX(),
+            thisShape.getPositionAt(t).getY(),
+            thisShape.getSizeAt(t).getWidth(),
+            thisShape.getSizeAt(t).getHeight(),
+            thisShape.getColorAt(t).getRed(),
+            thisShape.getColorAt(t).getBlue(),
+            thisShape.getColorAt(t).getGreen());
       } else {
         throw new IllegalArgumentException(name + " is not a valid shape name.");
       }

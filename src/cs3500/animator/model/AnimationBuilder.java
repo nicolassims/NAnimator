@@ -28,9 +28,9 @@ public interface AnimationBuilder<Doc> {
    * Adds a new shape to the growing document.
    *
    * @param name The unique name of the shape to be added. No shape with this name should already
-   * exist.
+   *             exist.
    * @param type The type of shape (e.g. "ellipse", "rectangle") to be added. The set of supported
-   * shapes is unspecified, but should include "ellipse" and "rectangle" as a minimum.
+   *             shapes is unspecified, but should include "ellipse" and "rectangle" as a minimum.
    * @return This {@link AnimationBuilder}
    */
   AnimationBuilder<Doc> declareShape(String name, String type);
@@ -62,7 +62,7 @@ public interface AnimationBuilder<Doc> {
       int t2, int x2, int y2, int w2, int h2, int r2, int g2, int b2);
 
   /**
-   * Adds an individual keyframe to the growing document.
+   * Adds an individual, specified keyframe to the growing document.
    *
    * @param name The name of the shape (added with {@link AnimationBuilder#declareShape})
    * @param t The time for this keyframe
@@ -76,7 +76,16 @@ public interface AnimationBuilder<Doc> {
    * @return This {@link AnimationBuilder}
    */
   AnimationBuilder<Doc> addKeyframe(String name,
-      int t, int x, int y, int w, int h, int r, int g, int b);
+      int t, double x, double y, double w, double h, double r, double g, double b);
+
+  /**
+   * Adds an individual keyframe to the growing document. The animation does not change.
+   *
+   * @param name The name of the shape (added with {@link AnimationBuilder#declareShape})
+   * @param t The time for this keyframe
+   * @return This {@link AnimationBuilder}
+   */
+  AnimationBuilder<Doc> addKeyframe(String name, int t);
 
   /**
    * Deletes an established keyframe in the document. Does nothing if no keyframe exists at the

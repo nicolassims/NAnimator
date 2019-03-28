@@ -61,21 +61,6 @@ public class Position2D implements Position {
     return new Position2D(this.x * currentTick, this.y * currentTick);
   }
 
-  /**
-   * Sees if another Quality is equal to this Position2D.
-   *
-   * @param other The other Quality to be checked for equality.
-   * @return true if the other Quality has the same values, and if not, false.
-   */
-  public Boolean equalsQuality(Quality other) {
-    if (other instanceof Position2D) {
-      Position2D otherPosition2D = (Position2D) other;
-      return (this.getX() == otherPosition2D.getX() && this.getY() == otherPosition2D.getY());
-    } else {
-      return false;
-    }
-  }
-
   @Override
   public String toFile() {
     return (int) this.x + " " + (int) this.y;

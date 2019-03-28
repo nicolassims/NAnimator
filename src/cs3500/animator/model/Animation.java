@@ -74,11 +74,6 @@ public interface Animation {
   void setBounds(int x, int y, int width, int height);
 
   /**
-   * Sets a shape visibility if the given shape exists.
-   */
-  void setShapeVisibility(String shapeName, boolean visibility) throws IllegalArgumentException;
-
-  /**
    * Gets the canvas width.
    */
   int getCanvasWidth();

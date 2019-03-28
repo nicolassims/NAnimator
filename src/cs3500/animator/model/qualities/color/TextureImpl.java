@@ -121,22 +121,6 @@ public class TextureImpl implements Texture {
         this.getAlpha() * currentTick);
   }
 
-  /**
-   * Sees if another Quality is equal to this texture.
-   *
-   * @param other The other Quality to be checked for equality.
-   * @return true if the other Quality has the same values, and if not, false.
-   */
-  public Boolean equalsQuality(Quality other) {
-    if (other instanceof TextureImpl) {
-      TextureImpl otherColor = (TextureImpl) other;
-      return this.getRed() == otherColor.getRed() && this.getGreen() == otherColor.getGreen()
-          && this.getBlue() == otherColor.getBlue() && this.getAlpha() == otherColor.getAlpha();
-    } else {
-      return false;
-    }
-  }
-
   @Override
   public String toFile() {
     return (int) this.red + " " + (int) this.green + " " + (int) this.blue;

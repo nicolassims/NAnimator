@@ -66,7 +66,7 @@ public interface Motion {
    * @param g the greenness of the shape during this new frame.
    * @param b the blueness of the shape during this new frame.
    */
-  void setStartFrame(int x, int y, int w, int h, int r, int g, int b);
+  void setStartFrame(double x, double y, double w, double h, double r, double g, double b);
 
   /**
    * Sets the start frame of the motion to be equal to another keyframe.
@@ -86,7 +86,7 @@ public interface Motion {
    * @param g the greenness of the shape during this new frame.
    * @param b the blueness of the shape during this new frame.
    */
-  void setEndFrame(int x, int y, int w, int h, int r, int g, int b);
+  void setEndFrame(double x, double y, double w, double h, double r, double g, double b);
 
   /**
    * Sets the end frame of the motion to be equal to another keyframe.

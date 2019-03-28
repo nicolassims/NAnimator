@@ -1,15 +1,19 @@
 --Does the main method sanitize input properly? [SOLVED by Nicolas]
 --Is there absolutely no way we can prevent our classes from relying on methods that they don't need? [SOLVED by Nicolas]
--- Can we prevent the duplicate code in the SVGViewImpl and TextualViewImpl? [SOLVED by Nicolas]
+--Can we prevent the duplicate code in the SVGViewImpl and TextualViewImpl? [SOLVED by Nicolas]
 ??Can we implement more tests?
 --Does SVGViewImpl need to be refactored now it doesn't have a dimension-setter anymore? [SOLVED by Nicolas]
 --Why are three of our tests failing? [SOLVED by Nicolas]
 --Have we included all extra files the assignment asks for? [SOLVED by Nicolas]
 --Why do the buildings not display properly? [SOLVED by Luis]
-??Can we make sure the VisualView is putting the right things out to the console?
-??Can we make sure we aren't outputting any debug messages to the console?
-??Can we fix the README?
+--Can we make sure the VisualView is putting the right things out to the console? [SOLVED by Nicolas]
+--Can we make sure we aren't outputting any debug messages to the console? [SOLVED by Nicolas]
+--Can we fix the README? [SOLVED by Nicolas]
 --Can we abstract the output of the FileWriter? And rename it, since FileWriter is already something Java has? [SOLVED by Nicolas]
-??Can we make absolutely sure, beyond a shadow of a doubt, that we aren't missing any Javadoc?
-??Can we make sure the model of textualView does no work?
+--Can we make absolutely sure, beyond a shadow of a doubt, that we aren't missing any Javadoc? [SOLVED by Nicolas... but let's be honest, I definitely missed something.]
+--Can we make sure the model of textualViewImpl does no work? [SOLVED by Nicolas]
 --Can we make sure SVGViewImpl's displayView is no longer unwieldy, and abstract it? [SOLVED by Nicolas]
+??Can we modify the README's EditorViewImpl description?
+??Can we make the EditorViewImpl work?
+??Can we place all controller-related stuff in the right package?
+--Can we make addKeyframe work properly?

@@ -5,7 +5,8 @@ Enums:
 Interfaces:        -- (Note implementations are listed directly, not accounting for chains.)
   Animation        -- implemented by AnimationImpl.
   AnimationBuilder -- implemented by Builder.
-  FileWriter       -- implemented by nothing, contains a static method.
+  AppendableWriter -- implemented by nothing, contains a static method.
+  EditorView       -- implemented by EditorViewImpl.
   Keyframe         -- implemented by KeyframeImpl.
   Motion           -- implemented by MotionImpl.
   Position         -- implemented by Position2D.
@@ -22,6 +23,7 @@ Classes:
   AnimationImpl    -- Represents a collection of Shapes that could be displayed during one animation.
   AnimationPanel   -- A Java Swing Panel capable of drawing animations.
   AnimationReader  -- A helper to read animation data and construct an animation from it.
+  EditorViewImpl   -- Represents a view that contains a VisualView, and can edit it.
   KeyframeImpl     -- Represents a collection of qualities that some shape could display at one tick.
   MotionImpl       -- Represents a motion affecting one shape across some range of ticks.
   Position2D       -- Represents the position of a shape in a 2D plane.
@@ -61,18 +63,60 @@ Interface implemented by Builder, a public static final class within AnimationIm
   methods for adding, deleting, setting and changing keyframes within an AnimationImpl's model.
   Also has various other edit-based methods for shapes, motions, and the bounds of the Animation.
 
+====================
+= AppendableWriter =
+====================
+Unimplemented Interface. Contains a static method for writing to a passed-in appendable, whether
+  that's System.out or a FileWriter.
+
 ==============
-= FileWriter =
+= EditorView =
 ==============
-Unimplemented Interface. Contains a static for writing to a passed-in source, whether that's
-  System.out or a file.
+Interface implemented by EditorViewImpl. Contains methods for controlling the EditorView--playing
+  the animation, pausing it, changing its speed, etc.
+
+============
+= Keyframe =
+============
+Interface implemented by KeyframeImpl. Contains methods, getters, for accessing the Qualities
+  therein.
+
+==========
+= Motion =
+==========
+Interface implemented by MotionImpl. Contains two Keyframes, getters for accessing those keyframes,
+  and setters to make the keyframes something new, which are used indirectly through
+  AnimationBuilder's keyframe methods.
+
+============
+= Position =
+============
+Interface implemented by Position2D. Contains getters to access x, y, and z ints. We don't deal in
+  the fourth dimension here.
+
+=========
+= Shape =
+=========
+Interface implemented by ShapeImpl. Imlementation contains a list of motions. Contains getters for
+  various fields. Also contains getters to determine value of a sub-field at an arbitrary time,
+  through linear interpolation.
 
 ========
-= View =
+= Size =
 ========
-Common interface between all views. Contains the public method displayView() which can be used to
-  display an animation in different ways depending on the instance of Animation view being
-  implemented. Implemented by TextBasedView, TimeBasedView, and VisualView.
+Interface implemented by Size2D. Contains getters to access width and height fields.
+
+=================
+= TextBasedView =
+=================
+Common interface between all views that print text to some output destination, be that the console,
+  a file, etc. Contains the public method setOutputDestination() which is self-explanatory.
+  Implemented by SVGViewImpl and TextualViewImpl.
+
+===========
+= Texture =
+===========
+Interface implemented by TextureImpl. Contains getters for rgb and alpha, funnily enough.
 
 =================
 = TimeBasedView =
@@ -81,12 +125,18 @@ Common interface between all views that use ticksPerSecond, as opposed to merely
   Contains the public method setTicksPerSecond() which can be used to... well, that's obvious.
   Implemented by SVGViewImpl, EditorViewImpl, and VisualView.
 
-=================
-= TextBasedView =
-=================
-Common interface between all views that print text to some output destination, be that the console,
-  a file, etc. Contains the public method setOutputDestination() which is self-explanatory.
-  Implemented by SVGViewImpl and TextualViewImpl.
+========
+= View =
+========
+Common interface between all views. Contains the public method displayView() which can be used to
+  display an animation in different ways depending on the instance of Animation view being
+  implemented. Implemented by TextBasedView, TimeBasedView, and VisualView.
+
+===============
+= ViewFactory =
+===============
+An Interface implemented by ViewFactoryImpl. Has a method that returns a specific type of view
+  based on the string passed in.
 
 ==============
 = VisualView =
@@ -96,3 +146,112 @@ Interface implemented by VisualViewImpl. Contains public methods setCurrentTick(
   setting a new current tick, getTicksPerSecond(), which returns the number of ticks per second the
   animation is running at right now, setTitle(), which gives the window a title, and makeVisible(),
   which allows the view to display.
+
+======CLASSES======
+
+=================
+= AnimationImpl =
+=================
+Represents a collection of Shapes that could be displayed during one animation. Contains a Map of
+  Shapes, a List of the Shapes' names, a stack used to keep track of the last tick in the
+  AnimationImpl, and four ints used to keep track of the location of the left-hand side of the
+  AnimationImpl, its top side's location, its width, and its height.
+
+==================
+= AnimationPanel =
+==================
+A Java Swing Panel capable of drawing animations. It extends JPanel, contains an Animation which it
+  will draw, and has an int keeping track of its current tick.
+
+===================
+= AnimationReader =
+===================
+A helper to read animation data and construct an animation from it. Contains no fields, but has
+  several methods that help it read from a list of specifically formatted text, such as the kind
+  seen in smalldemo.txt.
+
+==================
+= EditorViewImpl =
+==================
+Represents a view that contains a VisualView, and can edit it. As of the writing of this README, it
+  was still in progress. Here's hoping we remember to add something later.
+
+================
+= KeyframeImpl =
+================
+Represents a collection of Qualities that some shape could display at one tick. Contains a Quality
+  for position, size and color, and an int to represent the tick when these qualities are shown.
+
+==============
+= MotionImpl =
+==============
+Represents a motion affecting one shape across some range of ticks. Contains two keyframes, as well
+  as a reference to its parent, which is needed when asking the motion to print its parent's name.
+  I wish I had a reference to my parent... ¯\_(ツ)_/¯
+
+==============
+= Position2D =
+==============
+Represents the position of a shape in a 2D plane. Contains an x and a y double, which are really
+  pretty self-explanatory.
+
+=============
+= ShapeImpl =
+=============
+Represents a shape, and every motion it will go through is stored within. To put it another way, it
+  contains a list of Motions. It also contains a Shapes Enum signifying what kind of shape it is, a
+  String name, a stack of integers used to keep track of the last tick in all its keyframes, and a
+  boolean indicating whether it's visible.
+
+==========
+= Size2D =
+==========
+Represents the size of an object described by width and height dimensions. Contains doubles of the
+  same.
+
+===============
+= SVGViewImpl =
+===============
+Represents the formatted text used to create an SVG File. Contains a float ticksPerSecond, and an
+ Appendable outputDestination, whose purposes should be clear from their names. It also contains
+ Strings xname, yname, widthname, and heightname. These are used to make sure that the correct SVG
+ tags are applied, because something like a rectangle doesn't have a cx, for example. Its
+ equivalent is just x. It also has a Boolean startsVisible that is set to false if the shape's
+ first motion does not begin at 0. Has two helper methods--one for displaying svg-formatted strings
+ that are part of a shape, and one for displaying svg-formatted strings that are part of a motion.
+
+===================
+= TextualViewImpl =
+===================
+Represents the formatted text that can be used to create an Animation. Contains only an Appendable
+  outputDestination, whose purpose should be clear from its name. Has two helper methods--one for
+  displaying formatted strings that are part of a shape, and one for displaying formatted strings
+  that are part of a motion.
+
+===============
+= TextureImpl =
+===============
+Represents a color that some shape could display. Contains doubles to represent the values of the
+  color's red, green, blue, and alpha, oddly enough. Also has a constructor that works with one of
+  Java's built-in color classes.
+
+===============
+= TextureImpl =
+===============
+Represents a color that some shape could display. Contains doubles to represent the values of the
+  color's red, green, blue, and alpha, oddly enough. Also has a constructor that works with one of
+  Java's built-in color classes.
+
+===================
+= ViewFactoryImpl =
+===================
+Builds a view based on the string parameter passed in to its getView. Contains two constructors:
+  One where every type of View programmed in is supported, and one where only a specific set of
+  Views, passed in as a map, are supported.
+
+==================
+= VisualViewImpl =
+==================
+Interprets and draws an animation model on a JavaFx window. Contains a float ticksPerSecond, whose
+  function is obvious, an AnimationPanel animationPanel, which is where the animation is drawn, and
+  an Animation model, which is /what/ is drawn.
