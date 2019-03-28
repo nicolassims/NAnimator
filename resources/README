@@ -44,3 +44,55 @@ Notes for file I/O:
 
 Design *changes* since last assignment:
   We added a lot of new getters so the view and model could communicate more easily.
+
+======INTERFACES======
+
+=============
+= Animation =
+=============
+Interface implemented by AnimationImpl. Highest-level interface structure. Contains methods used to
+  interact with the model its implementation contains. Also has a getBuilder() to use to modify a
+  pre-existent animation.
+
+====================
+= AnimationBuilder =
+====================
+Interface implemented by Builder, a public static final class within AnimationImpl. Contains
+  methods for adding, deleting, setting and changing keyframes within an AnimationImpl's model.
+  Also has various other edit-based methods for shapes, motions, and the bounds of the Animation.
+
+==============
+= FileWriter =
+==============
+Unimplemented Interface. Contains a static for writing to a passed-in source, whether that's
+  System.out or a file.
+
+========
+= View =
+========
+Common interface between all views. Contains the public method displayView() which can be used to
+  display an animation in different ways depending on the instance of Animation view being
+  implemented. Implemented by TextBasedView, TimeBasedView, and VisualView.
+
+=================
+= TimeBasedView =
+=================
+Common interface between all views that use ticksPerSecond, as opposed to merely unitless ticks.
+  Contains the public method setTicksPerSecond() which can be used to... well, that's obvious.
+  Implemented by SVGViewImpl, EditorViewImpl, and VisualView.
+
+=================
+= TextBasedView =
+=================
+Common interface between all views that print text to some output destination, be that the console,
+  a file, etc. Contains the public method setOutputDestination() which is self-explanatory.
+  Implemented by SVGViewImpl and TextualViewImpl.
+
+==============
+= VisualView =
+==============
+Interface implemented by VisualViewImpl. Contains public methods setCurrentTick(), which sets the
+  current tick the animation is playing, refresh(), which refreshes the view's representation after
+  setting a new current tick, getTicksPerSecond(), which returns the number of ticks per second the
+  animation is running at right now, setTitle(), which gives the window a title, and makeVisible(),
+  which allows the view to display.
