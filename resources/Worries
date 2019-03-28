@@ -8,7 +8,7 @@
 --Why do the buildings not display properly? [SOLVED by Luis]
 ??Can we make sure the VisualView is putting the right things out to the console?
 ??Can we make sure we aren't outputting any debug messages to the console?
-??Can we fix the README?
+--Can we fix the README? [SOLVED by Nicolas]
 --Can we abstract the output of the FileWriter? And rename it, since FileWriter is already something Java has? [SOLVED by Nicolas]
 --Can we make absolutely sure, beyond a shadow of a doubt, that we aren't missing any Javadoc? [SOLVED by Nicolas... but let's be honest, I definitely missed something.]
 --Can we make sure the model of textualViewImpl does no work? [SOLVED by Nicolas]

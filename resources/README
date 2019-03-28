@@ -209,11 +209,49 @@ Represents a shape, and every motion it will go through is stored within. To put
 Represents the size of an object described by width and height dimensions. Contains doubles of the
   same.
 
+===============
+= SVGViewImpl =
+===============
+Represents the formatted text used to create an SVG File. Contains a float ticksPerSecond, and an
+ Appendable outputDestination, whose purposes should be clear from their names. It also contains
+ Strings xname, yname, widthname, and heightname. These are used to make sure that the correct SVG
+ tags are applied, because something like a rectangle doesn't have a cx, for example. Its
+ equivalent is just x. It also has a Boolean startsVisible that is set to false if the shape's
+ first motion does not begin at 0. Has two helper methods--one for displaying svg-formatted strings
+ that are part of a shape, and one for displaying svg-formatted strings that are part of a motion.
 
+===================
+= TextualViewImpl =
+===================
+Represents the formatted text that can be used to create an Animation. Contains only an Appendable
+  outputDestination, whose purpose should be clear from its name. Has two helper methods--one for
+  displaying formatted strings that are part of a shape, and one for displaying formatted strings
+  that are part of a motion.
 
-             -- Represents the size of an object described by width and height dimensions.
-  SVGViewImpl      -- Represents the formatted text used to create an SVG File.
-  TextualViewImpl  -- Represents the formatted text that can be used to create an Animation.
-  TextureImpl      -- Represents a color that some shape could display.
-  ViewFactoryImpl  -- Builds a view based on the string parameter passed in to its getView.
-  VisualViewImpl
+===============
+= TextureImpl =
+===============
+Represents a color that some shape could display. Contains doubles to represent the values of the
+  color's red, green, blue, and alpha, oddly enough. Also has a constructor that works with one of
+  Java's built-in color classes.
+
+===============
+= TextureImpl =
+===============
+Represents a color that some shape could display. Contains doubles to represent the values of the
+  color's red, green, blue, and alpha, oddly enough. Also has a constructor that works with one of
+  Java's built-in color classes.
+
+===================
+= ViewFactoryImpl =
+===================
+Builds a view based on the string parameter passed in to its getView. Contains two constructors:
+  One where every type of View programmed in is supported, and one where only a specific set of
+  Views, passed in as a map, are supported.
+
+==================
+= VisualViewImpl =
+==================
+Interprets and draws an animation model on a JavaFx window. Contains a float ticksPerSecond, whose
+  function is obvious, an AnimationPanel animationPanel, which is where the animation is drawn, and
+  an Animation model, which is /what/ is drawn.
