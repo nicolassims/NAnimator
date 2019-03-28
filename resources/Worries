@@ -12,4 +12,4 @@
 --Can we abstract the output of the FileWriter? And rename it, since FileWriter is already something Java has? [SOLVED by Nicolas]
 ??Can we make absolutely sure, beyond a shadow of a doubt, that we aren't missing any Javadoc?
 ??Can we make sure the model of textualView does no work?
-??Can we make sure SVGViewImpl's displayview is no longer unwieldy, and abstract it?
+--Can we make sure SVGViewImpl's displayView is no longer unwieldy, and abstract it? [SOLVED by Nicolas]
