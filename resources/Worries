@@ -1,6 +1,6 @@
 --Does the main method sanitize input properly? [SOLVED by Nicolas]
 --Is there absolutely no way we can prevent our classes from relying on methods that they don't need? [SOLVED by Nicolas]
--- Can we prevent the duplicate code in the SVGViewImpl and TextualViewImpl? [SOLVED by Nicolas]
+--Can we prevent the duplicate code in the SVGViewImpl and TextualViewImpl? [SOLVED by Nicolas]
 ??Can we implement more tests?
 --Does SVGViewImpl need to be refactored now it doesn't have a dimension-setter anymore? [SOLVED by Nicolas]
 --Why are three of our tests failing? [SOLVED by Nicolas]
@@ -15,3 +15,5 @@
 --Can we make sure SVGViewImpl's displayView is no longer unwieldy, and abstract it? [SOLVED by Nicolas]
 ??Can we modify the README's EditorViewImpl description?
 ??Can we make the EditorViewImpl work?
+??Can we place all controller-related stuff in the right package?
+--Can we make addKeyframe work properly?

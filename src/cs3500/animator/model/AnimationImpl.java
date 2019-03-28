@@ -212,8 +212,9 @@ public class AnimationImpl implements Animation {
     }
 
     @Override
-    public AnimationBuilder<Animation> addKeyframe(String name, int t, int x, int y, int w, int h,
-        int r, int g, int b) {
+    public AnimationBuilder<Animation> addKeyframe(String name, int t, double x, double y, double w,
+        double h,
+        double r, double g, double b) {
       if (this.animation.getShapeNames().contains(name)) {
         Shape thisShape = this.animation.getShapes().get(name);
         List<Motion> motions = thisShape.getMotions();
@@ -258,6 +259,23 @@ public class AnimationImpl implements Animation {
             }
           }
         }
+      } else {
+        throw new IllegalArgumentException(name + " is not a valid shape name.");
+      }
+      return this;
+    }
+
+    @Override
+    public AnimationBuilder<Animation> addKeyframe(String name, int t) {
+      if (this.animation.getShapeNames().contains(name)) {
+        Shape thisShape = this.animation.getShapes().get(name);
+        addKeyframe(name, t, thisShape.getPositionAt(t).getX(),
+            thisShape.getPositionAt(t).getY(),
+            thisShape.getSizeAt(t).getWidth(),
+            thisShape.getSizeAt(t).getHeight(),
+            thisShape.getColorAt(t).getRed(),
+            thisShape.getColorAt(t).getBlue(),
+            thisShape.getColorAt(t).getGreen());
       } else {
         throw new IllegalArgumentException(name + " is not a valid shape name.");
       }

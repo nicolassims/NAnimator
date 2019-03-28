@@ -86,7 +86,7 @@ public class MotionImpl implements Motion {
   }
 
   @Override
-  public void setStartFrame(int x, int y, int w, int h, int r, int g, int b) {
+  public void setStartFrame(double x, double y, double w, double h, double r, double g, double b) {
     startFrame = new KeyframeImpl(startFrame.getTick(), new Position2D(x, y), new Size2D(w, h),
         new TextureImpl(r, g, b, 1));
   }
@@ -97,7 +97,7 @@ public class MotionImpl implements Motion {
   }
 
   @Override
-  public void setEndFrame(int x, int y, int w, int h, int r, int g, int b) {
+  public void setEndFrame(double x, double y, double w, double h, double r, double g, double b) {
     endFrame = new KeyframeImpl(endFrame.getTick(), new Position2D(x, y), new Size2D(w, h),
         new TextureImpl(r, g, b, 1));
   }
