@@ -11,6 +11,8 @@ import cs3500.animator.view.ViewFactoryImpl;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -28,7 +30,7 @@ public final class EasyAnimator {
     String inArg = "";
     String viewArg = "";
     float speedArg = 1;
-    String outArg = "System.out";
+    Appendable outArg = System.out;
 
     for (int i = 0; i < args.length; i += 2) {
       String command = args[i];
@@ -39,7 +41,15 @@ public final class EasyAnimator {
           inArg = value;
           break;
         case "-out":
-          outArg = value;
+          if (value.equals("System.out")) {
+            outArg = System.out;
+          } else {
+            try {
+              outArg = new FileWriter(value);
+            } catch (IOException e) {
+              throw new IllegalArgumentException("IOException caught.");
+            }
+          }
           break;
         case "-view":
           viewArg = value;
