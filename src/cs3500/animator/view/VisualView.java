@@ -19,4 +19,14 @@ public interface VisualView extends View {
    * @return the number of ticks per second the animation is running at right now.
    */
   float getTicksPerSecond();
+
+  /**
+   * Sets a title.
+   */
+  void setTitle(String s);
+
+  /**
+   * Makes the view visible.
+   */
+  void makeVisible();
 }
