@@ -21,7 +21,7 @@ public interface AppendableWriter {
         ((FileWriter) location).close();
       }
     } catch (IOException e) {
-      System.out.println("Buffer has not been initialized!");
+      throw new IllegalArgumentException("IOException caught.");
     }
   }
 }

@@ -32,5 +32,4 @@ public class TextualViewImpl implements TextBasedView {
   public void setOutputDestination(Appendable outArg) {
     this.outputDestination = outArg;
   }
-
 }
