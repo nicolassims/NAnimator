@@ -13,3 +13,4 @@
 --Can we make absolutely sure, beyond a shadow of a doubt, that we aren't missing any Javadoc? [SOLVED by Nicolas... but let's be honest, I definitely missed something.]
 --Can we make sure the model of textualViewImpl does no work? [SOLVED by Nicolas]
 --Can we make sure SVGViewImpl's displayView is no longer unwieldy, and abstract it? [SOLVED by Nicolas]
+??Can we modify the README's EditorViewImpl description?

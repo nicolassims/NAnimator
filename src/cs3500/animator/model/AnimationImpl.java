@@ -147,14 +147,6 @@ public class AnimationImpl implements Animation {
   }
 
   @Override
-  public void setShapeVisibility(String shapeName, boolean visibility)
-      throws IllegalArgumentException {
-    if (this.shapes.containsKey(shapeName)) {
-      this.shapes.get(shapeName).setVisibility(visibility);
-    }
-  }
-
-  @Override
   public int getCanvasWidth() {
     return this.width;
   }

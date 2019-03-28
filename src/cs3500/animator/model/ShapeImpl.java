@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-
 /**
  * This class represents a shape, and every motion it will go through is stored within.
  */
@@ -19,7 +18,6 @@ public class ShapeImpl implements Shape {
   private String name;
   private Shapes shapeType;
   private Stack<Integer> keyframeTickOfLastMotionAdded;
-  private boolean visible;
 
   /**
    * Initializes ShapeImpl, given a name and a shapeType. Not in that order.
@@ -37,7 +35,6 @@ public class ShapeImpl implements Shape {
     this.motions = new ArrayList<>();
     this.keyframeTickOfLastMotionAdded = new Stack<>();
     this.keyframeTickOfLastMotionAdded.push(0);
-    this.visible = true;
   }
 
   @Override
@@ -109,16 +106,6 @@ public class ShapeImpl implements Shape {
   }
 
   @Override
-  public void setVisibility(boolean visibility) {
-    this.visible = visibility;
-  }
-
-  @Override
-  public boolean isVisible() {
-    return visible;
-  }
-
-  @Override
   public Texture getColorAt(int currentTick) {
     Motion currentMotion = this.getSurroundingMotion(currentTick);
     Texture texture0 = currentMotion.getStartFrame().getTexture();
@@ -141,7 +128,6 @@ public class ShapeImpl implements Shape {
     Size size1 = currentMotion.getEndFrame().getSize();
     return (Size) interpolateQualities(currentTick, size0, size1, currentMotion);
   }
-
 
   /**
    * Given a tick it searches for a motion which starting and ending keyframe surround the given

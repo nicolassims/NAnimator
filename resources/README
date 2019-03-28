@@ -6,6 +6,7 @@ Interfaces:        -- (Note implementations are listed directly, not accounting 
   Animation        -- implemented by AnimationImpl.
   AnimationBuilder -- implemented by Builder.
   AppendableWriter -- implemented by nothing, contains a static method.
+  EditorView       -- implemented by EditorViewImpl.
   Keyframe         -- implemented by KeyframeImpl.
   Motion           -- implemented by MotionImpl.
   Position         -- implemented by Position2D.
@@ -22,6 +23,7 @@ Classes:
   AnimationImpl    -- Represents a collection of Shapes that could be displayed during one animation.
   AnimationPanel   -- A Java Swing Panel capable of drawing animations.
   AnimationReader  -- A helper to read animation data and construct an animation from it.
+  EditorViewImpl   -- Represents a view that contains a VisualView, and can edit it.
   KeyframeImpl     -- Represents a collection of qualities that some shape could display at one tick.
   MotionImpl       -- Represents a motion affecting one shape across some range of ticks.
   Position2D       -- Represents the position of a shape in a 2D plane.
@@ -66,6 +68,12 @@ Interface implemented by Builder, a public static final class within AnimationIm
 ====================
 Unimplemented Interface. Contains a static method for writing to a passed-in appendable, whether
   that's System.out or a FileWriter.
+
+==============
+= EditorView =
+==============
+Interface implemented by EditorViewImpl. Contains methods for controlling the EditorView--playing
+  the animation, pausing it, changing its speed, etc.
 
 ============
 = Keyframe =
@@ -140,3 +148,68 @@ Interface implemented by VisualViewImpl. Contains public methods setCurrentTick(
   which allows the view to display.
 
 ======CLASSES======
+
+=================
+= AnimationImpl =
+=================
+Represents a collection of Shapes that could be displayed during one animation. Contains a Map of
+  Shapes, a List of the Shapes' names, a stack used to keep track of the last tick in the
+  AnimationImpl, and four ints used to keep track of the location of the left-hand side of the
+  AnimationImpl, its top side's location, its width, and its height.
+
+==================
+= AnimationPanel =
+==================
+A Java Swing Panel capable of drawing animations. It extends JPanel, contains an Animation which it
+  will draw, and has an int keeping track of its current tick.
+
+===================
+= AnimationReader =
+===================
+A helper to read animation data and construct an animation from it. Contains no fields, but has
+  several methods that help it read from a list of specifically formatted text, such as the kind
+  seen in smalldemo.txt.
+
+==================
+= EditorViewImpl =
+==================
+Represents a view that contains a VisualView, and can edit it. As of the writing of this README, it
+  was still in progress. Here's hoping we remember to add something later.
+
+================
+= KeyframeImpl =
+================
+Represents a collection of Qualities that some shape could display at one tick. Contains a Quality
+  for position, size and color, and an int to represent the tick when these qualities are shown.
+
+==============
+= MotionImpl =
+==============
+Represents a motion affecting one shape across some range of ticks. Contains two keyframes, as well
+  as a reference to its parent, which is needed when asking the motion to print its parent's name.
+  I wish I had a reference to my parent... ¯\_(ツ)_/¯
+
+==============
+= Position2D =
+==============
+Represents the position of a shape in a 2D plane. Contains an x and a y double, which are really
+  pretty self-explanatory.
+
+=============
+= ShapeImpl =
+=============
+Represents a shape, and every motion it will go through is stored within. To put it another way, it
+  contains a list of Motions. It also contains a Shapes Enum signifying what kind of shape it is, a
+  String name, a stack of integers used to keep track of the last tick in all its keyframes, and a
+  boolean indicating whether it's visible.
+
+
+
+
+
+  Size2D           -- Represents the size of an object described by width and height dimensions.
+  SVGViewImpl      -- Represents the formatted text used to create an SVG File.
+  TextualViewImpl  -- Represents the formatted text that can be used to create an Animation.
+  TextureImpl      -- Represents a color that some shape could display.
+  ViewFactoryImpl  -- Builds a view based on the string parameter passed in to its getView.
+  VisualViewImpl

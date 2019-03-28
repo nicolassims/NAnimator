@@ -72,21 +72,17 @@ public interface Shape {
   List<Motion> getMotions();
 
   /**
-   * Sets a shape's visibility.
-   */
-  void setVisibility(boolean visibility);
-
-  /**
-   * Returns whether a shape is visible.
-   */
-  boolean isVisible();
-
-  /**
    * Uses interpolation to calculate the correct color of a shape at a given tick.
    */
   Texture getColorAt(int currentTick);
 
+  /**
+   * Uses interpolation to calculate the correct position of a shape at a given tick.
+   */
   Position getPositionAt(int currentTick);
 
+  /**
+   * Uses interpolation to calculate the correct size of a shape at a given tick.
+   */
   Size getSizeAt(int currentTick);
 }
