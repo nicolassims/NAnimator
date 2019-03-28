@@ -10,6 +10,6 @@
 ??Can we make sure we aren't outputting any debug messages to the console?
 ??Can we fix the README?
 --Can we abstract the output of the FileWriter? And rename it, since FileWriter is already something Java has? [SOLVED by Nicolas]
-??Can we make absolutely sure, beyond a shadow of a doubt, that we aren't missing any Javadoc?
-??Can we make sure the model of textualView does no work?
+--Can we make absolutely sure, beyond a shadow of a doubt, that we aren't missing any Javadoc? [SOLVED by Nicolas... but let's be honest, I definitely missed something.]
+--Can we make sure the model of textualViewImpl does no work? [SOLVED by Nicolas]
 --Can we make sure SVGViewImpl's displayView is no longer unwieldy, and abstract it? [SOLVED by Nicolas]
