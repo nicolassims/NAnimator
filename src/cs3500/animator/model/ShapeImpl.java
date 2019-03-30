@@ -4,7 +4,6 @@ import cs3500.animator.model.qualities.Quality;
 import cs3500.animator.model.qualities.color.Texture;
 import cs3500.animator.model.qualities.dimensions.Size;
 import cs3500.animator.model.qualities.positions.Position;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;

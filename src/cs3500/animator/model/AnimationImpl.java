@@ -3,7 +3,6 @@ package cs3500.animator.model;
 import cs3500.animator.model.qualities.color.TextureImpl;
 import cs3500.animator.model.qualities.dimensions.Size2D;
 import cs3500.animator.model.qualities.positions.Position2D;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -236,10 +235,10 @@ public class AnimationImpl implements Animation {
             /* If a startFrame already exists at t, overwrite it.*/
             if (motions.get(i).getStartFrame().getTick() == t) {
               motions.get(i).setStartFrame(x, y, w, h, r, g, b);
-            /* If an endFrame already exists at t, overwrite it.*/
+              /* If an endFrame already exists at t, overwrite it.*/
             } else if (motions.get(i).getEndFrame().getTick() == t) {
               motions.get(i).setEndFrame(x, y, w, h, r, g, b);
-            /* If t is between two other motions.*/
+              /* If t is between two other motions.*/
             } else if (i != motions.size() - 1 && motions.get(i).getEndFrame().getTick() < t
                 && motions.get(i + 1).getStartFrame().getTick() > t) {
               motions.add(i + 1, new MotionImpl(motions.get(i).getEndFrame().getTick(),
@@ -248,7 +247,7 @@ public class AnimationImpl implements Animation {
               motions.add(i + 2, new MotionImpl(t, motions.get(i + 2).getStartFrame().getTick(),
                   thisShape, newKeyframe,
                   motions.get(i + 2).getStartFrame()));
-            /* If t is within an existing motion */
+              /* If t is within an existing motion */
             } else if (motions.get(i).getStartFrame().getTick() < t
                 && motions.get(i).getEndFrame().getTick() > t) {
               Keyframe saveEndframe = motions.get(i).getEndFrame();

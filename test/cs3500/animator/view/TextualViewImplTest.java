@@ -1,16 +1,15 @@
 package cs3500.animator.view;
 
-import cs3500.animator.EasyAnimator;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
+import cs3500.animator.EasyAnimator;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import org.junit.Test;
 
 /**
  * This class contains the tests for the TextualViewImpl.

@@ -3,7 +3,6 @@ package cs3500.animator.model;
 import cs3500.animator.model.qualities.color.Texture;
 import cs3500.animator.model.qualities.dimensions.Size;
 import cs3500.animator.model.qualities.positions.Position;
-
 import java.util.List;
 
 /**

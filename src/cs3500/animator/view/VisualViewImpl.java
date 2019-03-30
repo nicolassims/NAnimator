@@ -1,11 +1,12 @@
 package cs3500.animator.view;
 
 import cs3500.animator.model.Animation;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JFrame;
 
 /**
  * This view is capable to interpret and draw an animation model on a JavaFx window.
@@ -15,15 +16,6 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
   private float ticksPerSecond = 1;
   private AnimationPanel animationPanelImpl;
   private Animation model;
-
-  public VisualViewImpl() throws HeadlessException {
-
-  }
-
-  @Override
-  public void setTicksPerSecond(float i) {
-    ticksPerSecond = i;
-  }
 
   @Override
   public void displayView(Animation model) {
@@ -56,17 +48,21 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
     //use a borderlayout with drawing panel in center and button panel in south
     this.setLayout(new BorderLayout());
     animationPanelImpl = new AnimationPanelImpl(model);
-    animationPanelImpl.setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
+    animationPanelImpl
+        .setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
     this.add((Component) animationPanelImpl, BorderLayout.CENTER);
     this.pack();
     this.setSize(model.getCanvasWidth(), model.getCanvasHeight());
-    setVisible(true);
+    if (!this.isVisible()) {
+      setVisible(true);
+    }
   }
 
   @Override
   public void setCurrentTick(int currentTick) {
     animationPanelImpl.setCurrentTick(currentTick);
-    this.setTitle("Nicolas & Luis Easy Animator! tick(" + currentTick + "/" + model.totalDuration() + ")");
+    this.setTitle(
+        "Nicolas & Luis Easy Animator! tick(" + currentTick + "/" + model.totalDuration() + ")");
   }
 
   @Override
@@ -80,12 +76,18 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
   }
 
   @Override
+  public void setTicksPerSecond(float i) {
+    ticksPerSecond = i;
+  }
+
+  @Override
   public void makeVisible() {
     this.setVisible(true);
   }
 
   @Override
   public void peekAtTick(Animation model, int tick, String selectedShapeKey) {
+    this.model = model;
     setUp(model);
     setCurrentTick(tick);
     refresh();

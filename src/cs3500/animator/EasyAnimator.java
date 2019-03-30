@@ -7,7 +7,6 @@ import cs3500.animator.view.TextBasedView;
 import cs3500.animator.view.TimeBasedView;
 import cs3500.animator.view.View;
 import cs3500.animator.view.ViewFactoryImpl;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

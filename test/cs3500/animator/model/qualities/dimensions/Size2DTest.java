@@ -1,11 +1,11 @@
 package cs3500.animator.model.qualities.dimensions;
 
+import static org.junit.Assert.assertEquals;
+
 import cs3500.animator.model.qualities.color.TextureImpl;
 import cs3500.animator.model.qualities.positions.Position2D;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * This class contains the tests for the Size2D.

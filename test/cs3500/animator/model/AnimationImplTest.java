@@ -1,9 +1,9 @@
 package cs3500.animator.model;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * This class contains the tests for the AnimationImpl.

@@ -1,8 +1,8 @@
 package cs3500.animator.view;
 
 /**
- * This interface represents a model whose output is printed somewhere, whether that's a file or
- * the command line.
+ * This interface represents a model whose output is printed somewhere, whether that's a file or the
+ * command line.
  */
 public interface TextBasedView extends View {
 

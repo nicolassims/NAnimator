@@ -5,7 +5,6 @@ import static cs3500.animator.view.AppendableWriter.writeToDestination;
 import cs3500.animator.model.Animation;
 import cs3500.animator.model.Motion;
 import cs3500.animator.model.Shape;
-
 import java.util.List;
 
 /**

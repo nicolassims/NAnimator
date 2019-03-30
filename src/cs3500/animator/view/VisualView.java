@@ -6,6 +6,7 @@ import cs3500.animator.model.Animation;
  * This interface represents some special methods for the visualView.
  */
 public interface VisualView extends TimeBasedView {
+
   /**
    * Sets the current tick the model is at.
    */
@@ -18,6 +19,7 @@ public interface VisualView extends TimeBasedView {
 
   /**
    * Gets the number of ticks per second the animation is running at right now.
+   *
    * @return the number of ticks per second the animation is running at right now.
    */
   float getTicksPerSecond();
@@ -33,7 +35,8 @@ public interface VisualView extends TimeBasedView {
   void makeVisible();
 
   /**
-   * Displays the model at the given tick without running the animation and showing the highlighted shape if any
+   * Displays the model at the given tick without running the animation and showing the highlighted
+   * shape if any.
    */
   void peekAtTick(Animation model, int tick, String selectedShapeKey);
 }

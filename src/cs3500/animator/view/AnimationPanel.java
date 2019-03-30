@@ -1,23 +1,25 @@
 package cs3500.animator.view;
 
 import cs3500.animator.model.Animation;
+import java.awt.Dimension;
 
-import java.awt.*;
-
+/**
+ * Is an animation panel.
+ */
 public interface AnimationPanel {
 
-    /**
-     * Sets the current tick
-     */
-    void setCurrentTick(int currentTick);
+  /**
+   * Sets the current tick.
+   */
+  void setCurrentTick(int currentTick);
 
-    /**
-     * Sets the model to represent.
-     */
-    void setModel(Animation model);
+  /**
+   * Sets the model to represent.
+   */
+  void setModel(Animation model);
 
-    /**
-     * Sets the preferred size
-     */
-    void setPreferredSize(Dimension dimension);
+  /**
+   * Sets the preferred size.
+   */
+  void setPreferredSize(Dimension dimension);
 }

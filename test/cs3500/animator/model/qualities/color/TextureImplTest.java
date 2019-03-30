@@ -1,12 +1,12 @@
 package cs3500.animator.model.qualities.color;
 
+import static org.junit.Assert.assertEquals;
+
 import cs3500.animator.model.qualities.dimensions.Size2D;
 import cs3500.animator.model.qualities.positions.Position2D;
 import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * This class contains the tests for the TextureImpl.
