@@ -164,7 +164,10 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
     controlPreviewPanel.setLayout(new FlowLayout());
     controlPreviewPanel.setBorder(BorderFactory.createTitledBorder("Preview Controls"));
 
-    JButton prevTick, nextTick, preview, setTick;
+    JButton prevTick;
+    JButton nextTick;
+    JButton preview;
+    JButton setTick;
 
     preview = new JButton("run a preview");
     preview.setActionCommand("preview");
@@ -198,7 +201,10 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
     controlKeyframeEditingPanel
         .setBorder(BorderFactory.createTitledBorder("KeyframeEditing Controls"));
 
-    JButton addFrame, removeFrame, editFrame, previewKeyframe;
+    JButton addFrame;
+    JButton removeFrame;
+    JButton editFrame;
+    JButton previewKeyframe;
 
     editFrame = new JButton("Edit Frame");
     editFrame.setActionCommand("editFrame");
@@ -419,6 +425,8 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
                 JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[4]);
       }
       break;
+      default:
+        throw new IllegalArgumentException("Unsupported commandtype.");
     }
   }
 

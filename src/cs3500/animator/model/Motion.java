@@ -21,23 +21,9 @@ public interface Motion {
   Keyframe getStartFrame();
 
   /**
-   * Sets the start frame of the motion to be equal to another keyframe.
-   *
-   * @param keyframe the keyframe to be set equal to another.
-   */
-  void setStartFrame(Keyframe keyframe);
-
-  /**
    * Returns the end frame of the motion.
    */
   Keyframe getEndFrame();
-
-  /**
-   * Sets the end frame of the motion to be equal to another keyframe.
-   *
-   * @param keyframe the keyframe to be set equal to another.
-   */
-  void setEndFrame(Keyframe keyframe);
 
   /**
    * Returns the first x of this motion.
@@ -70,6 +56,13 @@ public interface Motion {
   int getFirstTick();
 
   /**
+   * Sets the start frame of the motion to be equal to another keyframe.
+   *
+   * @param keyframe the keyframe to be set equal to another.
+   */
+  void setStartFrame(Keyframe keyframe);
+
+  /**
    * Sets the start frame of the motion to be something new, though it occurs at the same time.
    *
    * @param x the location of the left side of the shape during this new frame.
@@ -94,4 +87,11 @@ public interface Motion {
    * @param b the blueness of the shape during this new frame.
    */
   void setEndFrame(double x, double y, double w, double h, double r, double g, double b);
+
+  /**
+   * Sets the end frame of the motion to be equal to another keyframe.
+   *
+   * @param keyframe the keyframe to be set equal to another.
+   */
+  void setEndFrame(Keyframe keyframe);
 }
