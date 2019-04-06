@@ -42,7 +42,7 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
   }
 
   private void setUp(Animation model) {
-    this.setTitle("Nicolas & Luis Easy Animator!");
+    this.setTitle("Nicolas & Forrest Easy Animator!");
     this.setPreferredSize(new Dimension(model.getCanvasWidth(), model.getCanvasHeight()));
     this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     //use a borderlayout with drawing panel in center and button panel in south
@@ -62,7 +62,7 @@ public class VisualViewImpl extends JFrame implements VisualView, TimeBasedView 
   public void setCurrentTick(int currentTick) {
     animationPanelImpl.setCurrentTick(currentTick);
     this.setTitle(
-        "Nicolas & Luis Easy Animator! tick(" + currentTick + "/" + model.totalDuration() + ")");
+        "Nicolas & Forrest Easy Animator! tick(" + currentTick + "/" + model.totalDuration() + ")");
   }
 
   @Override

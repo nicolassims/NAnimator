@@ -316,7 +316,7 @@ public class EditorViewImpl extends JFrame implements EditorView, TimeBasedView,
    */
   private void updatePreview() {
     this.setTitle(
-        "Nicolas & Luis Easy Animator! tick(" + currentTick + "/" + model.totalDuration() + ") of "
+        "Nicolas & Forrest Easy Animator! tick(" + currentTick + "/" + model.totalDuration() + ") of "
             + this.projectURL);
     VisualView editPanel = new VisualViewImpl();
     editPanel.setTitle("Preview at tick: " + currentTick);
