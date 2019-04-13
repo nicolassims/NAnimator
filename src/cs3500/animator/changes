@@ -1,0 +1,5 @@
+Created Motion file. Adaptor from (Our) Motion to (Their) IMotion.
+Started trying to implement hybrid view on ViewFactoryImpl. In-progress.
+Working on EditorViewImplementingView. Adaptor from (Their) EditorView to (Our) View.
+Working on AnimationToAnimationModel. Adaptor from (Our) Animation to (Their) AnimationModel.
+Currently working on ShapeToIShape. Adaptor from (Our) Shape to (Their) IShape.

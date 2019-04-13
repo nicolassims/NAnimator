@@ -1,5 +1,6 @@
 package cs3500.animator.view;
 
+import cs3500.animator.provider.view.EditorViewImplementingView;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,7 @@ public class ViewFactoryImpl implements ViewFactory {
     supportedViews.put("text", new TextualViewImpl());
     supportedViews.put("svg", new SVGViewImpl());
     supportedViews.put("edit", new EditorViewImpl());
+    supportedViews.put("hybrid", new EditorViewImplementingView());
   }
 
   /**
