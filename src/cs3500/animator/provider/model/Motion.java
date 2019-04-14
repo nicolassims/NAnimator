@@ -17,6 +17,10 @@ public class Motion implements IMotion {
   private Keyframe firstKeyframe;
   private Keyframe lastKeyframe;
 
+  /**
+   * Takes an IMotion, then sets this class' fields based on that.
+   * @param motion The IMotion that will be used to set this class' fields.
+   */
   public Motion(IMotion motion) {
     this.firstKeyframe = new KeyframeImpl(motion.getBeginTime(),
         new Position2D(motion.getNewX(), motion.getNewY()),
@@ -30,6 +34,11 @@ public class Motion implements IMotion {
             motion.getColor().getB(), 1));
   }
 
+  /**
+   * Takes a Motion--a different kind of Motion, mind you--then sets this class' fields based on
+   *  that.
+   * @param motion The Motion that will be used to set this class' fields.
+   */
   public Motion(cs3500.animator.model.Motion motion) {
     this.firstKeyframe = new KeyframeImpl(motion.getFirstTick(),
         new Position2D(motion.getFirstX(), motion.getFirstY()),
@@ -45,11 +54,26 @@ public class Motion implements IMotion {
             motion.getEndFrame().getTexture().getBlue(), 1));
   }
 
+  /**
+   * Takes a keyframe, then sets this class' fields based on that.
+   * @param keyframe The Keyframe that will be used to set this class' fields.
+   */
   public Motion(Keyframe keyframe) {
     this.firstKeyframe = keyframe;
     this.lastKeyframe = keyframe;
   }
 
+  /**
+   * Takes several different variables, then uses them to construct keyframes, which are then used
+   *  to set this class' variables.
+   * @param tick The tick this motion starts at.
+   * @param name The name of the shape this tick is assigned to.
+   * @param x The x-location of the end of this motion.
+   * @param y The y-location of the end of this motion.
+   * @param w The width of this shape at the end of this motion.
+   * @param h The height of this shape at the end of this motion.
+   * @param color The color of this shape at the end of this motion.
+   */
   public Motion(int tick, int name, int x, int y, int w, int h, Color color) {
     this.lastKeyframe = new KeyframeImpl(tick, new Position2D(x, y), new Size2D(w, h),
         new TextureImpl(color.getR(), color.getG(), color.getB(), 1));

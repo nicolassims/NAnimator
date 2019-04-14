@@ -18,6 +18,10 @@ public class ShapeToIShape implements IShape {
 
   private Shape shape;
 
+  /**
+   * Simply takes a Shape, and sets this class' field to be that Shape.
+   * @param shape The Shape that will be treated like an IShape.
+   */
   ShapeToIShape(Shape shape) {
     this.shape = shape;
   }

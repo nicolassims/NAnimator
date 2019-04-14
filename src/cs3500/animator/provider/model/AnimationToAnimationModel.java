@@ -13,9 +13,12 @@ import java.util.ArrayList;
  * AnimationModel interface.
  */
 public class AnimationToAnimationModel implements AnimationModel {
-
   private Animation animation;
 
+  /**
+   * Simply takes an Animation, and sets this class' field to be that Animation.
+   * @param animation The Animation that will be treated like an AnimationModel.
+   */
   public AnimationToAnimationModel(Animation animation) {
     this.animation = animation;
   }
