@@ -31,7 +31,7 @@ public class MotionImplTest {
   @Test(expected = IllegalArgumentException.class)
   public void motionExceptionNegativeStartick() {
     Motion mot = new MotionImpl(-1, 1,
-        new ShapeImpl(Shapes.ellipse, "C"), key1, key2);
+        new ShapeImpl(Shapes.ELLIPSE, "C"), key1, key2);
   }
 
   /**
@@ -40,7 +40,7 @@ public class MotionImplTest {
   @Test(expected = IllegalArgumentException.class)
   public void motionExceptionBackwardsTicks() {
     Motion mot = new MotionImpl(2, 1,
-        new ShapeImpl(Shapes.ellipse, "C"), key1, key2);
+        new ShapeImpl(Shapes.ELLIPSE, "C"), key1, key2);
   }
 
   /**
@@ -57,7 +57,7 @@ public class MotionImplTest {
   @Test(expected = IllegalArgumentException.class)
   public void motionExceptionNullStartframe() {
     Motion mot = new MotionImpl(0, 1,
-        new ShapeImpl(Shapes.ellipse, "C"), null, key2);
+        new ShapeImpl(Shapes.ELLIPSE, "C"), null, key2);
   }
 
   /**
@@ -66,6 +66,6 @@ public class MotionImplTest {
   @Test(expected = IllegalArgumentException.class)
   public void motionExceptionNullEndframe() {
     Motion mot = new MotionImpl(0, 1,
-        new ShapeImpl(Shapes.ellipse, "C"), key1, null);
+        new ShapeImpl(Shapes.ELLIPSE, "C"), key1, null);
   }
 }

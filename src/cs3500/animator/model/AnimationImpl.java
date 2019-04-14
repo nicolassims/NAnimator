@@ -46,7 +46,7 @@ public class AnimationImpl implements Animation {
   public void addShape(String name, String type) {
     Shapes shapeType = null;
     for (Shapes s : Shapes.values()) {
-      if (s.name().equals(type)) {
+      if (s.name().equalsIgnoreCase(type)) {
         shapeType = s;
       }
     }

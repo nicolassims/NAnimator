@@ -1,5 +1,6 @@
 Finished working on Motion file. Adaptor from (Our) Motion to (Their) IMotion.
 Finished implementing hybrid view on ViewFactoryImpl. In-progress.
 Finished working on EditorViewImplementingView. Adaptor from (Their) EditorView to (Our) View.
-Continuing worki on AnimationToAnimationModel. Adaptor from (Our) Animation to (Their) AnimationModel.
+Continuing work on AnimationToAnimationModel. Adaptor from (Our) Animation to (Their) AnimationModel.
 Finished working on ShapeToIShape. Adaptor from (Our) Shape to (Their) IShape.
+Changed our Shapes Enum to be uppercase.

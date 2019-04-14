@@ -67,9 +67,9 @@ public class AnimationPanelImpl extends JPanel implements AnimationPanel {
         }
 
         g2d.setColor(color);
-        if (s.getShape().equalsIgnoreCase("rectangle")) {
+        if (s.getShape().equalsIgnoreCase("RECTANGLE")) {
           g2d.fillRect(x, y, w, h);
-        } else if (s.getShape().equalsIgnoreCase("ellipse")) {
+        } else if (s.getShape().equalsIgnoreCase("ELLIPSE")) {
           g2d.fillOval(x, y, w, h);
         }
       }

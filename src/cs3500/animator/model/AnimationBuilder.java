@@ -29,8 +29,8 @@ public interface AnimationBuilder<Doc> {
    *
    * @param name The unique name of the shape to be added. No shape with this name should already
    *             exist.
-   * @param type The type of shape (e.g. "ellipse", "rectangle") to be added. The set of supported
-   *             shapes is unspecified, but should include "ellipse" and "rectangle" as a minimum.
+   * @param type The type of shape (e.g. "ELLIPSE", "rectangle") to be added. The set of supported
+   *             shapes is unspecified, but should include "ELLIPSE" and "rectangle" as a minimum.
    * @return This {@link AnimationBuilder}
    */
   AnimationBuilder<Doc> declareShape(String name, String type);

@@ -102,7 +102,7 @@ public interface IMotion {
 
   /**
    * A method that helps the CSV view get the information about the starting position of a shape.
-   * The difference is: it does it for the ellipse shape.
+   * The difference is: it does it for the ELLIPSE shape.
    * @return String in CSV format
    */
   String describeBeginAttributesEllipse();

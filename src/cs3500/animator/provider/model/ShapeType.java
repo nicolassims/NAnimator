@@ -8,7 +8,7 @@ public enum ShapeType {
 
   /**
    * The toString method, returns in a way CSV can read.
-   * @return A string rect or ellipse.
+   * @return A string rect or ELLIPSE.
    */
   public String toString() {
     if (this == RECTANGLE) {

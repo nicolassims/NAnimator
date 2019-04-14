@@ -2,8 +2,11 @@ package cs3500.animator.model;
 
 import cs3500.animator.model.qualities.Quality;
 import cs3500.animator.model.qualities.color.Texture;
+import cs3500.animator.model.qualities.color.TextureImpl;
 import cs3500.animator.model.qualities.dimensions.Size;
+import cs3500.animator.model.qualities.dimensions.Size2D;
 import cs3500.animator.model.qualities.positions.Position;
+import cs3500.animator.model.qualities.positions.Position2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -43,7 +46,7 @@ public class ShapeImpl implements Shape {
 
   @Override
   public String getShape() {
-    return shapeType.name();
+    return shapeType.name().toLowerCase();
   }
 
   @Override
@@ -143,8 +146,12 @@ public class ShapeImpl implements Shape {
         return m;
       }
     }
-
-    throw new IllegalArgumentException(this.name + " does not exist at tick " + tick);
+    return new MotionImpl(tick, tick, this,
+        new KeyframeImpl(tick, new Position2D(0, 0), new Size2D(0, 0),
+            new TextureImpl(0, 0, 0, 1)),
+        new KeyframeImpl(tick, new Position2D(0, 0), new Size2D(0, 0),
+            new TextureImpl(0, 0, 0, 1)));
+    //throw new IllegalArgumentException(this.name + " does not exist at tick " + tick);
   }
 
   /**

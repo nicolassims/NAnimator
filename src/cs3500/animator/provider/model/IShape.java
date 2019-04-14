@@ -40,7 +40,7 @@ public interface IShape {
 
   /**
    * Get a string description of the shape type.
-   * @return the shape type (e.g. rectangle)
+   * @return the shape type (e.g. RECTANGLE)
    */
   String shapeTypeToString();
 

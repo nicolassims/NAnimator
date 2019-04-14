@@ -62,18 +62,18 @@ public class SVGViewImpl implements TextBasedView, TimeBasedView {
       widthname = "width";
       heightname = "height";
       startsVisible = shape.getFirstTick() == 0;
-      if (shape.getShape().equals("rectangle")) {
+      if (shape.getShape().equalsIgnoreCase("RECTANGLE")) {
         starttag = "<rect";
         endtag = "</rect>\n";
-      } else if (shape.getShape().equals("ellipse")) {
-        starttag = "<ellipse";
-        endtag = "</ellipse>\n";
+      } else if (shape.getShape().equalsIgnoreCase("ELLIPSE")) {
+        starttag = "<ELLIPSE";
+        endtag = "</ELLIPSE>\n";
         xname = "cx";
         yname = "cy";
         widthname = "rx";
         heightname = "ry";
       } else {
-        throw new IllegalArgumentException("This shape is not a rectangle or an ellipse.");
+        throw new IllegalArgumentException("This shape is not a RECTANGLE or an ELLIPSE.");
       }
       viewString.append(starttag).append(" id=\"").append(shape.getName()).append("\" ")
           .append(xname).append("=\"")
