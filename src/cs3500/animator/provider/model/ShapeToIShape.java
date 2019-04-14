@@ -126,7 +126,7 @@ public class ShapeToIShape implements IShape {
 
   @Override
   public ShapeType getShapeType() {
-    return ShapeType.valueOf(this.shape.getShape());
+    return ShapeType.valueOf(this.shape.getShape().toUpperCase());
   }
 
   @Override
