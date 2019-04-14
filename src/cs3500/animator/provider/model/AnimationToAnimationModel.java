@@ -16,7 +16,7 @@ public class AnimationToAnimationModel implements AnimationModel {
 
   private Animation animation;
 
-  AnimationToAnimationModel(Animation animation) {
+  public AnimationToAnimationModel(Animation animation) {
     this.animation = animation;
   }
 
