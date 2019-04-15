@@ -1,15 +1,10 @@
 package cs3500.animator.provider.view;
 
 import javax.swing.JButton;
-
 import javax.swing.JPanel;
-
 import javax.swing.JTextField;
-
 import java.awt.FlowLayout;
-
 import java.awt.event.ActionEvent;
-
 import java.awt.event.ActionListener;
 
 /**
@@ -48,9 +43,13 @@ class ControlPanel extends JPanel {
     this.setVisible(true);
   }
 
+  //FIX THIS
+  ActionListener getActionListener() {
+    return new AL();
+  }
+
   /**
    * A nested class to serve as the ActionListener for the ControlPanel.
-   *
    */
   private class AL implements ActionListener {
 

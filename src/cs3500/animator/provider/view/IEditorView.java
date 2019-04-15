@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import cs3500.animator.provider.model.IMotion;
 import cs3500.animator.provider.model.ShapeType;
+import javax.naming.ldap.Control;
 
 /**
  * The editor view provides visualization of the animation and editor panel to control the
@@ -94,4 +95,7 @@ public interface IEditorView extends IView {
    * Update the selected shape for visual cue.
    */
   void updateSelectedShape();
+
+  //FIX THIS
+  ControlPanel getControlPanel();
 }

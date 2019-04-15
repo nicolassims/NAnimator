@@ -59,11 +59,17 @@ public class AnimationToAnimationModel implements AnimationModel {
   public ArrayList<IShape> getFrame(double tick) {
     ArrayList<IShape> returnable = new ArrayList<>();
     for (Shape shape : animation.getShapes().values()) {
+      returnable.add(new ShapeToIShape(shape));
+    }
+    return returnable;
+
+    /*ArrayList<IShape> returnable = new ArrayList<>();
+    for (Shape shape : animation.getShapes().values()) {
       if (shape.getFirstTick() <= tick && tick <= shape.totalDuration()) {
         returnable.add(new ShapeToIShape(shape));
       }
     }
-    return returnable;
+    return returnable;*/
     /*throw new UnsupportedOperationException("This type of logic is not compatible with the system "
         + "we're using. We can't return a Shape's state at a single moment in time. We could"
         + "return the Keyframe for that moment, but that seems overly messy at this time.");*/

@@ -153,14 +153,14 @@ public class Motion implements IMotion {
   @Override
   public String describeBeginAttributes() {
     throw new IllegalArgumentException(
-        "Implemented for compatability purposes, but unused. Returning SVG-formatted descriptions "
+        "Implemented for compatibility purposes, but unused. Returning SVG-formatted descriptions "
             + "of a Motion is something the view should handle, not the Motion proper.");
   }
 
   @Override
   public String describeBeginAttributesEllipse() {
     throw new IllegalArgumentException(
-        "Implemented for compatability purposes, but unused. Returning SVG-formatted descriptions "
+        "Implemented for compatibility purposes, but unused. Returning SVG-formatted descriptions "
             + "of a Motion is something the view should handle, not the Motion proper.");
   }
 }

@@ -23,6 +23,8 @@ public class EditorViewImplementingView extends EditorView implements View {
   @Override
   public void displayView(Animation model) {
       editorView.setModel(new AnimationToAnimationModel(model));
+      editorView.setTempo(20);
+      editorView.setListener(editorView.getControlPanel().getActionListener());
       editorView.start();
   }
 }
