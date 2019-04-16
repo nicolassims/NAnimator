@@ -4,3 +4,6 @@ Finished working on EditorViewImplementingView. Adaptor from (Their) EditorView 
 Continuing work on AnimationToAnimationModel. Adaptor from (Our) Animation to (Their) AnimationModel.
 Finished working on ShapeToIShape. Adaptor from (Our) Shape to (Their) IShape.
 Changed our Shapes Enum to be uppercase.
+
+Okay, I've been ignoring this for too long. But their IMotion represents a keyframe. I have to change my Motion accordingly.
+Working on attempting to implement EditController. Too tired to keep working.

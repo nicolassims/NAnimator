@@ -93,6 +93,12 @@ public class EditorView extends JFrame implements IEditorView {
     return controlPanel;
   }
 
+  //FIX THIS
+  @Override
+  public AnimationModel getModel() {
+    return model;
+  }
+
   @Override
   public void setTempo(int tempo) {
     animationPanel.setTempo(tempo);

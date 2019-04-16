@@ -61,6 +61,21 @@ public interface Shape {
   String getFirstColors();
 
   /**
+   * Returns the a string representation of the first red value of this shape.
+   */
+  double getFirstRed();
+
+  /**
+   * Returns a double representation of the first green value of this shape.
+   */
+  double getFirstGreen();
+
+  /**
+   * Returns double representation of the first blue value of this shape.
+   */
+  double getFirstBlue();
+
+  /**
    * Returns the first tick this shape appears at.
    */
   int getFirstTick();

@@ -10,10 +10,12 @@ import cs3500.animator.view.View;
  * interface.
  */
 public class EditorViewImplementingView extends EditorView implements View {
+
   private EditorView editorView;
 
   /**
    * Simply takes in an EditorView and sets the class' field to be that View.
+   *
    * @param editorView The EditorView this class adds View-Implementation to.
    */
   public EditorViewImplementingView(EditorView editorView) {
@@ -22,9 +24,11 @@ public class EditorViewImplementingView extends EditorView implements View {
 
   @Override
   public void displayView(Animation model) {
-      editorView.setModel(new AnimationToAnimationModel(model));
-      editorView.setTempo(20);
-      editorView.setListener(editorView.getControlPanel().getActionListener());
-      editorView.start();
+    editorView.setModel(new AnimationToAnimationModel(model));
+    editorView.setTempo(20);
+    editorView.setListener(
+        new EditController(new AnimationToAnimationModel(model), editorView.editingPanel,
+            editorView));
+    editorView.start();
   }
 }

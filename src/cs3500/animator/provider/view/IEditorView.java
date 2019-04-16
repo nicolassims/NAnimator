@@ -1,5 +1,6 @@
 package cs3500.animator.provider.view;
 
+import cs3500.animator.provider.model.AnimationModel;
 import java.awt.event.ActionListener;
 import java.util.Collection;
 
@@ -12,6 +13,9 @@ import javax.naming.ldap.Control;
  * animation. The user can edit, create, delete shapes / key frames.
  */
 public interface IEditorView extends IView {
+
+  //FIX THIS
+  AnimationModel getModel();
 
   /**
    * Set the listener for any actions.

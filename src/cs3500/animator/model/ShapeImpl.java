@@ -98,6 +98,21 @@ public class ShapeImpl implements Shape {
   }
 
   @Override
+  public double getFirstRed() {
+    return motions.get(0).getStartFrame().getTexture().getRed();
+  }
+
+  @Override
+  public double getFirstGreen() {
+    return motions.get(0).getStartFrame().getTexture().getGreen();
+  }
+
+  @Override
+  public double getFirstBlue() {
+    return motions.get(0).getStartFrame().getTexture().getBlue();
+  }
+
+  @Override
   public int getFirstTick() {
     return motions.get(0).getFirstTick();
   }
@@ -146,12 +161,12 @@ public class ShapeImpl implements Shape {
         return m;
       }
     }
-    return new MotionImpl(tick, tick, this,
+    /*return new MotionImpl(tick, tick, this,
         new KeyframeImpl(tick, new Position2D(0, 0), new Size2D(0, 0),
             new TextureImpl(0, 0, 0, 1)),
         new KeyframeImpl(tick, new Position2D(0, 0), new Size2D(0, 0),
-            new TextureImpl(0, 0, 0, 1)));
-    //throw new IllegalArgumentException(this.name + " does not exist at tick " + tick);
+            new TextureImpl(0, 0, 0, 1)));*/
+    throw new IllegalArgumentException(this.name + " does not exist at tick " + tick);
   }
 
   /**
