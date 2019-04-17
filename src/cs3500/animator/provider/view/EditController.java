@@ -47,14 +47,26 @@ public class EditController implements ActionListener {
         break;
       case "saveBtn":
         this.activeIShape.editKeyFrame(this.editingPanel.keyFrameCB.getSelectedIndex(),
-            this.editor.getInputValues());
+            this.editor.getInputValues());//Editor does not show new and proper values
         break;
       case "createShapeBtn":
-        this.shapeList.add(new ShapeToIShape(new ShapeImpl(Shapes.valueOf(
-            this.editingPanel.newShapeTypeCB
-                .getItemAt(this.editingPanel.newShapeTypeCB.getSelectedIndex()).toString()
-                .toUpperCase()), this.editingPanel.newShapeNameTextField.getName())));
-        System.out.println("Created shape.");
+        Shapes shapetype;
+        switch (this.editingPanel.newShapeTypeCB
+            .getItemAt(this.editingPanel.newShapeTypeCB.getSelectedIndex()).toString()
+            .toUpperCase()) {
+          case "RECT":
+            shapetype = Shapes.RECTANGLE;
+            break;
+          case "ELLIPSE":
+            shapetype = Shapes.ELLIPSE;
+            break;
+          default:
+            throw new IllegalArgumentException("Unsupported shape.");
+        }
+        System.out.println(this.editingPanel.newShapeNameTextField.getText());
+        this.shapeList.add(new ShapeToIShape(
+            new ShapeImpl(shapetype, this.editingPanel.newShapeNameTextField.getText())));
+        this.editingPanel.shapeCB.addItem(this.editingPanel.newShapeNameTextField.getText());
         break;
       case "insertKeyFrameBtn":
         System.out.println("Inserted keyframe.");

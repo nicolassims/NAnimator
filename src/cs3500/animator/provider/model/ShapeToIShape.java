@@ -35,7 +35,9 @@ public class ShapeToIShape implements IShape {
    */
   public ShapeToIShape(Shape shape) {
     this.shape = shape;
-    updateFields();
+    if (this.shape.getMotions().size() > 0) {
+      updateFields();
+    }
   }
 
   @Override
