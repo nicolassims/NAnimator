@@ -132,39 +132,6 @@ public class AnimationImplTest {
   }
 
   /**
-   * Tests that add motion throws an IllegalArgumentException if an attempt to add a new motion
-   * overlaps with an existent motion.
-   */
-  @Test(expected = IllegalArgumentException.class)
-  public void addMotionExceptionForOverlappingMotions() {
-    Animation modelWithOneShape = new AnimationImpl();
-    modelWithOneShape.addShape("R", "rectangle");
-    modelWithOneShape.addRotationless2DMotion("R",
-        1, 200, 200, 50, 100, 255, 0, 0,
-        10, 200, 200, 50, 100, 255, 0, 0);
-    modelWithOneShape.addRotationless2DMotion("R",
-        9, 200, 200, 50, 100, 255, 0, 0,
-        13, 200, 200, 50, 100, 255, 0, 0);
-  }
-
-  /**
-   * Tests that add motion throws an IllegalArgumentException if an attempt to add a new motion that
-   * creates a gap on the shape's animation.
-   */
-  @Test(expected = IllegalArgumentException.class)
-  public void addMotionExceptionForGaps() {
-    Animation modelWithOneShape = new AnimationImpl();
-    modelWithOneShape.addShape("R", "rectangle");
-    modelWithOneShape.addRotationless2DMotion("R",
-        1, 200, 200, 50, 100, 255, 0, 0,
-        10, 200, 200, 50, 100, 255, 0, 0);
-    modelWithOneShape.addRotationless2DMotion("R",
-        11, 200, 200, 50, 100, 255, 0, 0,
-        15, 200, 200, 50, 100, 255, 0, 0);
-  }
-
-
-  /**
    * Tests that the motion can completely replicate the following example animation:
    * https://course.ccs.neu.edu/cs3500/smalldemo.gif.
    */
