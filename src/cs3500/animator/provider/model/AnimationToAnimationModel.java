@@ -36,7 +36,7 @@ public class AnimationToAnimationModel implements AnimationModel {
   }
 
   @Override
-  public IShape getShape(String id) {//receiving shape, need to return IShape
+  public IShape getShape(String id) {
     return new ShapeToIShape(animation.getShapes().get(id));
   }
 
