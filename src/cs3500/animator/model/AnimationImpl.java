@@ -80,15 +80,6 @@ public class AnimationImpl implements Animation {
     if (!shapes.containsKey(shapeName)) {
       throw new IllegalArgumentException("The given shape does not exist or has not been declared");
     }
-    int currentShapeDuration = shapes.get(shapeName).totalDuration();
-    if (start.getTick() < currentShapeDuration || end.getTick() < currentShapeDuration) {
-      throw new IllegalArgumentException("There cannot be overlap of motions.");
-    }
-    if (currentShapeDuration != 0 && currentShapeDuration != start.getTick()) {
-      throw new IllegalArgumentException(
-          "There cannot be gaps between motions. The next motion to be added should start at "
-              + currentShapeDuration);
-    }
     for (Shape s : shapes.values()) {
       if (s.getName().equals(shapeName)) {
         s.addMotion(new MotionImpl(start.getTick(), end.getTick(), s, start, end));

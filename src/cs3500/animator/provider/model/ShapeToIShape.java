@@ -42,13 +42,13 @@ public class ShapeToIShape implements IShape {
 
   @Override
   public void addMotion(IMotion motion) {
-    shape.addMotion(new MotionImpl(motion.getBeginTime(), motion.getEndTime(), null,
+    shape.addMotion(new MotionImpl(motion.getBeginTime(), motion.getBeginTime(), shape,
         new KeyframeImpl(motion.getBeginTime(),
             new Position2D(motion.getNewX(), motion.getNewY()),
             new Size2D(motion.getNewHeight(), motion.getNewLength()),
             new TextureImpl(motion.getColor().getR(), motion.getColor().getG(),
                 motion.getColor().getB(), 1)),
-        new KeyframeImpl(motion.getEndTime(),
+        new KeyframeImpl(motion.getBeginTime(),
             new Position2D(motion.getNewX(), motion.getNewY()),
             new Size2D(motion.getNewHeight(), motion.getNewLength()),
             new TextureImpl(motion.getColor().getR(), motion.getColor().getG(),

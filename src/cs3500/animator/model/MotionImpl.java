@@ -25,8 +25,9 @@ public class MotionImpl implements Motion {
    */
   public MotionImpl(int startTick, int endTick, Shape parent,
       Keyframe startFrame, Keyframe endFrame) {
-    if (startTick < 0 || startTick > endTick || parent == null
-        || startFrame == null || endFrame == null) {
+    if (startTick < 0 || startTick > endTick || parent == null || startFrame == null ||
+        endFrame == null) {
+      System.out.println(startTick + "," + endTick + "," + parent + "," + startFrame + "," + endFrame);
       throw new IllegalArgumentException("MotionImpl not able to construct properly.");
     }
     this.parent = parent;

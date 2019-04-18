@@ -154,19 +154,14 @@ public class ShapeImpl implements Shape {
     if (tick < 0) {
       throw new IllegalArgumentException("There are no negative ticks");
     }
-
     for (Motion m : motions) {
-      if (m.getStartFrame().getTick() <= tick
-          && m.getEndFrame().getTick() >= tick) {
+      if (m.getStartFrame().getTick() <= tick && m.getEndFrame().getTick() >= tick) {
         return m;
       }
     }
-    /*return new MotionImpl(tick, tick, this,
-        new KeyframeImpl(tick, new Position2D(0, 0), new Size2D(0, 0),
-            new TextureImpl(0, 0, 0, 1)),
-        new KeyframeImpl(tick, new Position2D(0, 0), new Size2D(0, 0),
-            new TextureImpl(0, 0, 0, 1)));*/
-    throw new IllegalArgumentException(this.name + " does not exist at tick " + tick);
+
+    return motions.get(0);
+    //throw new IllegalArgumentException(this.name + " does not exist at tick " + tick);
   }
 
   /**

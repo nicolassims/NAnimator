@@ -13,10 +13,12 @@ import java.util.ArrayList;
  * AnimationModel interface.
  */
 public class AnimationToAnimationModel implements AnimationModel {
+
   private Animation animation;
 
   /**
    * Simply takes an Animation, and sets this class' field to be that Animation.
+   *
    * @param animation The Animation that will be treated like an AnimationModel.
    */
   public AnimationToAnimationModel(Animation animation) {
@@ -57,10 +59,9 @@ public class AnimationToAnimationModel implements AnimationModel {
 
   @Override
   public ArrayList<IShape> getFrame(double tick) {
-    tick = ((int) tick);
     ArrayList<IShape> returnable = new ArrayList<>();
     for (Shape shape : animation.getShapes().values()) {
-      if (tick >= shape.getFirstTick()) {
+      if (shape.getFirstTick() <= tick) {
         returnable.add(new ShapeToIShape(shape).getFrame(tick));
       }
     }
@@ -69,12 +70,13 @@ public class AnimationToAnimationModel implements AnimationModel {
 
   @Override
   public void addMotion(String id, IMotion motion) {
+    System.out.println(motion.getBeginTime() + "," + motion.getEndTime());
     animation.addMotion(id,
         new KeyframeImpl(motion.getBeginTime(), new Position2D(motion.getNewX(), motion.getNewY()),
             new Size2D(motion.getNewLength(), motion.getNewHeight()),
             new TextureImpl(motion.getColor().getR(), motion.getColor().getG(),
                 motion.getColor().getB(), 1)),
-        new KeyframeImpl(motion.getEndTime(), new Position2D(motion.getNewX(), motion.getNewY()),
+        new KeyframeImpl(motion.getBeginTime(), new Position2D(motion.getNewX(), motion.getNewY()),
             new Size2D(motion.getNewLength(), motion.getNewHeight()),
             new TextureImpl(motion.getColor().getR(), motion.getColor().getG(),
                 motion.getColor().getB(), 1)));

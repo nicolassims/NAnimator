@@ -13,25 +13,22 @@ import cs3500.animator.provider.model.Motion;
 import cs3500.animator.provider.model.ShapeToIShape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 public class EditController implements ActionListener {
 
+  private AnimationModel animation;
   private EditorView editor;
   private EditingPanel editingPanel;
   private List<IShape> shapeList;
-  private List<cs3500.animator.provider.model.Motion> motions;
   private IShape activeIShape;
-  private IMotion activeKeyframe;
 
   EditController(AnimationModel animation, EditingPanel editingPanel, EditorView editor) {
+    this.animation = animation;
     this.editor = editor;
     this.editingPanel = editingPanel;
     this.shapeList = animation.getShapes();
     this.activeIShape = this.shapeList.get(0);
-    this.activeKeyframe = this.activeIShape.getMotion(0);
-    this.motions = new ArrayList<>();
     updateEverything();
   }
 
@@ -39,15 +36,22 @@ public class EditController implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     switch (e.getActionCommand()) {
       case "shapeCB":
-        this.activeIShape = this.shapeList.get(this.editingPanel.shapeCB.getSelectedIndex());
+        if (this.editingPanel.shapeCB.getSelectedIndex() != -1) {
+          this.activeIShape = this.shapeList.get(this.editingPanel.shapeCB.getSelectedIndex());
+          this.editingPanel.updateTextFields(
+              this.activeIShape.getMotion(this.editingPanel.keyFrameCB.getSelectedIndex() + 2));
+        }
         break;
       case "keyFrameCB":
-        this.activeKeyframe = this.activeIShape.getMotions()
-            .get(this.editingPanel.shapeCB.getSelectedIndex());
+        if (this.editingPanel.keyFrameCB.getSelectedIndex() != -1) {
+          this.editingPanel.updateTextFields(
+              this.activeIShape.getMotion(this.editingPanel.keyFrameCB.getSelectedIndex() + 2));
+        }
         break;
       case "saveBtn":
         this.activeIShape.editKeyFrame(this.editingPanel.keyFrameCB.getSelectedIndex(),
             this.editor.getInputValues());//Editor does not show new and proper values
+        updateEverything();
         break;
       case "createShapeBtn":
         Shapes shapetype;
@@ -63,24 +67,47 @@ public class EditController implements ActionListener {
           default:
             throw new IllegalArgumentException("Unsupported shape.");
         }
-        System.out.println(this.editingPanel.newShapeNameTextField.getText());
-        this.shapeList.add(new ShapeToIShape(
+        this.animation.addShape(new ShapeToIShape(
             new ShapeImpl(shapetype, this.editingPanel.newShapeNameTextField.getText())));
-        this.editingPanel.shapeCB.addItem(this.editingPanel.newShapeNameTextField.getText());
+        this.animation.getShape(this.editingPanel.newShapeNameTextField.getText()).addMotion(
+            new Motion(new KeyframeImpl(
+                Integer.valueOf(this.editingPanel.newKeyFrameTickTextField.getText()),
+                new Position2D(Integer.valueOf(this.editingPanel.xTextField.getText()),
+                    Integer.valueOf(this.editingPanel.yTextField.getText())),
+                new Size2D(Integer.valueOf(this.editingPanel.widthTextField.getText()),
+                    Integer.valueOf(this.editingPanel.heightTextField.getText())),
+                new TextureImpl(Integer.valueOf(this.editingPanel.rTextField.getText()),
+                    Integer.valueOf(this.editingPanel.gTextField.getText()),
+                    Integer.valueOf(this.editingPanel.bTextField.getText()), 1))));
+        this.shapeList = animation.getShapes();
+        updateEverything();
         break;
       case "insertKeyFrameBtn":
-        System.out.println("Inserted keyframe.");
+        this.animation.addMotion(this.editingPanel.shapeCB.getSelectedItem().toString(),
+            new Motion(new KeyframeImpl(
+                Integer.valueOf(this.editingPanel.newKeyFrameTickTextField.getText()),
+                new Position2D(Integer.valueOf(this.editingPanel.xTextField.getText()),
+                    Integer.valueOf(this.editingPanel.yTextField.getText())),
+                new Size2D(Integer.valueOf(this.editingPanel.widthTextField.getText()),
+                    Integer.valueOf(this.editingPanel.heightTextField.getText())),
+                new TextureImpl(Integer.valueOf(this.editingPanel.rTextField.getText()),
+                    Integer.valueOf(this.editingPanel.gTextField.getText()),
+                    Integer.valueOf(this.editingPanel.bTextField.getText()), 1))));
+        updateEverything();
         break;
       case "deleteShapeBtn":
-        System.out.println("Deleted shape.");
+        this.animation.deleteShape(this.editingPanel.shapeCB.getSelectedItem().toString());
+        this.shapeList.remove(this.editingPanel.shapeCB.getSelectedIndex());
+        updateEverything();
         break;
       case "deleteKeyFrameBtn":
-        System.out.println("Deleted keyframe.");
+        this.animation.deleteKeyFrame(this.editingPanel.shapeCB.getSelectedItem().toString(),
+            Integer.parseInt(this.editingPanel.keyFrameCB.getSelectedItem().toString()));
+        updateEverything();
         break;
       default:
         throw new IllegalArgumentException("Invalid");
     }
-    updateEverything();
   }
 
   /**
@@ -93,24 +120,13 @@ public class EditController implements ActionListener {
         this.editingPanel.shapeCB.addItem(shape.getID());
       }
     }
-    if (this.editingPanel.keyFrameCB.getItemCount() != this.shapeList
-        .get(this.editingPanel.shapeCB.getSelectedIndex()).getMotions().size()) {
+    if (this.activeIShape.getMotions().size() != this.editingPanel.keyFrameCB.getItemCount()) {
       this.editingPanel.keyFrameCB.removeAllItems();
-      for (IMotion motion : this.shapeList
-          .get(this.editingPanel.shapeCB.getSelectedIndex()).getMotions()) {
+      for (IMotion motion : this.activeIShape.getMotions()) {
         this.editingPanel.keyFrameCB.addItem(Integer.toString(motion.getBeginTime()));
       }
     }
-    IShape activeShape = this.activeIShape.getFrame(Double.valueOf(
-        this.editingPanel.keyFrameCB.getItemAt(this.editingPanel.keyFrameCB.getSelectedIndex())
-            .toString()));
-    IMotion keyframe = new Motion(new KeyframeImpl(Integer.valueOf(
-        this.editingPanel.keyFrameCB.getItemAt(this.editingPanel.keyFrameCB.getSelectedIndex())
-            .toString()),
-        new Position2D(activeShape.getX(), activeShape.getY()),
-        new Size2D(activeShape.getWidth(), activeShape.getHeight()),
-        new TextureImpl(activeShape.getColor().getR(), activeShape.getColor().getG(),
-            activeShape.getColor().getB(), 1)));
-    this.editingPanel.updateTextFields(keyframe);
+    this.editingPanel.updateTextFields(
+        this.activeIShape.getMotion(this.editingPanel.keyFrameCB.getSelectedIndex() + 2));
   }
 }
