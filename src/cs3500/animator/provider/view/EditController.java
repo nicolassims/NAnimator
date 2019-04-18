@@ -58,33 +58,37 @@ public class EditController implements ActionListener {
         updateEverything();
         break;
       case "createShapeBtn":
-        Shapes shapetype;
-        switch (this.editingPanel.newShapeTypeCB
-            .getItemAt(this.editingPanel.newShapeTypeCB.getSelectedIndex()).toString()
-            .toUpperCase()) {
-          case "RECT":
-            shapetype = Shapes.RECTANGLE;
-            break;
-          case "ELLIPSE":
-            shapetype = Shapes.ELLIPSE;
-            break;
-          default:
-            throw new IllegalArgumentException("Unsupported shape.");
+        try {
+          Shapes shapetype;
+          switch (this.editingPanel.newShapeTypeCB
+              .getItemAt(this.editingPanel.newShapeTypeCB.getSelectedIndex()).toString()
+              .toUpperCase()) {
+            case "RECT":
+              shapetype = Shapes.RECTANGLE;
+              break;
+            case "ELLIPSE":
+              shapetype = Shapes.ELLIPSE;
+              break;
+            default:
+              throw new IllegalArgumentException("Unsupported shape.");
+          }
+          this.animation.addShape(new ShapeToIShape(
+              new ShapeImpl(shapetype, this.editingPanel.newShapeNameTextField.getText())));
+          this.animation.getShape(this.editingPanel.newShapeNameTextField.getText()).addMotion(
+              new Motion(new KeyframeImpl(1,
+                  new Position2D(Integer.valueOf(this.editingPanel.xTextField.getText()),
+                      Integer.valueOf(this.editingPanel.yTextField.getText())),
+                  new Size2D(Integer.valueOf(this.editingPanel.widthTextField.getText()),
+                      Integer.valueOf(this.editingPanel.heightTextField.getText())),
+                  new TextureImpl(Integer.valueOf(this.editingPanel.rTextField.getText()),
+                      Integer.valueOf(this.editingPanel.gTextField.getText()),
+                      Integer.valueOf(this.editingPanel.bTextField.getText()), 1))));
+          this.shapeList = animation.getShapes();
+          updateEverything();
+        } catch (NumberFormatException n) {
+          throw new IllegalArgumentException(
+              "One of the number fields contatins an invalid variable.");
         }
-        this.animation.addShape(new ShapeToIShape(
-            new ShapeImpl(shapetype, this.editingPanel.newShapeNameTextField.getText())));
-        this.animation.getShape(this.editingPanel.newShapeNameTextField.getText()).addMotion(
-            new Motion(new KeyframeImpl(
-                Integer.valueOf(this.editingPanel.newKeyFrameTickTextField.getText()),
-                new Position2D(Integer.valueOf(this.editingPanel.xTextField.getText()),
-                    Integer.valueOf(this.editingPanel.yTextField.getText())),
-                new Size2D(Integer.valueOf(this.editingPanel.widthTextField.getText()),
-                    Integer.valueOf(this.editingPanel.heightTextField.getText())),
-                new TextureImpl(Integer.valueOf(this.editingPanel.rTextField.getText()),
-                    Integer.valueOf(this.editingPanel.gTextField.getText()),
-                    Integer.valueOf(this.editingPanel.bTextField.getText()), 1))));
-        this.shapeList = animation.getShapes();
-        updateEverything();
         break;
       case "insertKeyFrameBtn":
         this.animation.addMotion(this.editingPanel.shapeCB.getSelectedItem().toString(),
