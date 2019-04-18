@@ -15,6 +15,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
+/**
+ * An ActionListener to be recievevd by the EditView and interpret the pressing of the buttons that
+ * the user might, uh, press.
+ */
 public class EditController implements ActionListener {
 
   private AnimationModel animation;

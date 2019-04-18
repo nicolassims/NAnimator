@@ -5,8 +5,6 @@ import cs3500.animator.model.AnimationImpl;
 import cs3500.animator.model.KeyframeImpl;
 import cs3500.animator.model.MotionImpl;
 import cs3500.animator.model.Shape;
-import cs3500.animator.model.ShapeImpl;
-import cs3500.animator.model.Shapes;
 import cs3500.animator.model.qualities.color.TextureImpl;
 import cs3500.animator.model.qualities.dimensions.Size2D;
 import cs3500.animator.model.qualities.positions.Position2D;
@@ -103,7 +101,7 @@ public class ShapeToIShape implements IShape {
 
   @Override
   public void deleteKeyFrame(int keyFrameIndex) {
-    Animation anim = CreateTempBuilder();
+    Animation anim = createTempBuilder();
     anim.getBuilder().deleteKeyFrame(shape.getName(), shape.getFirstTick());
     this.shape = anim.getShapes().get(shape.getName());
     updateFields();
@@ -111,7 +109,7 @@ public class ShapeToIShape implements IShape {
 
   @Override
   public void editKeyFrame(int index, IMotion keyFrame) {
-    Animation anim = CreateTempBuilder();
+    Animation anim = createTempBuilder();
     anim.getBuilder().setKeyFrame(shape.getName(), t, keyFrame.getNewX(),
         keyFrame.getNewY(), keyFrame.getNewLength(), keyFrame.getNewHeight(),
         keyFrame.getColor().getR(), keyFrame.getColor().getG(), keyFrame.getColor().getB());
@@ -121,7 +119,7 @@ public class ShapeToIShape implements IShape {
 
   @Override
   public IMotion insertKeyFrame(int tick) {
-    Animation anim = CreateTempBuilder();
+    Animation anim = createTempBuilder();
     anim.getBuilder().addKeyframe(shape.getName(), tick);
     this.shape = anim.getShapes().get(shape.getName());
     updateFields();
@@ -185,7 +183,7 @@ public class ShapeToIShape implements IShape {
    *
    * @returns the animation with the shape, and the shape's motions, added to it.
    */
-  private Animation CreateTempBuilder() {
+  private Animation createTempBuilder() {
     Animation anim = new AnimationImpl();
     anim.addShape(shape.getName(), shape.getShape());
     for (cs3500.animator.model.Motion motion : shape.getMotions()) {

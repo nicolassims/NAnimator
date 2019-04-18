@@ -301,9 +301,9 @@ public class AnimationImpl implements Animation {
            * "dead" motions, running deleteKeyFrame won't fix that.
            */
           if (i != 0 && motions.get(i).getStartFrame().toFile()
-              .equals(motions.get(i - 1).getStartFrame().toFile()) &&
-              motions.get(i - 1).getStartFrame().toFile()
-                  .equals(motions.get(i - 1).getEndFrame().toFile())) {
+              .equals(motions.get(i - 1).getStartFrame().toFile())
+              && motions.get(i - 1).getStartFrame().toFile()
+              .equals(motions.get(i - 1).getEndFrame().toFile())) {
             motions.remove(i - 1);
           }
         }
