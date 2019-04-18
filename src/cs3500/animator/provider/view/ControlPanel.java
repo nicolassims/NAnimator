@@ -43,11 +43,6 @@ class ControlPanel extends JPanel {
     this.setVisible(true);
   }
 
-  //FIX THIS
-  ActionListener getActionListener() {
-    return new AL();
-  }
-
   /**
    * A nested class to serve as the ActionListener for the ControlPanel.
    */

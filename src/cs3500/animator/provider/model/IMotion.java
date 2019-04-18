@@ -49,7 +49,7 @@ public interface IMotion {
    * @param other The other Motion being compared.
    * @return a boolean result.
    */
-  boolean overlapping(IMotion other);//FIX THIS Motion --> IMotion
+  boolean overlapping(IMotion other);
 
   /**
    * Getter method.

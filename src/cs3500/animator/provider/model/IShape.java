@@ -81,7 +81,7 @@ public interface IShape {
    * @param tick the time desired
    * @return the intermediate state of the shape represented in a shape object
    */
-  IShape getFrame(double tick);//FIX THIS Shape-->IShape
+  IShape getFrame(double tick);
 
   /**
    * Getter for shape type.

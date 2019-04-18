@@ -87,13 +87,11 @@ public class EditorView extends JFrame implements IEditorView {
     editingPanel = new EditingPanel(model);
   }
 
-  //FIX THIS
   @Override
   public ControlPanel getControlPanel() {
     return controlPanel;
   }
 
-  //FIX THIS
   @Override
   public AnimationModel getModel() {
     return model;

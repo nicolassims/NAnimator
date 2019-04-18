@@ -13,7 +13,9 @@ import cs3500.animator.provider.model.ShapeType;
  */
 public interface IEditorView extends IView {
 
-  //FIX THIS
+  /**
+   * @returns the actual AnimationModel, so that it can be edited by the EditView.
+   */
   AnimationModel getModel();
 
   /**
@@ -99,6 +101,8 @@ public interface IEditorView extends IView {
    */
   void updateSelectedShape();
 
-  //FIX THIS
+  /**
+   * @returns the ControlPanel of the editorView, which contains an ActionListener.
+   */
   ControlPanel getControlPanel();
 }
