@@ -22,7 +22,7 @@ public class ViewFactoryImpl implements ViewFactory {
     supportedViews.put("text", new TextualViewImpl());
     supportedViews.put("svg", new SVGViewImpl());
     supportedViews.put("edit", new EditorViewImpl());
-    supportedViews.put("hybrid", new EditorViewImplementingView(new EditorView()));
+    supportedViews.put("provider", new EditorViewImplementingView(new EditorView()));
   }
 
   /**
